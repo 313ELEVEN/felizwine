@@ -8,9 +8,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="templates/custom.css"> 
+    <link rel="stylesheet" href="custom.css">
     
     <style>
+
+        html { padding-top: 0 !important; }
+        
         body {
             font-family: 'Inter', sans-serif;
             background-color: #121212;
@@ -21,6 +24,92 @@
         .bg-brand-gold { background-color: #D4AF37; }
         .text-brand-gold { color: #D4AF37; }
         .bg-brand-dark-teal { background-color: #1a5159; }
+
+        body, html {
+            margin: 0 !important;
+            padding: 0 !important;
+            box-sizing: border-box;
+            /* Новое: Убираем отступы от безопасных зон сверху */
+            padding-top: env(safe-area-inset-top, 0px) !important;
+            margin-top: env(safe-area-inset-top, 0px) !important;
+            /* Если это не помогает, попробуйте просто: */
+            /* padding-top: 0 !important; */
+            /* margin-top: 0 !important; */
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #121212;
+            color: #f0f0f0;
+            overflow-x: hidden;
+        }
+        .font-title { font-family: 'Playfair Display', serif; }
+        .bg-brand-gold { background-color: #D4AF37; }
+        .text-brand-gold { color: #D4AF37; }
+        .bg-brand-dark-teal { background-color: #1a5159; }
+
+        /* Стили для секции видео - для устранения зазоров сверху */
+        .hero-section { 
+            position: relative; 
+            height: 60vh; 
+            min-height: 500px; 
+            margin-top: 0 !important; /* Убираем верхний внешний отступ */
+            padding-top: 0 !important; /* Убираем верхний внутренний отступ */
+        }
+        #hero-video-container { 
+            position: absolute; 
+            top: 0 !important; /* Убеждаемся, что прижат к верху */
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            overflow: hidden; 
+            z-index: -1; 
+        }
+        .hero-video { 
+            position: absolute; 
+            top: 50%; 
+            left: 50%; 
+            min-width: 100%; 
+            min-height: 100%; 
+            width: auto; 
+            height: auto; 
+            transform: translate(-50%, -50%); 
+            object-fit: cover; 
+        }
+
+        /* Стили для названия блюда: тень, свечение и выравнивание по центру */
+        .product-card-name {
+            /* Убедитесь, что эти стили здесь, если вы их переопределяли ранее */
+            font-size: 1.125rem; /* 18px */
+            line-height: 1.75rem; /* 28px */
+            font-weight: 700;
+            color: #f0f0f0; /* Светло-серый цвет */
+            
+            /* Новые стили для тени и свечения */
+            text-shadow:
+                0 0 4px rgba(255, 255, 255, 0.7),   /* Белое свечение */
+                0 0 3px rgba(255, 255, 255, 0.4),  /* Более сильное белое свечение */
+                2px 2px 4px rgba(0, 0, 0, 0.6) !important, /* Четкая тень */
+                3px 5px 8px rgba(1, 2, 5, 2.8) !important; /* <--- НОВАЯ ТОНКАЯ ЧЕРНАЯ ОБВОДКА */
+
+            /* Для центрирования названия по вертикали в карточке */
+            display: flex !important; /* Обязательно для использования flex-свойств */
+            align-items: center !important; /* Центрирует по вертикали */
+            justify-content: center !important; /* Центрирует по горизонтали */
+            text-align: center !important; /* На всякий случай для текстового выравнивания */
+
+            margin-bottom: 0 !important; /* Убираем нижний отступ, если он мешал центрированию */
+            padding-bottom: 0 !important; /* Убираем нижний внутренний отступ */
+
+            /* Эти свойства были у вас для обрезания текста, оставляем их */
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.4;
+            flex-grow: 1;
+            width: 100%;
+        }
 
 
         .hero-section { position: relative; height: 60vh; min-height: 500px; }
@@ -465,7 +554,7 @@
         <video autoplay loop muted playsinline preload="auto"
                class="block md:hidden hero-video"
                id="mobile-video"
-               src="https://res.cloudinary.com/dgsjcrozf/video/upload/f_auto,q_auto/mobpro_ceu5lr.mp4">
+               src="https://res.cloudinary.com/dgsjcrozf/video/upload/f_auto,q_auto/mobgold_ycbi56.mp4">
             Ваш браузер не поддерживает тег video.
         </video>
     </div>
