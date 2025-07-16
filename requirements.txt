@@ -17,12 +17,14 @@ ecdsa==0.19.1
 ed25519-blake2b==1.4.1
 Flask==3.1.1
 frozenlist==1.7.0
+gunicorn==23.0.0
 idna==3.10
 itsdangerous==2.2.0
 Jinja2==3.1.6
 MarkupSafe==3.0.2
 mnemonic==0.21
 multidict==6.6.3
+packaging==25.0
 propcache==0.3.2
 py-sr25519-bindings==0.2.2
 pybloom_live==4.0.0
