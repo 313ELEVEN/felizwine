@@ -156,79 +156,106 @@
         }
 
         /* === ИЗМЕНЕННЫЕ СТИЛИ ДЛЯ КАРТОЧЕК ТОВАРОВ === */
-        .product-card {
-            position: relative; /* Для позиционирования оверлея */
-            border-radius: 0.5rem;
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            background-color: #121212;
-        }
-        .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-        }
-        .product-card-image-wrapper {
-            width: 100%;
-            background-color: #121212;
-            aspect-ratio: 4 / 3;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .product-card-image-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-        .product-card:hover img {
-            transform: scale(1.05);
-        }
-        .product-card-content {
-            position: absolute; /* Позиционируем поверх картинки */
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 4rem 1rem 1rem 1rem; /* Отступ сверху для градиента */
-            background: linear-gradient(to top, rgba(18, 18, 18, 1) 5%, rgba(18, 18, 18, 0.7) 10%, transparent); /* Прозрачный градиент */
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end; /* Прижимаем контент к низу */
-            height: 100%; /* Растягиваем на всю высоту */
-        }
-        .product-card-name {
-            font-size: 1rem;
-            font-weight: 600;
-            color: white;
-            flex-grow: 1; /* Занимает доступное место, отодвигая футер вниз */
-            margin-bottom: 0.75rem;
-        }
-        .product-card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-top: auto; /* Прижимает футер к низу карточки */
-        }
-        .product-card-price {
-            font-size: 1.125rem;
-            font-weight: 700;
-            color: #D4AF37;
-        }
-        .product-card-add-btn {
-            background-color: #1a5159;
-            color: white;
-            width: 38px;
-            height: 38px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 9999px;
-            transition: background-color 0.3s ease;
-            flex-shrink: 0;
-        }
-        .product-card-add-btn:hover {
-            background-color: #1e606b;
-        }
+.product-card {
+    position: relative;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #121212;
+    height: 100%; /* Убедитесь, что карточка имеет определенную высоту */
+    display: flex;
+    flex-direction: column;
+}
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
+
+.product-card-image-wrapper {
+    width: 100%;
+    background-color: #121212;
+    aspect-ratio: 4 / 3; /* Сохраняем соотношение сторон */
+    position: relative; /* Важно для позиционирования оверлея */
+    display: flex; /* Делаем flex-контейнером для оверлея */
+    flex-direction: column; /* Элементы внутри будут располагаться по вертикали */
+    justify-content: flex-end; /* Прижимаем содержимое к низу */
+    height: 100%; /* Занимает всю высоту родителя */
+}
+
+.product-card-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+    position: absolute; /* Позиционируем изображение абсолютно, чтобы оверлей был поверх */
+    top: 0;
+    left: 0;
+    z-index: 1; /* Убедитесь, что изображение находится под оверлеем */
+}
+.product-card:hover img {
+    transform: scale(1.05);
+}
+
+.product-card-overlay {
+    position: relative; /* Позиционируем относительно product-card-image-wrapper */
+    z-index: 2; /* Убедитесь, что оверлей поверх изображения */
+    padding: 0.75rem 1rem 1rem; /* Отступы внутри оверлея */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Прижимает содержимое к низу оверлея */
+    height: 100%; /* Растягивается на всю высоту product-card-image-wrapper */
+    background: linear-gradient(to top, rgba(18, 18, 18, 1) 5%, rgba(18, 18, 18, 0.7) 10%, transparent); /* Ваш градиент */
+    align-items: center; /* Центрируем по горизонтали */
+    text-align: center; /* Центрируем текст */
+}
+
+.product-card-name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 0.5rem; /* Отступ между названием и футером */
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Ограничение до 3 строк (можно настроить) */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.3;
+    flex-grow: 1; /* Позволяет названию занимать доступное пространство, центрируя его вертикально */
+    display: flex; /* Делаем flex-контейнером для вертикального центрирования текста */
+    align-items: center; /* Выравнивает текст по центру внутри самого блока названия */
+    justify-content: center; /* Выравнивает текст по центру горизонтали внутри самого блока названия */
+    width: 100%; /* Занимает всю доступную ширину */
+    padding-bottom: 0.5rem; /* Дополнительный нижний паддинг, чтобы текст не прижимался к футеру */
+}
+
+.product-card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Растягиваем футер на всю ширину оверлея */
+}
+
+.product-card-price {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: #D4AF37;
+}
+
+.product-card-add-btn {
+    background-color: #1a5159;
+    color: white;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    transition: background-color 0.3s ease;
+    flex-shrink: 0;
+}
+.product-card-add-btn:hover {
+    background-color: #1e606b;
+}
     </style>
 </head>
 <body class="bg-brand-dark">
@@ -532,13 +559,13 @@
                     const productData = { ...item, name: translatedName, originalName: item.name };
                     
                     itemsHtml += `
-                        <div class="product-card cursor-pointer" onclick='toggleProductModal(${JSON.stringify(productData).replace(/'/g, "&apos;")})'>
-                            <div class="product-card-image-wrapper">
-                                <img src="${item.image_url || "https://placehold.co/400x300/121212/D4AF37?text=Feliz"}" 
-                                     alt="${translatedName}"
-                                     onerror="this.onerror=null;this.src='https://placehold.co/400x300/121212/D4AF37?text=Feliz';">
-                            </div>
-                            <div class="product-card-content">
+                    <div class="product-card cursor-pointer" onclick='toggleProductModal(${JSON.stringify(productData).replace(/'/g, "&apos;")})'>
+                        <div class="product-card-image-wrapper">
+                            <img src="${item.image_url || "https://placehold.co/400x300/121212/D4AF37?text=Feliz"}"
+                                 alt="${translatedName}"
+                                 onerror="this.onerror=null;this.src='https://placehold.co/400x300/121212/D4AF37?text=Feliz';">
+                            
+                            <div class="product-card-overlay"> 
                                 <h4 class="product-card-name">${translatedName}</h4>
                                 <div class="product-card-footer">
                                     <p class="product-card-price">${item.price} MDL</p>
@@ -547,7 +574,8 @@
                                     </button>
                                 </div>
                             </div>
-                        </div>`;
+                        </div>
+                    </div>`;
                 });
 
                 const categorySection = document.createElement("div");
