@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="ro" class="scroll-smooth">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feliz Wine Bar | Ресторан вина и морепродуктов</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -157,6 +159,13 @@
         }
         
         @media (max-width: 768px) {
+                        body {
+                font-size: 14px;
+              }
+              .menu {
+                flex-direction: column;
+              }
+            }
             .intro-text h1 { font-size: 2.8rem; }
             .intro-text p { font-size: 1.25rem; }
         }

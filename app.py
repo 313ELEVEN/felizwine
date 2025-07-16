@@ -6,8 +6,13 @@ from functools import wraps
 import logging
 import json
 from collections import defaultdict
+from flask_cors import CORS
+
+#
+# Инициализируем Flask-приложение с указанными путями
 
 app = Flask(__name__)
+CORS(app)  # Разрешает все CORS-запросы
 app.secret_key = 'your_secret_key_here'
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
