@@ -16,10 +16,12 @@
     <script src="{{ url_for('static', filename='js/translations.js') }}"></script>
 
     <style>
+        /* ВАШИ ОРИГИНАЛЬНЫЕ СТИЛИ */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #121212;
             color: #E0E0E0;
+            overflow: hidden; 
         }
         h1, h2, h3, .font-serif {
             font-family: 'Playfair Display', serif;
@@ -36,182 +38,322 @@
         .language-switcher { cursor: pointer; opacity: 0.7; transition: opacity 0.3s; }
         .language-switcher:hover { opacity: 1; }
         .language-switcher.active { opacity: 1; font-weight: bold; color: #D4AF37; }
+
+        /* --- НОВЫЕ И УЛУЧШЕННЫЕ СТИЛИ ДЛЯ ИНТРО-ЭКРАНА --- */
+        #intro-screen {
+            position: fixed;
+            inset: 0;
+            background-color: #121212;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: opacity 1.5s ease-in-out;
+            overflow: hidden;
+        }
+
+        #intro-screen.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        #intro-video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+        .intro-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+        
+        .intro-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 1;
+        }
+
+        .intro-text {
+            text-align: center;
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+
+        .intro-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+        }
+        
+        .intro-text h1 .word {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(50px) scale(0.8);
+            animation: word-fly-in 1.2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+        }
+
+        .intro-text h1 .word:nth-child(1) { animation-delay: 0.2s; }
+        .intro-text h1 .word:nth-child(2) { animation-delay: 0.4s; }
+        .intro-text h1 .word:nth-child(3) { animation-delay: 0.6s; }
+        
+        .intro-text p {
+            font-family: 'Inter', sans-serif;
+            font-size: 1.5rem;
+            margin-top: 1rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: text-fade-up 1.5s ease-out 1.2s forwards;
+        }
+        
+        .intro-text .prompt {
+            font-size: 1rem;
+            margin-top: 5rem;
+            color: #a0a0a0;
+            letter-spacing: 1px;
+            opacity: 0;
+            animation: prompt-pulse 2.5s infinite ease-in-out 2s;
+        }
+
+        @keyframes word-fly-in {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        @keyframes text-fade-up {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes prompt-pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        #main-content {
+            opacity: 0;
+            transition: opacity 1.5s ease-in-out;
+        }
+        #main-content.visible {
+            opacity: 1;
+        }
+        
+        @media (max-width: 768px) {
+            .intro-text h1 { font-size: 2.8rem; }
+            .intro-text p { font-size: 1.25rem; }
+        }
     </style>
 </head>
 <body class="antialiased">
 
-    <audio id="backgroundMusic" src="{{ url_for('static', filename='music/Jazz.mp4') }}" loop muted></audio>
+    <audio id="backgroundMusic" src="{{ url_for('static', filename='music/Jazz.mp4') }}" loop></audio>
 
-    <div id="booking-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
-        <div class="bg-[#1a1a1a] rounded-lg p-8 w-full max-w-md relative text-center shadow-2xl mx-4">
-            <button id="close-booking-modal" class="absolute top-3 right-4 text-gray-400 hover:text-white text-3xl">&times;</button>
-            <h3 class="text-2xl font-serif mb-4 text-white" data-translate="booking_title">Бронь стола</h3>
-            <p class="text-gray-300 mb-2" data-translate="booking_text">Бронь стола возможна по номеру телефона:</p>
-            <p class="text-accent-gold text-2xl my-4 font-bold tracking-wider" data-translate="phone">+373 123 456 78</p>
-            <p class="text-sm text-gray-500" data-translate="booking_note">(Пожалуйста, свяжитесь с нами для уточнения деталей)</p>
+    <!-- --- ОБНОВЛЕННЫЙ ИНТРО-ЭКРАН С ВИДЕО --- -->
+    <div id="intro-screen">
+        <div id="intro-video-container">
+            <video autoplay loop muted playsinline class="intro-video hidden md:block"
+                   src="https://res.cloudinary.com/dgsjcrozf/video/upload/f_auto,q_auto/felyz_rxxqln.mp4">
+            </video>
+            <video autoplay loop muted playsinline class="intro-video block md:hidden"
+                   src="https://res.cloudinary.com/dgsjcrozf/video/upload/f_auto,q_auto/mobpro_ceu5lr.mp4">
+            </video>
+        </div>
+        <div class="intro-overlay"></div>
+        <div class="intro-text">
+            <h1>
+                <span class="word">Feliz</span>
+                <span class="word">Wine</span>
+                <span class="word">Bar</span>
+            </h1>
+            <p>Bine ați venit</p>
+            <p class="prompt">Apasăți pe ecran</p>
         </div>
     </div>
 
-    <header class="fixed top-0 left-0 w-full bg-black bg-opacity-50 backdrop-blur-sm z-40 transition-all duration-300">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="/" class="text-2xl font-serif font-bold text-white">Feliz Wine Bar</a>
-            <nav class="hidden md:flex space-x-8 items-center">
-                <a href="#about" class="text-gray-300 hover:text-white transition-colors" data-translate="about">О нас</a>
-                <a href="/menu" class="text-gray-300 hover:text-white transition-colors" data-translate="menu">Меню</a>
-                <a href="#gallery" class="text-gray-300 hover:text-white transition-colors" data-translate="gallery">Галерея</a>
-                <a href="#contact" class="text-gray-300 hover:text-white transition-colors" data-translate="contact">Contacte</a>
-                <div class="flex space-x-2 ml-4">
+    <!-- ВАШ ОРИГИНАЛЬНЫЙ КОНТЕНТ ОБЕРНУТ В ЭТОТ DIV -->
+    <div id="main-content">
+
+        <div id="booking-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden">
+            <div class="bg-[#1a1a1a] rounded-lg p-8 w-full max-w-md relative text-center shadow-2xl mx-4">
+                <button id="close-booking-modal" class="absolute top-3 right-4 text-gray-400 hover:text-white text-3xl">&times;</button>
+                <h3 class="text-2xl font-serif mb-4 text-white" data-translate="booking_title">Бронь стола</h3>
+                <p class="text-gray-300 mb-2" data-translate="booking_text">Бронь стола возможна по номеру телефона:</p>
+                <p class="text-accent-gold text-2xl my-4 font-bold tracking-wider" data-translate="phone">+373 123 456 78</p>
+                <p class="text-sm text-gray-500" data-translate="booking_note">(Пожалуйста, свяжитесь с нами для уточнения деталей)</p>
+            </div>
+        </div>
+
+        <header class="fixed top-0 left-0 w-full bg-black bg-opacity-50 backdrop-blur-sm z-40 transition-all duration-300">
+            <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+                <a href="/" class="text-2xl font-serif font-bold text-white">Feliz Wine Bar</a>
+                <nav class="hidden md:flex space-x-8 items-center">
+                    <a href="#about" class="text-gray-300 hover:text-white transition-colors" data-translate="about">О нас</a>
+                    <a href="/menu" class="text-gray-300 hover:text-white transition-colors" data-translate="menu">Меню</a>
+                    <a href="#gallery" class="text-gray-300 hover:text-white transition-colors" data-translate="gallery">Галерея</a>
+                    <a href="#contact" class="text-gray-300 hover:text-white transition-colors" data-translate="contact">Contacte</a>
+                    <div class="flex space-x-2 ml-4">
+                        <span class="language-switcher active" data-lang="ru" onclick="setLanguage('ru')">RU</span>
+                        <span class="language-switcher" data-lang="ro" onclick="setLanguage('ro')">RO</span>
+                        <span class="language-switcher" data-lang="en" onclick="setLanguage('en')">EN</span>
+                    </div>
+                    <button class="open-booking-modal hidden md:inline-block px-6 py-2 border border-accent-gold text-accent-gold rounded-full hover:bg-accent-gold hover:text-black transition-all duration-300" data-translate="reservation">Бронь стола</button>
+                </nav>
+                <button id="mobile-menu-button" class="md:hidden text-white text-2xl"><i class="fas fa-bars"></i></button>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden bg-black bg-opacity-90">
+                <a href="#about" class="block text-center py-3 text-gray-300 hover:bg-gray-800" data-translate="about">О нас</a>
+                <a href="/menu" class="block text-center py-3 text-gray-300 hover:bg-gray-800" data-translate="menu">Меню</a>
+                <a href="#gallery" class="block text-center py-3 text-gray-300 hover:bg-gray-800" data-translate="gallery">Галерея</a>
+                <a href="#contact" class="block text-center py-3 text-gray-300 hover:bg-gray-800" data-translate="contact">Contacte</a>
+                <div class="flex justify-center space-x-4 py-3">
                     <span class="language-switcher active" data-lang="ru" onclick="setLanguage('ru')">RU</span>
                     <span class="language-switcher" data-lang="ro" onclick="setLanguage('ro')">RO</span>
                     <span class="language-switcher" data-lang="en" onclick="setLanguage('en')">EN</span>
                 </div>
-                <button class="open-booking-modal hidden md:inline-block px-6 py-2 border border-accent-gold text-accent-gold rounded-full hover:bg-accent-gold hover:text-black transition-all duration-300" data-translate="reservation">Бронь стола</button>
-            </nav>
-            <button id="mobile-menu-button" class="md:hidden text-white text-2xl"><i class="fas fa-bars"></i></button>
-        </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-black bg-opacity-90">
-            <a href="#about" class="block text-center py-3 text-gray-300 hover:bg-gray-800" data-translate="about">О нас</a>
-            <a href="/menu" class="block text-center py-3 text-gray-300 hover:bg-gray-800" data-translate="menu">Меню</a>
-            <a href="#gallery" class="block text-center py-3 text-gray-300 hover:bg-gray-800" data-translate="gallery">Галерея</a>
-            <a href="#contact" class="block text-center py-3 text-gray-300 hover:bg-gray-800" data-translate="contact">Contacte</a>
-            <div class="flex justify-center space-x-4 py-3">
-                <span class="language-switcher active" data-lang="ru" onclick="setLanguage('ru')">RU</span>
-                <span class="language-switcher" data-lang="ro" onclick="setLanguage('ro')">RO</span>
-                <span class="language-switcher" data-lang="en" onclick="setLanguage('en')">EN</span>
+                <button class="open-booking-modal block w-full text-center py-4 my-2 mx-auto bg-accent-gold text-black rounded-full font-semibold" data-translate="reservation">Бронь стола</button>
             </div>
-            <button class="open-booking-modal block w-full text-center py-4 my-2 mx-auto bg-accent-gold text-black rounded-full font-semibold" data-translate="reservation">Бронь стола</button>
-        </div>
-    </header>
+        </header>
 
-    <section class="hero-section flex items-center justify-center text-center">
-                <div id="hero-video-container">
-                              <div id="hero-video-container">
-            <div class="hero-video-fallback"></div>
-            <video autoplay loop muted playsinline preload="auto"
-                   class="hidden md:block hero-video"
-                   id="desktop-video"
-                   src="https://res.cloudinary.com/dgsjcrozf/video/upload/f_auto,q_auto/felyz_rxxqln.mp4">
-                   Ваш браузер не поддерживает тег video.
-            </video>
+        <section class="hero-section flex items-center justify-center text-center">
+                    <div id="hero-video-container">
+                                <div id="hero-video-container">
+                <div class="hero-video-fallback"></div>
+                <video autoplay loop muted playsinline preload="auto"
+                    class="hidden md:block hero-video"
+                    id="desktop-video"
+                    src="https://res.cloudinary.com/dgsjcrozf/video/upload/f_auto,q_auto/felyz_rxxqln.mp4">
+                    Ваш браузер не поддерживает тег video.
+                </video>
 
-            <video autoplay loop muted playsinline preload="auto"
-                   class="block md:hidden hero-video"
-                   id="mobile-video"
-                   src="https://res.cloudinary.com/dgsjcrozf/video/upload/f_auto,q_auto/felmob_w7xciq.mp4">
-                   Ваш браузер не поддерживает тег video.
-            </video>
-        </div>
-    <div class="hero-video-fallback"></div>
-</div>
-        <div class="absolute inset-0 bg-black/60"></div>
-        <div class="relative z-10 max-w-3xl mx-auto px-4">
-            <h1 class="text-5xl md:text-7xl font-bold text-white leading-tight mb-4" data-translate="hero_title">Искусство вина и моря</h1>
-            <p class="text-lg md:text-xl text-gray-300 mb-8" data-translate="hero_subtitle">Откройте для себя идеальное сочетание изысканных вин и свежайших морепродуктов в сердце города.</p>
-            <a href="/menu" class="bg-accent-gold text-black font-bold py-3 px-10 rounded-full text-lg hover:bg-opacity-90 transform hover:scale-105 transition-all duration-300" data-translate="view_menu">Посмотреть меню</a>
-        </div>
-    </section>
+                <video autoplay loop muted playsinline preload="auto"
+                    class="block md:hidden hero-video"
+                    id="mobile-video"
+                    src="https://res.cloudinary.com/dgsjcrozf/video/upload/f_auto,q_auto/mobpro_ceu5lr.mp4">
+                    Ваш браузер не поддерживает тег video.
+                </video>
+            </div>
+        <div class="hero-video-fallback"></div>
+    </div>
+            <div class="absolute inset-0 bg-black/60"></div>
+            <div class="relative z-10 max-w-3xl mx-auto px-4">
+                <h1 class="text-5xl md:text-7xl font-bold text-white leading-tight mb-4" data-translate="hero_title">Искусство вина и моря</h1>
+                <p class="text-lg md:text-xl text-gray-300 mb-8" data-translate="hero_subtitle">Откройте для себя идеальное сочетание изысканных вин и свежайших морепродуктов в сердце города.</p>
+                <a href="/menu" class="bg-accent-gold text-black font-bold py-3 px-10 rounded-full text-lg hover:bg-opacity-90 transform hover:scale-105 transition-all duration-300" data-translate="view_menu">Посмотреть меню</a>
+            </div>
+        </section>
 
-    <section id="about" class="py-20 md:py-32 bg-[#1a1a1a]">
-        <div class="container mx-auto px-6">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div class="text-center md:text-left">
-                    <h2 class="text-4xl font-serif mb-6 text-white" data-translate="welcome_title">Добро пожаловать в Feliz</h2>
-                    <p class="mb-4 text-gray-400" data-translate="welcome_text1">Feliz Wine Bar — это не просто ресторан, это место, где страсть к вину встречается с любовью к дарам моря. Наша философия проста: мы используем только самые свежие ингредиенты, чтобы создать блюда, которые идеально дополняют нашу тщательно подобранную винную карту.</p>
-                    <p class="text-gray-400" data-translate="welcome_text2">Мы создали уютную и стильную атмосферу, где каждый гость может расслабиться и насладиться моментом. Ждем вас в гости, чтобы разделить с вами нашу любовь к вкусу.</p>
-                </div>
-                <div>
-                    <img src="{{ url_for('static', filename='images/feliz.jpg') }}" alt="Фасад ресторана Feliz Wine Bar" class="rounded-lg shadow-2xl w-full h-auto object-cover">
+        <section id="about" class="py-20 md:py-32 bg-[#1a1a1a]">
+            <div class="container mx-auto px-6">
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="text-center md:text-left">
+                        <h2 class="text-4xl font-serif mb-6 text-white" data-translate="welcome_title">Добро пожаловать в Feliz</h2>
+                        <p class="mb-4 text-gray-400" data-translate="welcome_text1">Feliz Wine Bar — это не просто ресторан, это место, где страсть к вину встречается с любовью к дарам моря. Наша философия проста: мы используем только самые свежие ингредиенты, чтобы создать блюда, которые идеально дополняют нашу тщательно подобранную винную карту.</p>
+                        <p class="text-gray-400" data-translate="welcome_text2">Мы создали уютную и стильную атмосферу, где каждый гость может расслабиться и насладиться моментом. Ждем вас в гости, чтобы разделить с вами нашу любовь к вкусу.</p>
+                    </div>
+                    <div>
+                        <img src="{{ url_for('static', filename='images/feliz.jpg') }}" alt="Фасад ресторана Feliz Wine Bar" class="rounded-lg shadow-2xl w-full h-auto object-cover">
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="gallery" class="py-20 md:py-32">
-        <div class="container mx-auto px-6 text-center">
-            <h2 class="text-4xl font-serif mb-4 text-white" data-translate="moments_title">Momente în Feliz</h2>
-            <p class="max-w-2xl mx-auto text-gray-400 mb-12" data-translate="moments_subtitle">Aruncați o privire la atmosfera noastră: seri plăcute, zâmbete vesele și, bineînțeles, mâncare excelentă.</p>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div class="grid gap-4">
-                    <div><img class="h-auto max-w-full rounded-lg transform hover:scale-105 transition-transform duration-300 cursor-pointer" src="{{ url_for('static', filename='images/image1.jpg') }}" alt="Галерея 1"></div>
-                    <div><img class="h-auto max-w-full rounded-lg transform hover:scale-105 transition-transform duration-300 cursor-pointer" src="{{ url_for('static', filename='images/image2.png') }}" alt="Галерея 2"></div>
-                </div>
-                <div class="grid gap-4">
-                    <div><img class="h-auto max-w-full rounded-lg transform hover:scale-105 transition-transform duration-300 cursor-pointer" src="{{ url_for('static', filename='images/image3.png') }}" alt="Галерея 3"></div>
-                    <div><video class="h-auto w-full rounded-lg" autoplay loop muted playsinline src="{{ url_for('static', filename='images/video4.mp4') }}" alt="Галерея 4"></video></div>
-                </div>
-                <div class="grid gap-4">
-                    <div><video class="h-auto w-full rounded-lg" autoplay loop muted playsinline src="{{ url_for('static', filename='images/video5.mp4') }}" alt="Галерея 5"></video></div>
-                    <div><img class="h-auto max-w-full rounded-lg transform hover:scale-105 transition-transform duration-300 cursor-pointer" src="{{ url_for('static', filename='images/image6.png') }}" alt="Галерея 6"></div>
-                </div>
-                <div class="grid gap-4">
-                    <div><img class="h-auto max-w-full rounded-lg transform hover:scale-105 transition-transform duration-300 cursor-pointer" src="{{ url_for('static', filename='images/image7.png') }}" alt="Галерея 7"></div>
-                    <div><video class="h-auto w-full rounded-lg" autoplay loop muted playsinline src="{{ url_for('static', filename='images/video8.mp4') }}" alt="Галерея 8"></video></div>
+        <section id="gallery" class="py-20 md:py-32">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-4xl font-serif mb-4 text-white" data-translate="moments_title">Momente în Feliz</h2>
+                <p class="max-w-2xl mx-auto text-gray-400 mb-12" data-translate="moments_subtitle">Aruncați o privire la atmosfera noastră: seri plăcute, zâmbete vesele și, bineînțeles, mâncare excelentă.</p>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="grid gap-4">
+                        <div><img class="h-auto max-w-full rounded-lg transform hover:scale-105 transition-transform duration-300 cursor-pointer" src="{{ url_for('static', filename='images/image1.jpg') }}" alt="Галерея 1"></div>
+                        <div><img class="h-auto max-w-full rounded-lg transform hover:scale-105 transition-transform duration-300 cursor-pointer" src="{{ url_for('static', filename='images/image2.png') }}" alt="Галерея 2"></div>
+                    </div>
+                    <div class="grid gap-4">
+                        <div><img class="h-auto max-w-full rounded-lg transform hover:scale-105 transition-transform duration-300 cursor-pointer" src="{{ url_for('static', filename='images/image3.png') }}" alt="Галерея 3"></div>
+                        <div><video class="h-auto w-full rounded-lg" autoplay loop muted playsinline src="{{ url_for('static', filename='images/video4.mp4') }}" alt="Галерея 4"></video></div>
+                    </div>
+                    <div class="grid gap-4">
+                        <div><video class="h-auto w-full rounded-lg" autoplay loop muted playsinline src="{{ url_for('static', filename='images/video5.mp4') }}" alt="Галерея 5"></video></div>
+                        <div><img class="h-auto max-w-full rounded-lg transform hover:scale-105 transition-transform duration-300 cursor-pointer" src="{{ url_for('static', filename='images/image6.png') }}" alt="Галерея 6"></div>
+                    </div>
+                    <div class="grid gap-4">
+                        <div><img class="h-auto max-w-full rounded-lg transform hover:scale-105 transition-transform duration-300 cursor-pointer" src="{{ url_for('static', filename='images/image7.png') }}" alt="Галерея 7"></div>
+                        <div><video class="h-auto w-full rounded-lg" autoplay loop muted playsinline src="{{ url_for('static', filename='images/video8.mp4') }}" alt="Галерея 8"></video></div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <footer id="contact" class="bg-black py-16">
-        <div class="container mx-auto px-6 text-center text-gray-400">
-            <h3 class="text-3xl font-serif mb-8 text-white">Feliz Wine Bar</h3>
-            <div class="grid md:grid-cols-3 gap-8 mb-8">
-                <div>
-                    <h4 class="font-bold text-white mb-2" data-translate="address_title">Adresa</h4>
-                    <p data-translate="address">Strada Naționala 1A, Ungheni</p>
+        <footer id="contact" class="bg-black py-16">
+            <div class="container mx-auto px-6 text-center text-gray-400">
+                <h3 class="text-3xl font-serif mb-8 text-white">Feliz Wine Bar</h3>
+                <div class="grid md:grid-cols-3 gap-8 mb-8">
+                    <div>
+                        <h4 class="font-bold text-white mb-2" data-translate="address_title">Adresa</h4>
+                        <p data-translate="address">Strada Naționala 1A, Ungheni</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-white mb-2" data-translate="hours_title">Ora de lucru</h4>
+                        <p data-translate="hours">Luni - Duminica: 10:00 - 00:00</p>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-white mb-2" data-translate="contacts_title">Contacte</h4>
+                        <p data-translate="phone">+373 0600 65 557</p>
+                        <p data-translate="email">info@felizwinebar.com</p>
+                    </div>
                 </div>
-                <div>
-                    <h4 class="font-bold text-white mb-2" data-translate="hours_title">Ora de lucru</h4>
-                    <p data-translate="hours">Luni - Duminica: 10:00 - 00:00</p>
+                <div class="flex justify-center space-x-6 mb-8">
+                    <a href="https://www.instagram.com/feliz.wine.bar/" class="text-gray-400 hover:text-white text-2xl transition-colors"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/p/Feliz-wine-bar-100078304800304/" class="text-gray-400 hover:text-white text-2xl transition-colors"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="text-gray-400 hover:text-white text-2xl transition-colors"><i class="fab fa-telegram-plane"></i></a>
                 </div>
-                <div>
-                    <h4 class="font-bold text-white mb-2" data-translate="contacts_title">Contacte</h4>
-                    <p data-translate="phone">+373 0600 65 557</p>
-                    <p data-translate="email">info@felizwinebar.com</p>
-                </div>
+                <p class="text-sm" data-translate="rights">&copy; 2025 Feliz Wine Bar. Все права защищены.</p>
             </div>
-            <div class="flex justify-center space-x-6 mb-8">
-                <a href="https://www.instagram.com/feliz.wine.bar/" class="text-gray-400 hover:text-white text-2xl transition-colors"><i class="fab fa-instagram"></i></a>
-                <a href="https://www.facebook.com/p/Feliz-wine-bar-100078304800304/" class="text-gray-400 hover:text-white text-2xl transition-colors"><i class="fab fa-facebook-f"></i></a>
-                <a href="#" class="text-gray-400 hover:text-white text-2xl transition-colors"><i class="fab fa-telegram-plane"></i></a>
-            </div>
-            <p class="text-sm" data-translate="rights">&copy; 2025 Feliz Wine Bar. Все права защищены.</p>
-        </div>
-    </footer>
+        </footer>
+
+    </div> <!-- КОНЕЦ DIV #main-content -->
 
     <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // === НОВЫЙ КОД ДЛЯ АВТОВОСПРОИЗВЕДЕНИЯ МУЗЫКИ ===
+        
+        const introScreen = document.getElementById('intro-screen');
+        const mainContent = document.getElementById('main-content');
         const music = document.getElementById('backgroundMusic');
-        music.volume = 0.7;
+        const body = document.body;
 
-        const playPromise = music.play();
+        if (introScreen) {
+            music.volume = 0.5;
 
-        if (playPromise !== undefined) {
-            playPromise.then(_ => {
-                // Autoplay started!
-                console.log("Музыка успешно запущена автоматически.");
-            }).catch(error => {
-                // Autoplay was prevented.
-                // We'll wait for the first user interaction to play the music.
-                console.log("Автовоспроизведение заблокировано. Ожидание первого действия пользователя.");
+            const startSite = () => {
+                introScreen.classList.add('hidden');
+                mainContent.classList.add('visible');
+                body.style.overflow = 'auto';
+                music.play().catch(e => console.log("Браузер заблокировал авто-воспроизведение, это нормально."));
                 
-                const startMusicOnInteraction = () => {
-                    music.play().catch(e => console.error("Не удалось запустить музыку даже после взаимодействия:", e));
-                    // Remove the listeners so they don't run again.
-                    document.removeEventListener('click', startMusicOnInteraction);
-                    document.removeEventListener('keydown', startMusicOnInteraction);
-                    document.removeEventListener('scroll', startMusicOnInteraction);
-                };
+                setTimeout(() => {
+                    introScreen.remove();
+                }, 1500);
+            };
 
-                document.addEventListener('click', startMusicOnInteraction);
-                document.addEventListener('keydown', startMusicOnInteraction);
-                document.addEventListener('scroll', startMusicOnInteraction);
-            });
+            introScreen.addEventListener('click', startSite, { once: true });
         }
-        // === КОНЕЦ НОВОГО КОДА ===
 
-
-        // Mobile Menu Toggle
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileMenuIcon = mobileMenuButton.querySelector('i');
@@ -222,7 +364,6 @@
             mobileMenuIcon.classList.toggle('fa-times');
         });
         
-        // Header Scroll Effect
         let lastScrollTop = 0;
         const header = document.querySelector('header');
         window.addEventListener('scroll', function() {
@@ -235,7 +376,6 @@
             lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
         });
 
-        // Booking Modal
         const bookingModal = document.getElementById('booking-modal');
         const openBookingButtons = document.querySelectorAll('.open-booking-modal');
         const closeBookingModalButton = document.getElementById('close-booking-modal');
@@ -252,8 +392,6 @@
             if (event.key === 'Escape' && !bookingModal.classList.contains('hidden')) closeModal();
         });
 
-        // Video Resize Function (for hero video)
-        // ... (ваш остальной JS код для видео и т.д. остается без изменений) ...
     });
     </script>
 
