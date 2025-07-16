@@ -10,8 +10,8 @@ const translations = {
     "about": "О нас",
     "gallery": "Галерея",
     "contact": "Контакты",
-    "phone": "+373 123 456 78",
-    "hours": "Пн - Вс: 12:00 - 23:00",
+    "phone": "+373 68 244 524",
+    "hours": "Пн - Вс: 10:00 - 00:00",
     "rights": "Все права защищены.",
     
      // Категории Еды
@@ -93,8 +93,8 @@ const translations = {
     "about": "Despre noi",
     "gallery": "Galerie",
     "contact": "Contacte",
-    "phone": "+373 123 456 78",
-    "hours": "Lun - Dum: 12:00 - 23:00",
+    "phone": "+373 68 244 524",
+    "hours": "Lun - Dum: 10:00 - 00:00",
     "rights": "Toate drepturile rezervate.",
     
     // Категории еды
@@ -177,8 +177,8 @@ const translations = {
     "about": "About us",
     "gallery": "Gallery",
     "contact": "Contacts",
-    "phone": "+373 123 456 78",
-    "hours": "Mon - Sun: 12:00 - 23:00",
+    "phone": "+373 68 244 524",
+    "hours": "Mon - Sun: 10:00 - 00:00",
     "rights": "All rights reserved.",
     
     // Food categories
