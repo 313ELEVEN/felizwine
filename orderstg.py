@@ -59,11 +59,11 @@ def send_telegram_notification(order_data):
 
     # Формируем красивое сообщение
     message = (
-        f"🎉 *Новый заказ #{order_data.get('order_id')}* 🎉\n\n"
-        f"👤 *Клиент:* {order_data.get('name')}\n"
-        f"📞 *Телефон:* {order_data.get('phone')}\n"
-        f"📍 *Адрес:* {order_data.get('address')}\n\n"
-        f"🛒 *Состав заказа:*\n"
+        f"🎉 *Comanda pentru livrare! #{order_data.get('order_id')}* 🎉\n\n"
+        f"👤 *Nume clientului:* {order_data.get('name')}\n"
+        f"📞 *Numar mobil* {order_data.get('phone')}\n"
+        f"📍 *Adresa livrarii:* {order_data.get('address')}\n\n"
+        f"🛒 *Comanda este din:*\n"
     )
     total_price = 0
     for item in order_data.get('cart', []):

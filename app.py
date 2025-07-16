@@ -42,17 +42,17 @@ def send_telegram_notification(order_data):
         total_price = sum(float(item['price']) * int(item.get('quantity', 1)) for item in order_data.get('cart', []))
         
         message = (
-            f"🎉 *Новый заказ #{order_data.get('order_id')}* 🎉\n\n"
-            f"👤 *Клиент:* {order_data.get('name')}\n"
-            f"📞 *Телефон:* {order_data.get('phone')}\n"
-            f"📍 *Адрес:* {order_data.get('address')}\n\n"
-            f"🛒 *Состав заказа:*\n"
+            f"🎉 *Comanda noua! #{order_data.get('order_id')}* 🎉\n\n"
+            f"👤 *Numele clientului:* {order_data.get('name')}\n"
+            f"📞 *Numar mobil:* {order_data.get('phone')}\n"
+            f"📍 *Adresa livrarii:* {order_data.get('address')}\n\n"
+            f"🛒 *Comanda de:*\n"
         )
         for item in order_data.get('cart', []):
             item_total = float(item.get('price', 0)) * int(item.get('quantity', 1))
             message += f"- {item.get('name')} x {item.get('quantity')} = {item_total:.2f} MDL\n"
         
-        message += f"\n💰 *Итого:* *{total_price:.2f} MDL*"
+        message += f"\n💰 *Pret total:* *{total_price:.2f} MDL*"
         
         url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
         params = {"chat_id": CHAT_ID, "text": message, "parse_mode": "Markdown"}
