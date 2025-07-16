@@ -7,3 +7,5 @@
 вас filter=lfs diff=lfs merge=lfs -text
 есть filter=lfs diff=lfs merge=lfs -text
 файлы filter=lfs diff=lfs merge=lfs -text
+static/videos/*.mp4 filter=lfs diff=lfs merge=lfs -text
+static/music/*.mp4 filter=lfs diff=lfs merge=lfs -text
