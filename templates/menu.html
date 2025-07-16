@@ -142,6 +142,17 @@
         
         /* Стили для десктопа (центр экрана) */
         @media (min-width: 768px) {
+            /*
+            ==== ИЗМЕНЕНИЕ ДЛЯ ШРИФТА НА ПК ====
+            Увеличиваем размер шрифта для названия товара на ПК-версии.
+            Тень для текста уже должна применяться из общих стилей, которые мы добавили ранее.
+            */
+            .product-card-name {
+                font-size: 3rem; /* <-- НОВЫЙ, УВЕЛИЧЕННЫЙ РАЗМЕР ШРИФТА ДЛЯ ПК */
+                font-size: 1.4rem !important;
+            }
+            /* ==================================== */
+
             .hero-section { height: 80vh; }
             #mobile-user-menu-toggle, #mobile-user-menu, .mobile-user-menu-overlay, #mobile-cart-btn { display: none; }
             .scroll-indicator { display: flex; }
@@ -155,107 +166,113 @@
             }
         }
 
-        /* === ИЗМЕНЕННЫЕ СТИЛИ ДЛЯ КАРТОЧЕК ТОВАРОВ === */
-.product-card {
-    position: relative;
-    border-radius: 0.5rem;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    background-color: #121212;
-    height: 100%; /* Убедитесь, что карточка имеет определенную высоту */
-    display: flex;
-    flex-direction: column;
-}
-.product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
-}
+        /* === УЛУЧШЕННЫЕ СТИЛИ ДЛЯ КАРТОЧЕК ТОВАРОВ === */
+        .product-card {
+            position: relative;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: #121212;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+        }
 
-.product-card-image-wrapper {
-    width: 100%;
-    background-color: #121212;
-    aspect-ratio: 4 / 3; /* Сохраняем соотношение сторон */
-    position: relative; /* Важно для позиционирования оверлея */
-    display: flex; /* Делаем flex-контейнером для оверлея */
-    flex-direction: column; /* Элементы внутри будут располагаться по вертикали */
-    justify-content: flex-end; /* Прижимаем содержимое к низу */
-    height: 100%; /* Занимает всю высоту родителя */
-}
+        .product-card-image-wrapper {
+            width: 100%;
+            background-color: #121212;
+            aspect-ratio: 4 / 3;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            height: 100%;
+        }
 
-.product-card-image-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-    position: absolute; /* Позиционируем изображение абсолютно, чтобы оверлей был поверх */
-    top: 0;
-    left: 0;
-    z-index: 1; /* Убедитесь, что изображение находится под оверлеем */
-}
-.product-card:hover img {
-    transform: scale(1.05);
-}
+        .product-card-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        .product-card:hover img {
+            transform: scale(1.05);
+        }
 
-.product-card-overlay {
-    position: relative; /* Позиционируем относительно product-card-image-wrapper */
-    z-index: 2; /* Убедитесь, что оверлей поверх изображения */
-    padding: 0.75rem 1rem 1rem; /* Отступы внутри оверлея */
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end; /* Прижимает содержимое к низу оверлея */
-    height: 100%; /* Растягивается на всю высоту product-card-image-wrapper */
-    background: linear-gradient(to top, rgba(18, 18, 18, 1) 5%, rgba(18, 18, 18, 0.7) 10%, transparent); /* Ваш градиент */
-    align-items: center; /* Центрируем по горизонтали */
-    text-align: center; /* Центрируем текст */
-}
+        .product-card-overlay {
+            position: relative;
+            z-index: 2;
+            padding: 0.75rem 1rem 1rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            height: 100%;
+            /* ИЗМЕНЕНИЕ: Градиент усилен и поднят выше для лучшей читаемости текста */
+            background: linear-gradient(to top, rgba(18, 18, 18, 0.95) 15%, rgba(18, 18, 18, 0.7) 40%, transparent 70%);
+            align-items: center;
+            text-align: center;
+        }
 
-.product-card-name {
-    font-size: 0.7rem;
-    font-weight: 600;
-    color: white;
-    margin-bottom: 0.5rem; /* Отступ между названием и футером */
-    display: -webkit-box;
-    -webkit-line-clamp: 3; /* Ограничение до 3 строк (можно настроить) */
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    line-height: 1.3;
-    flex-grow: 1; /* Позволяет названию занимать доступное пространство, центрируя его вертикально */
-    display: flex; /* Делаем flex-контейнером для вертикального центрирования текста */
-    align-items: center; /* Выравнивает текст по центру внутри самого блока названия */
-    justify-content: center; /* Выравнивает текст по центру горизонтали внутри самого блока названия */
-    width: 100%; /* Занимает всю доступную ширину */
-    padding-bottom: 0.5rem; /* Дополнительный нижний паддинг, чтобы текст не прижимался к футеру */
-}
+        .product-card-name {
+            /* ИЗМЕНЕНИЕ: Увеличен размер шрифта для мобильных */
+            font-size: 0.875rem; /* 14px */
+            font-weight: 600;
+            color: #f0f0f0;
+            margin-bottom: 0.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            /* ИЗМЕНЕНИЕ: Увеличена высота строки для читаемости */
+            line-height: 1.4;
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding-bottom: 0.5rem;
+            text-align: center;
+            /* ИЗМЕНЕНИЕ: Добавлена тень для контраста на любом фоне */
+            text-shadow: 0 1px 4px rgba(0,0,0,0.7);
+        }
 
-.product-card-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%; /* Растягиваем футер на всю ширину оверлея */
-}
+        .product-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
 
-.product-card-price {
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: #D4AF37;
-}
+        .product-card-price {
+            font-size: 1.125rem;
+            font-weight: 700;
+            color: #D4AF37;
+        }
 
-.product-card-add-btn {
-    background-color: #1a5159;
-    color: white;
-    width: 38px;
-    height: 38px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 9999px;
-    transition: background-color 0.3s ease;
-    flex-shrink: 0;
-}
-.product-card-add-btn:hover {
-    background-color: #1e606b;
-}
+        .product-card-add-btn {
+            background-color: #1a5159;
+            color: white;
+            width: 38px;
+            height: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 9999px;
+            transition: background-color 0.3s ease;
+            flex-shrink: 0;
+        }
+        .product-card-add-btn:hover {
+            background-color: #1e606b;
+        }
     </style>
 </head>
 <body class="bg-brand-dark">
