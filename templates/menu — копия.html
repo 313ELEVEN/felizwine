@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Wine Bar | Меню</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+    <script src="/static/js/translations.js"></script>
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif;
+            background-color: #121212; 
+            color: #f0f0f0;
+            overflow-x: hidden;
+        }
+        .font-title { font-family: 'Playfair Display', serif; }
+        .bg-brand-gold { background-color: #D4AF37; }
+        .text-brand-gold { color: #D4AF37; }
+        .bg-brand-dark-teal { background-color: #1a5159; }
+        
+        /* Hero Video Styles */
+        .hero-section {
+            position: relative;
+            height: 60vh;
+            min-height: 500px;
+        }
+        
+        #hero-video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+        
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
+        
+        /* Food/Drink Toggle */
+        .food-drink-toggle {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+        .toggle-btn {
+            padding: 0.5rem 1.5rem;
+            border: none;
+            background: #2a2a2a;
+            color: #f0f0f0;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .toggle-btn.active {
+            background: #D4AF37;
+            color: white;
+        }
+        .toggle-btn:first-child {
+            border-radius: 20px 0 0 20px;
+        }
+        .toggle-btn:last-child {
+            border-radius: 0 20px 20px 0;
+        }
+        
+        /* Categories Scroll */
+        .categories-header {
+            position: sticky;
+            top: 64px; /* Adjusted for header height */
+            z-index: 20;
+            background: #1a1a1a;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #333;
+        }
+        
+        .categories-scroll-container {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .categories-scroll {
+            display: flex;
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            padding: 12px 0;
+            margin: 0 16px;
+        }
+        
+        .categories-scroll::-webkit-scrollbar {
+            display: none;
+        }
+        
+        .category-scroll-item {
+            flex: 0 0 auto;
+            padding: 8px 16px;
+            margin: 0 4px;
+            border-radius: 20px;
+            background-color: #2a2a2a;
+            color: #f0f0f0;
+            font-weight: 500;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .category-scroll-item.active {
+            background-color: #D4AF37;
+            color: white;
+        }
+        
+        /* Scroll Indicators */
+        .scroll-indicator {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 40px;
+            display: none; /* Hidden on mobile for cleaner look */
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .scroll-indicator.left {
+            left: 0;
+            background: linear-gradient(90deg, rgba(26,26,26,0.8) 0%, rgba(26,26,26,0) 100%);
+        }
+        
+        .scroll-indicator.right {
+            right: 0;
+            background: linear-gradient(270deg, rgba(26,26,26,0.8) 0%, rgba(26,26,26,0) 100%);
+        }
+        
+        .categories-scroll-container:hover .scroll-indicator {
+            opacity: 1;
+        }
+        
+        .scroll-button {
+            pointer-events: auto;
+            background-color: #D4AF37;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .scroll-button:hover {
+            background-color: #e8c05e;
+        }
+
+        /* Toast Notifications */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translate(-50%, -40%); }
+            to { opacity: 1; transform: translate(-50%, -50%); }
+        }
+        
+        @keyframes fadeOut {
+            from { opacity: 1; transform: translate(-50%, -50%); }
+            to { opacity: 0; transform: translate(-50%, -60%); }
+        }
+        
+        .toast {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #D4AF37;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 8px;
+            z-index: 2000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            animation: fadeIn 0.3s forwards;
+            max-width: 80%;
+            text-align: center;
+            font-size: 18px;
+            display: none;
+        }
+        
+        .toast.hide {
+            animation: fadeOut 0.3s forwards;
+        }
+
+        /* Mobile User Menu */
+        #mobile-user-menu {
+            position: fixed;
+            top: 0;
+            right: -280px;
+            width: 280px;
+            height: 100vh;
+            background-color: #1f1f1f;
+            z-index: 1050;
+            transition: right 0.3s ease;
+            padding-top: 70px;
+            box-shadow: -2px 0 15px rgba(0,0,0,0.5);
+        }
+        
+        #mobile-user-menu.active {
+            right: 0;
+        }
+        
+        #mobile-user-menu-toggle {
+            position: fixed;
+            right: 15px;
+            top: 15px;
+            z-index: 1051;
+            background: #D4AF37;
+            color: white;
+            border: none;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+        
+        .mobile-user-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 1049;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .mobile-user-menu-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        
+        .mobile-user-menu-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 20px;
+            margin-bottom: 8px;
+            color: white;
+            font-size: 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-user-menu-item:hover {
+            background-color: #D4AF37;
+        }
+        
+        .mobile-user-menu-item i {
+            margin-right: 12px;
+            width: 20px;
+            text-align: center;
+        }
+
+        /* Mobile Cart Button */
+        #mobile-cart-btn {
+            position: fixed;
+            right: 15px;
+            bottom: 20px;
+            z-index: 100;
+            background: #D4AF37;
+            color: white;
+            border: none;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        
+        #mobile-cart-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: #ef4444;
+            color: white;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        /* Header Styles */
+        .main-header {
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 900; /* Lower than modals */
+        }
+        
+        .restaurant-name {
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+            font-size: 1.75rem;
+            letter-spacing: 0.05em;
+        }
+        
+        .restaurant-name span {
+            color: #D4AF37;
+        }
+        
+        /* Language Switcher */
+        .language-switcher {
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+        .language-switcher:hover {
+            opacity: 1;
+        }
+        .language-switcher.active {
+            opacity: 1;
+            font-weight: bold;
+            color: #D4AF37;
+        }
+
+        /* Product Detail Modal Styles */
+        #product-modal-content.active {
+            transform: translateY(0);
+        }
+        
+        @media (max-width: 767px) {
+            #product-modal-content {
+                max-height: 90vh;
+                overflow-y: auto;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .hero-section {
+                height: 80vh;
+            }
+            
+            #mobile-user-menu-toggle,
+            #mobile-user-menu,
+            .mobile-user-menu-overlay,
+            #mobile-cart-btn {
+                display: none;
+            }
+
+            .scroll-indicator {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body class="bg-brand-dark">
+    <div id="toast" class="toast"></div>
+
+    <div id="auth-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-[1100] hidden">
+        <div class="bg-[#2a2a2a] rounded-lg p-8 w-full max-w-md relative">
+            <button onclick="toggleModal('auth-modal')" class="absolute top-4 right-4 text-gray-400 text-2xl">&times;</button>
+            <h2 id="auth-title" class="text-3xl font-bold text-white text-center mb-6" data-translate="login_title">Вход</h2>
+    
+            <form id="login-form">
+                <input type="email" id="login-email" placeholder="Email" class="w-full bg-[#333] border border-gray-600 rounded-lg px-4 py-3 text-white mb-4" data-translate="email_placeholder" required>
+                <input type="password" id="login-password" placeholder="Пароль" class="w-full bg-[#333] border border-gray-600 rounded-lg px-4 py-3 text-white mb-6" data-translate="password_placeholder" required>
+                <button type="submit" class="w-full bg-brand-gold text-white font-bold py-3 rounded-lg hover:bg-amber-700 transition" data-translate="login_btn">Войти</button>
+            </form>
+            <form id="register-form" class="hidden">
+                <input type="text" id="reg-name" placeholder="Ваше имя" class="w-full bg-[#333] border border-gray-600 rounded-lg px-4 py-3 text-white mb-4" data-translate="name_placeholder" required>
+                <input type="email" id="reg-email" placeholder="Email" class="w-full bg-[#333] border border-gray-600 rounded-lg px-4 py-3 text-white mb-4" data-translate="email_placeholder" required>
+                <input type="tel" id="reg-phone" placeholder="Телефон" class="w-full bg-[#333] border border-gray-600 rounded-lg px-4 py-3 text-white mb-4" data-translate="phone_placeholder" required>
+                <input type="password" id="reg-password" placeholder="Пароль" class="w-full bg-[#333] border border-gray-600 rounded-lg px-4 py-3 text-white mb-6" data-translate="password_placeholder" required>
+                <button type="submit" class="w-full bg-brand-gold text-white font-bold py-3 rounded-lg hover:bg-amber-700 transition" data-translate="register_btn">Зарегистрироваться</button>
+            </form>
+            <p class="text-center text-gray-400 mt-6">
+                <span id="auth-switch-text" data-translate="no_account">Нет аккаунта?</span> 
+                <button onclick="switchAuthMode()" id="auth-switch-button" class="text-brand-gold font-semibold hover:text-amber-600 transition" data-translate="switch_to_register">Регистрация</button>
+            </p>
+        </div>
+    </div>
+
+    <div id="product-modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-[1000] hidden">
+        <div id="product-modal-content" class="bg-[#1f1f1f] rounded-t-2xl md:rounded-2xl p-0 w-full max-w-md relative mx-auto bottom-0 fixed md:relative transform md:translate-y-0 translate-y-full transition-transform duration-300 ease-in-out">
+            <div class="h-64 bg-cover bg-center rounded-t-2xl" id="product-modal-image">
+                <div class="flex justify-between items-start p-4">
+                     <button onclick="toggleProductModal()" class="bg-black/50 backdrop-blur-sm rounded-lg text-white h-10 w-10 flex items-center justify-center text-lg"><i class="fas fa-times"></i></button>
+                     <button class="bg-black/50 backdrop-blur-sm rounded-lg text-white h-10 w-10 flex items-center justify-center text-lg"><i class="fas fa-share-alt"></i></button>
+                </div>
+            </div>
+            <div class="p-6">
+                <h3 id="product-modal-name" class="text-2xl font-bold text-white mb-2"></h3>
+                <p id="product-modal-description" class="text-gray-400 text-sm mb-4 h-16 overflow-y-auto"></p>
+                <div class="flex justify-between items-center mb-6">
+                    <p id="product-modal-price" class="text-2xl font-bold text-brand-gold"></p>
+                    <div class="flex items-center bg-[#2a2a2a] rounded-full">
+                        <button id="quantity-minus" class="w-10 h-10 text-white text-xl rounded-full hover:bg-gray-700 transition">-</button>
+                        <span id="product-modal-quantity" class="w-10 text-center font-bold text-white text-lg">1</span>
+                        <button id="quantity-plus" class="w-10 h-10 text-white text-xl rounded-full hover:bg-gray-700 transition">+</button>
+                    </div>
+                </div>
+                <button id="modal-add-to-cart-btn" class="w-full bg-brand-gold text-white font-bold py-3 rounded-lg hover:bg-amber-700 transition" data-translate="add_to_cart_btn">Добавить в корзину</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-full md:w-96 bg-[#2a2a2a] shadow-2xl z-[1060] transform translate-x-full transition-transform duration-300">
+        <div class="p-6 flex flex-col h-full">
+            <div class="flex justify-between items-center border-b border-gray-700 pb-4 mb-4">
+                <h2 id="cart-title" class="text-2xl font-bold text-white" data-translate="cart_title">Корзина</h2>
+                <button onclick="toggleCart()" class="text-gray-400 text-3xl hover:text-white transition">&times;</button>
+            </div>
+
+            <div id="cart-view" class="flex flex-col h-full">
+                <div id="cart-items" class="flex-grow overflow-y-auto"></div>
+                <div class="border-t border-gray-700 pt-4 mt-auto">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-lg" data-translate="cart_total">Итого:</span>
+                        <span id="cart-total" class="text-2xl font-bold">0 MDL</span>
+                    </div>
+                    <button id="checkout-button" class="w-full bg-brand-gold text-white font-bold py-3 rounded-lg hover:bg-amber-700 transition" data-translate="checkout_btn">Оформить заказ</button>
+                </div>
+            </div>
+
+            <div id="checkout-view" class="hidden flex-col h-full">
+                 <button id="back-to-cart-btn" class="text-brand-gold mb-4 text-left">&larr; <span data-translate="back_to_cart">Назад в корзину</span></button>
+                 <form id="checkout-form" class="flex flex-col h-full">
+                    <div class="flex-grow">
+                        <input type="text" id="checkout-name" value="{{ user_info.name if user_info else '' }}" placeholder="Ваше имя" class="w-full bg-[#333] border border-gray-600 rounded-lg px-4 py-3 text-white mb-4" data-translate="name_placeholder" required>
+                        <input type="tel" id="checkout-phone" value="{{ user_info.phone if user_info else '' }}" placeholder="Контактный телефон" class="w-full bg-[#333] border border-gray-600 rounded-lg px-4 py-3 text-white mb-4" data-translate="phone_placeholder" required>
+                        <input type="text" id="checkout-address" placeholder="Адрес доставки" class="w-full bg-[#333] border border-gray-600 rounded-lg px-4 py-3 text-white mb-6" data-translate="address_placeholder" required>
+                    </div>
+                    <button type="submit" class="w-full bg-brand-gold text-white font-bold py-3 rounded-lg hover:bg-amber-700 transition mt-auto" data-translate="confirm_order">Подтвердить заказ</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+    <button id="mobile-user-menu-toggle" class="md:hidden">
+        <i class="fas fa-bars"></i>
+    </button>
+    <div class="mobile-user-menu-overlay" id="mobile-user-menu-overlay"></div>
+    <div id="mobile-user-menu" class="z-[1050]">
+        <div class="mobile-menu-content">
+            {% if user_info %}
+                {% if user_info.is_admin %}
+                <a href="/admin/dashboard" class="mobile-user-menu-item">
+                    <i class="fas fa-cog"></i>
+                    <span data-translate="admin_panel">Админ-панель</span>
+                </a>
+                {% endif %}
+                <a href="/profile" class="mobile-user-menu-item">
+                    <i class="fas fa-user"></i>
+                    <span data-translate="profile">Профиль</span>
+                </a>
+                <button id="logout-button-mobile" class="mobile-user-menu-item w-full text-left">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span data-translate="logout">Выйти</span>
+                </button>
+            {% else %}
+                <button onclick="toggleModal('auth-modal')" class="mobile-user-menu-item w-full text-left">
+                    <i class="fas fa-sign-in-alt"></i>
+                    <span data-translate="login">Войти</span>
+                </button>
+                <button onclick="switchAuthMode(); toggleModal('auth-modal')" class="mobile-user-menu-item w-full text-left">
+                    <i class="fas fa-user-plus"></i>
+                    <span data-translate="register">Регистрация</span>
+                </button>
+            {% endif %}
+            <button onclick="toggleCart()" class="mobile-user-menu-item w-full text-left">
+                <i class="fas fa-shopping-cart"></i>
+                <span data-translate="cart">Корзина</span>
+            </button>
+        </div>
+    </div>
+
+    <button id="mobile-cart-btn" class="md:hidden">
+        <i class="fas fa-shopping-cart"></i>
+        <span id="mobile-cart-count">0</span>
+    </button>
+
+    <header class="main-header">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="/" class="restaurant-name text-white">Feliz <span>Wine Bar</span></a>
+            <nav class="hidden md:flex space-x-8">
+                <div class="flex space-x-2">
+                  <span class="language-switcher active" data-lang="ru" onclick="setLanguage('ru')">RU</span>
+                  <span class="language-switcher" data-lang="ro" onclick="setLanguage('ro')">RO</span>
+                  <span class="language-switcher" data-lang="en" onclick="setLanguage('en')">EN</span>
+                </div>
+            </nav>
+            <div class="hidden md:flex items-center space-x-4">
+                {% if user_info %}
+                    {% if user_info.is_admin %}<a href="/admin/dashboard" class="text-yellow-400 font-semibold hover:text-yellow-300 transition" data-translate="admin">Админ</a>{% endif %}
+                    <a href="/profile" class="text-white font-semibold hover:text-brand-gold transition" data-translate="profile">Профиль</a>
+                    <button id="logout-button" class="text-gray-400 hover:text-white transition" data-translate="logout">Выйти</button>
+                {% else %}
+                    <button onclick="toggleModal('auth-modal')" class="bg-brand-dark-teal text-white px-5 py-2 rounded-lg font-semibold hover:bg-teal-700 transition" data-translate="login">Войти</button>
+                {% endif %}
+                <button onclick="toggleCart()" id="cart-button" class="relative bg-brand-gold text-white px-4 py-2 rounded-lg hover:bg-amber-700 transition">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="cart-count" class="absolute -top-2 -right-2 bg-red-600 text-white text-xs h-5 w-5 flex items-center justify-center rounded-full">0</span>
+                </button>
+            </div>
+             <button id="mobile-menu-button" class="md:hidden text-white text-2xl" onclick="toggleMobileUserMenu()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main class="pt-20">
+        <section class="hero-section relative flex items-center justify-center text-center">
+            <div id="hero-video-container">
+                <div class="hero-video-fallback"></div>
+                <video autoplay loop muted playsinline preload="auto" class="hidden md:block hero-video" id="desktop-video" src="{{ url_for('static', filename='videos/felyz.mp4') }}"></video>
+                <video autoplay loop muted playsinline preload="auto" class="block md:hidden hero-video" id="mobile-video" src="{{ url_for('static', filename='videos/felmob.mp4') }}"></video>
+            </div>
+            <div class="absolute inset-0 bg-black/60"></div>
+            <div class="relative z-10 max-w-3xl mx-auto px-4">
+                <h1 class="text-5xl md:text-7xl font-bold font-title text-white" data-translate="menu_title">Изысканный Вкус</h1>
+                <p class="text-xl md:text-2xl text-gray-200 mt-4" data-translate="menu_subtitle">Лучшие вина и авторская кухня</p>
+            </div>
+        </section>
+
+        <section class="py-12 bg-[#121212]">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl font-bold text-center mb-8 md:mb-12" data-translate="our_menu">Наше Меню</h2>
+                
+                <div class="food-drink-toggle">
+                    <button id="food-btn" class="toggle-btn active" data-translate="food_btn">Еда</button>
+                    <button id="drinks-btn" class="toggle-btn" data-translate="drinks_btn">Напитки</button>
+                </div>
+                
+                <div class="categories-header">
+                    <div class="categories-scroll-container">
+                        <div class="scroll-indicator left">
+                            <div class="scroll-button" onclick="scrollCategories(-150)">
+                                <i class="fas fa-chevron-left"></i>
+                            </div>
+                        </div>
+                        <div class="categories-scroll" id="mobile-categories-scroll"></div>
+                        <div class="scroll-indicator right">
+                            <div class="scroll-button" onclick="scrollCategories(150)">
+                                <i class="fas fa-chevron-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="menu-content" class="w-full"></div>
+            </div>
+        </section>
+    </main>
+    
+    <footer class="bg-[#1f1f1f] py-8">
+        <div class="container mx-auto px-4 text-center text-gray-400">
+            <p data-translate="rights">&copy; 2025 Feliz Wine Bar.</p>
+        </div>
+    </footer>
+<script>
+    // --- Глобальные переменные ---
+    let cart = [];
+    let isLoginMode = true;
+    let currentFoodFilter = 1; // 1 - еда, 0 - напитки
+    let currentLanguage = localStorage.getItem('language') || 'ru';
+    let currentProductInModal = null; // Holds the product data for the modal
+
+    // --- Утилиты ---
+    function toggleModal(modalId) {
+        const modal = document.getElementById(modalId);
+        if (modal) modal.classList.toggle('hidden');
+        const isAnyModalOpen = !document.getElementById('auth-modal').classList.contains('hidden') || !document.getElementById('product-modal').classList.contains('hidden');
+        document.body.style.overflow = isAnyModalOpen ? 'hidden' : 'auto';
+    }
+
+    function toggleProductModal(product = null) {
+        const modal = document.getElementById('product-modal');
+        const modalContent = document.getElementById('product-modal-content');
+        const isOpen = !modal.classList.contains('hidden');
+
+        if (isOpen) {
+            modalContent.classList.remove('active');
+            setTimeout(() => {
+                toggleModal('product-modal');
+                currentProductInModal = null;
+            }, 300);
+        } else if (product) {
+            currentProductInModal = { ...product, quantity: 1 };
+            document.getElementById('product-modal-image').style.backgroundImage = `url('${product.image_url || 'https://placehold.co/400x300/1a1a1a/D4AF37?text=Feliz'}')`;
+            document.getElementById('product-modal-name').textContent = product.name;
+            document.getElementById('product-modal-description').textContent = product.description || '';
+            document.getElementById('product-modal-price').textContent = `${product.price} MDL`;
+            document.getElementById('product-modal-quantity').textContent = '1';
+            
+            toggleModal('product-modal');
+            setTimeout(() => {
+                modalContent.classList.add('active');
+            }, 10);
+        }
+    }
+
+    function showToast(message, duration = 3000) {
+        const toast = document.getElementById('toast');
+        toast.textContent = message;
+        toast.style.display = 'block';
+        toast.classList.remove('hide');
+        setTimeout(() => {
+            toast.classList.add('hide');
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 500);
+        }, duration);
+    }
+
+    function scrollCategories(amount) {
+        const scrollContainer = document.getElementById('mobile-categories-scroll');
+        scrollContainer.scrollBy({ left: amount, behavior: 'smooth' });
+    }
+    
+    function updateScrollIndicators() {
+        const scrollContainer = document.getElementById('mobile-categories-scroll');
+        const leftIndicator = document.querySelector('.scroll-indicator.left');
+        const rightIndicator = document.querySelector('.scroll-indicator.right');
+        
+        if (scrollContainer.scrollLeft > 10) {
+            leftIndicator.style.opacity = '1';
+        } else {
+            leftIndicator.style.opacity = '0';
+        }
+        
+        const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+        if (scrollContainer.scrollLeft < maxScroll - 10) {
+            rightIndicator.style.opacity = '1';
+        } else {
+            rightIndicator.style.opacity = '0';
+        }
+    }
+
+    function toggleMobileUserMenu() {
+        const menu = document.getElementById('mobile-user-menu');
+        const overlay = document.getElementById('mobile-user-menu-overlay');
+        menu.classList.toggle('active');
+        overlay.classList.toggle('active');
+        document.body.style.overflow = menu.classList.contains('active') ? 'hidden' : 'auto';
+    }
+
+    function switchAuthMode() {
+        isLoginMode = !isLoginMode;
+        document.getElementById('login-form').classList.toggle('hidden');
+        document.getElementById('register-form').classList.toggle('hidden');
+        document.getElementById('auth-title').textContent = isLoginMode ? translations[currentLanguage]['login_title'] : translations[currentLanguage]['register_title'];
+        document.getElementById('auth-switch-button').textContent = isLoginMode ? translations[currentLanguage]['switch_to_register'] : translations[currentLanguage]['switch_to_login'];
+        document.getElementById('auth-switch-text').textContent = isLoginMode ? translations[currentLanguage]['no_account'] : translations[currentLanguage]['have_account'];
+    }
+
+    async function handleFormSubmit(url, body) {
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(body),
+            });
+            const result = await response.json();
+            if (!response.ok || !result.success) {
+                throw new Error(result.message || 'Неизвестная ошибка');
+            }
+            return result;
+        } catch (error) {
+            console.error(`Ошибка при отправке формы на ${url}:`, error);
+            return { success: false, message: error.message || 'Ошибка сети. Проверьте консоль.' };
+        }
+    }
+
+    // --- Логика меню и корзины ---
+    async function renderMenu() {
+        const menuContent = document.getElementById('menu-content');
+        const categoriesScroll = document.getElementById('mobile-categories-scroll');
+        
+        try {
+            menuContent.innerHTML = `<div class="text-center py-8"><div class="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-brand-gold"></div><p class="mt-2 text-gray-400">${translations[currentLanguage]['loading_menu']}</p></div>`;
+            const response = await fetch(`/api/get_menu?is_food=${currentFoodFilter}`);
+            if (!response.ok) throw new Error(`Ошибка HTTP: ${response.status}`);
+            
+            const menuData = await response.json();
+            
+            menuContent.innerHTML = '';
+            categoriesScroll.innerHTML = '';
+
+            if (menuData.length === 0) {
+                menuContent.innerHTML = `<p class="text-center text-gray-400 py-8">${translations[currentLanguage]['empty_menu']}</p>`;
+                return;
+            }
+
+            menuData.forEach((categoryGroup, index) => {
+                const categoryId = `category-${index}`;
+                const categoryName = categoryGroup.category.split('/')[0].trim();
+                
+                const categoryElement = document.createElement('div');
+                categoryElement.className = 'category-scroll-item';
+                categoryElement.textContent = getTranslatedCategory(categoryName);
+                if (index === 0) categoryElement.classList.add('active');
+                
+                categoryElement.addEventListener('click', () => {
+                    document.getElementById(categoryId).scrollIntoView({ behavior: 'smooth', block: 'start' });
+                });
+                categoriesScroll.appendChild(categoryElement);
+
+                let itemsHTML = '';
+                categoryGroup.items.forEach(item => {
+                    itemsHTML += `
+                        <div class="bg-[#2a2a2a] rounded-lg shadow-lg overflow-hidden flex flex-col cursor-pointer transform hover:-translate-y-1 transition-transform" onclick='toggleProductModal(${JSON.stringify(item)})'>
+                            <img src="${item.image_url || 'https://placehold.co/400x300/1a1a1a/D4AF37?text=Feliz'}" alt="${item.name}" class="w-full h-40 object-cover">
+                            <div class="p-3 flex flex-col flex-grow">
+                                <h4 class="text-md font-semibold text-white flex-grow mb-2">${item.name}</h4>
+                                <div class="flex justify-between items-center mt-auto">
+                                    <p class="text-lg font-bold text-brand-gold">${item.price} MDL</p>
+                                    <button class="bg-brand-dark-teal text-white w-9 h-9 flex items-center justify-center rounded-lg hover:bg-teal-600 transition">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>`;
+                });
+                
+                const categoryDiv = document.createElement('div');
+                categoryDiv.id = categoryId;
+                categoryDiv.className = 'mb-12 scroll-mt-32';
+                categoryDiv.innerHTML = `
+                    <h3 class="text-3xl font-bold text-white mb-6 border-l-4 border-brand-gold pl-4">
+                        ${getTranslatedCategory(categoryName)}
+                    </h3>
+                    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        ${itemsHTML}
+                    </div>`;
+                menuContent.appendChild(categoryDiv);
+            });
+
+            updateScrollIndicators();
+        } catch (error) {
+            console.error("Не удалось загрузить меню:", error);
+            menuContent.innerHTML = `<p class="text-red-500 text-center py-8">${translations[currentLanguage]['loading_error']}</p>`;
+        }
+    }
+
+    function getTranslatedCategory(categoryName) {
+        const categoryMap = { /* ... Переводы ... */ };
+        // ... Логика переводов ...
+        return categoryName;
+    }
+
+    function setLanguage(lang) {
+        currentLanguage = lang;
+        localStorage.setItem('language', lang);
+        applyTranslations(lang);
+        updateMenuCategories();
+    }
+
+    function showCheckoutView() {
+        document.getElementById('cart-view').classList.add('hidden');
+        document.getElementById('checkout-view').classList.remove('hidden');
+        document.getElementById('cart-title').textContent = translations[currentLanguage]['checkout_title'] || "Оформление заказа";
+    }
+
+    function showCartView() {
+        document.getElementById('checkout-view').classList.add('hidden');
+        document.getElementById('cart-view').classList.remove('hidden');
+        document.getElementById('cart-title').textContent = translations[currentLanguage]['cart_title'] || "Корзина";
+    }
+
+    function toggleCart() { 
+        const cartSidebar = document.getElementById('cart-sidebar');
+        if (cartSidebar) {
+            const isOpening = cartSidebar.classList.contains('translate-x-full');
+            cartSidebar.classList.toggle('translate-x-full');
+            document.body.style.overflow = isOpening ? 'hidden' : 'auto';
+            if (!isOpening) {
+                // Reset to cart view when closing
+                setTimeout(showCartView, 300); // Wait for transition
+            }
+        }
+    }
+
+    function addToCart(product, quantity = 1) {
+        product.id = product.id || Math.random().toString(36).substring(2, 9);
+        const existingItem = cart.find(item => item.id === product.id);
+        if (existingItem) {
+            existingItem.quantity += quantity;
+        } else {
+            cart.push({ ...product, quantity: quantity });
+        }
+        updateCart();
+        showToast(`${product.name} (x${quantity}) ${translations[currentLanguage]['item_added'] || 'добавлен в корзину'}`);
+    }
+
+    function changeQuantity(productId, amount) {
+        const item = cart.find(item => item.id === productId);
+        if (item) { 
+            item.quantity += amount;
+            if (item.quantity <= 0) {
+                cart = cart.filter(i => i.id !== productId);
+                showToast(translations[currentLanguage]['item_removed'] || 'Товар удален');
+            }
+        }
+        updateCart();
+    }
+
+    function updateCart() {
+        const cartItemsContainer = document.getElementById('cart-items');
+        const cartCount = document.getElementById('cart-count');
+        const mobileCartCount = document.getElementById('mobile-cart-count');
+        const cartTotal = document.getElementById('cart-total');
+        const checkoutButton = document.getElementById('checkout-button');
+        if (!cartItemsContainer || !cartCount || !mobileCartCount || !cartTotal) return;
+        
+        cartItemsContainer.innerHTML = '';
+        if (cart.length === 0) {
+            cartItemsContainer.innerHTML = `<p class="text-gray-400 text-center mt-8">${translations[currentLanguage]['empty_cart'] || 'Ваша корзина пуста'}</p>`;
+            checkoutButton.disabled = true;
+            checkoutButton.classList.add('opacity-50', 'cursor-not-allowed');
+        } else {
+            checkoutButton.disabled = false;
+            checkoutButton.classList.remove('opacity-50', 'cursor-not-allowed');
+            cart.forEach(item => {
+                cartItemsContainer.innerHTML += `
+                    <div class="flex items-center justify-between mb-4">
+                        <div>
+                            <p class="font-semibold text-white">${item.name}</p>
+                            <p class="text-sm text-gray-400">${item.price} MDL × ${item.quantity} = ${item.price * item.quantity} MDL</p>
+                        </div>
+                        <div class="flex items-center">
+                            <button onclick="changeQuantity('${item.id}', -1)" class="w-7 h-7 bg-gray-700 text-white rounded hover:bg-gray-600 transition">-</button>
+                            <span class="w-8 text-center font-bold">${item.quantity}</span>
+                            <button onclick="changeQuantity('${item.id}', 1)" class="w-7 h-7 bg-gray-700 text-white rounded hover:bg-gray-600 transition">+</button>
+                        </div>
+                    </div>`;
+            });
+        }
+        
+        const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+        cartCount.textContent = totalCount;
+        mobileCartCount.textContent = totalCount;
+        cartTotal.textContent = `${cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)} MDL`;
+    }
+
+    // --- Инициализация ---
+    document.addEventListener('DOMContentLoaded', () => {
+        // applyTranslations(currentLanguage); // Assuming this function exists and works
+        renderMenu();
+        updateCart();
+        
+        // Event listeners
+        document.getElementById('food-btn').addEventListener('click', () => {
+            currentFoodFilter = 1;
+            document.getElementById('food-btn').classList.add('active');
+            document.getElementById('drinks-btn').classList.remove('active');
+            renderMenu();
+        });
+        
+        document.getElementById('drinks-btn').addEventListener('click', () => {
+            currentFoodFilter = 0;
+            document.getElementById('drinks-btn').classList.add('active');
+            document.getElementById('food-btn').classList.remove('active');
+            renderMenu();
+        });
+
+        // Cart and Checkout Listeners
+        document.getElementById('checkout-button')?.addEventListener('click', () => { if (cart.length > 0) showCheckoutView(); });
+        document.getElementById('back-to-cart-btn')?.addEventListener('click', showCartView);
+        document.getElementById('checkout-form')?.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const result = await handleFormSubmit('/api/place_order', { 
+                name: document.getElementById('checkout-name').value, 
+                phone: document.getElementById('checkout-phone').value, 
+                address: document.getElementById('checkout-address').value, 
+                cart: cart 
+            });
+            if (result.success) { 
+                toggleCart();
+                cart = [];
+                updateCart();
+                e.target.reset();
+                showToast(translations[currentLanguage]['order_placed'] || 'Заказ успешно оформлен!');
+            } else {
+                showToast(result.message);
+            }
+        });
+
+        // Mobile menu & cart
+        document.getElementById('mobile-user-menu-toggle')?.addEventListener('click', toggleMobileUserMenu);
+        document.getElementById('mobile-user-menu-overlay')?.addEventListener('click', toggleMobileUserMenu);
+        document.getElementById('mobile-cart-btn')?.addEventListener('click', toggleCart);
+
+        // Product Modal Listeners
+        document.getElementById('quantity-plus').addEventListener('click', () => {
+            if (currentProductInModal) {
+                currentProductInModal.quantity++;
+                document.getElementById('product-modal-quantity').textContent = currentProductInModal.quantity;
+            }
+        });
+
+        document.getElementById('quantity-minus').addEventListener('click', () => {
+            if (currentProductInModal && currentProductInModal.quantity > 1) {
+                currentProductInModal.quantity--;
+                document.getElementById('product-modal-quantity').textContent = currentProductInModal.quantity;
+            }
+        });
+
+        document.getElementById('modal-add-to-cart-btn').addEventListener('click', () => {
+            if (currentProductInModal) {
+                addToCart(currentProductInModal, currentProductInModal.quantity);
+                toggleProductModal();
+            }
+        });
+        
+        document.getElementById('mobile-categories-scroll').addEventListener('scroll', updateScrollIndicators);
+        window.addEventListener('resize', updateScrollIndicators);
+    });
+</script>
+</body>
+</html>
