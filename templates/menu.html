@@ -247,12 +247,24 @@
     </header>
 
     <main class="pt-20">
-        <section class="hero-section relative flex items-center justify-center text-center">
-            <div id="hero-video-container">
-                <div class="hero-video-fallback"></div>
-                <video autoplay loop muted playsinline preload="auto" class="hidden md:block hero-video" id="desktop-video" src="/static/videos/felyz.mp4"></video>
-                <video autoplay loop muted playsinline preload="auto" class="block md:hidden hero-video" id="mobile-video" src="/static/videos/felmob.mp4"></video>
-            </div>
+        <section class="hero-section flex items-center justify-center text-center">
+                <div id="hero-video-container">
+                              <div id="hero-video-container">
+            <div class="hero-video-fallback"></div>
+            <video autoplay loop muted playsinline preload="auto"
+                   class="hidden md:block hero-video"
+                   id="desktop-video"
+                   src="https://res.cloudinary.com/dgsjcrozf/video/upload/f_auto,q_auto/felyz_rxxqln.mp4">
+                   Ваш браузер не поддерживает тег video.
+            </video>
+
+            <video autoplay loop muted playsinline preload="auto"
+                   class="block md:hidden hero-video"
+                   id="mobile-video"
+                   src="https://res.cloudinary.com/dgsjcrozf/video/upload/f_auto,q_auto/felmob_w7xciq.mp4">
+                   Ваш браузер не поддерживает тег video.
+            </video>
+        </div>
             <div class="absolute inset-0 bg-black/60"></div>
             <div class="relative z-10 max-w-3xl mx-auto px-4">
                 <h1 class="text-5xl md:text-7xl font-bold font-title text-white" data-translate="menu_title">Изысканный Вкус</h1>
