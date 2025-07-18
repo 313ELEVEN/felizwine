@@ -94,6 +94,7 @@ Purcari Fetească Albă (0.75L) - 450 MDL
 Purcari Cuvee Rose Brut (0.75L) - 480 MDL
 Purcari Cuvee Alb Extra Brut (0.75L) - 480 MDL
 Wine Crime Rose Dulce (0.75L) - 240 MDL
+Wine Crime Alb dulce (0.75L) - 250 MDL
 Domeniile Vorniceni Chardonnay Fet.Regală Brut (0.75L) - 250 MDL
 Novak 4 Soiuri Brut (0.75L) - 250 MDL
 Chateau Vartely Brut (0.75L) - 300 MDL
@@ -149,12 +150,48 @@ Purcari Vinohora Fet.Neagră/Monte (0.75L) - 300 MDL
 Crama Mircești Rose (0.75L) - 240 MDL
 Crama Mircești Chery Flower (0.75L) - 230 MDL
 Castel Mimi Rose de Bulboaca (0.75L) - 300 MDL
+Cricova Wild rose (0.75L) - 240 MDL
+Gitana rose (0.75L) - 290 MDL
+Fautor Vivienne Cuvee (0.75L) - 290 MDL
 
 Красные вина / Red Wines
 
-Purcari Negru de Purcari (0.75L) - 650 MDL
-Gitana Lupi (0.75L) - 580 MDL
-Castel Mimi Fetească Neagră (0.75L) - 320 MDL
-Fautor Negre (0.75L) - 350 MDL
-Rosu de Purcari (0.75L) - 550 MDL
 Purcari Malbec (0.75L) - 250 MDL
+Purcari Cabernet-Sauvignon (0.75L) - 250 MDL
+Purcari Merlot (0.75L) - 250 MDL
+Purcari Freedom Blend (0.75L) - 300 MDL
+Purcari Nocturne Cabernet Sauvignon (0.75L) - 300 MDL
+Purcari Rară Neagră (0.75L) - 300 MDL
+Rosu de Purcari (0.75L) - 550 MDL
+Purcari Negru de Purcari (0.75L) - 650 MDL
+Purcari Academia Fet.Neagră (0.75L) - 1000 MDL
+Purcari Academia Rară Neagră (0.75L) - 1000 MDL
+Crama Mircești Rară Neagră (0.75L) - 1000 MDL
+Crama Mircești Fet.Neagră Saperavi (0.75L) - 300 MDL
+Divus Winery Saperavi (0.75L) - 300 MDL
+Domeniile Vorniceni Cei Trei Cabernet Sauv. Merlot Saperavi (0.75L) - 250 MDL
+Fautor Negre (0.75L) - 350 MDL
+Făutor Fet.Neagră/Tempranillo (0.75L) - 350 MDL
+Fautor Rară Neagră (0.75L) - 370 MDL
+Fautor Tempranillo (0.75L) - 380 MDL
+Divus Endemic Blend Rară Neagră/Fet.Neagră (0.75L) - 350 MDL
+Novak Merlot Ediție Limitată (0.75L) - 270 MDL
+Novak Cabernet Sauvignon (0.75L) - 270 MDL
+Novak Pinot Noir (0.75L) - 370 MDL
+Novak Cabernet Fanc (0.75L) - 370 MDL
+Novac Fet.Neagră (0.75L) - 370 MDL
+Novak Rară Neagră Ediție Limitată (0.75L) - 380 MDL
+Minis Terrios Roșu Împărat (0.75L) - 320 MDL
+Minis Terrios Negru Împărat (0.75L) - 320 MDL
+Equinox Merlot (0.75L) - 260 MDL
+Equinox Trei Crai (0.75L) - 280 MDL
+Equinox 5 Elemente (0.75L) - 450 MDL
+Gitana Saperavi (0.75L) - 650 MDL
+Gitana Lupi (0.75L) - 580 MDL
+Gogu Winery Metafora (0.75L) - 600 MDL
+Carpe-Diem Bad Boys (0.75L) - 480 MDL
+Chateau Cristi Cuvee Rouge Royal (0.75L) - 270 MDL
+Chateau Cristi Pinot Noir (0.75L) - 390 MDL
+Castel Mimi Fetească Neagră (0.75L) - 320 MDL
+Castel Mimi Rară Neagră (0.75L) - 240 MDL
+Castel Mimi Roșu de Bulboaca (0.75L) - 300 MDL

@@ -24,8 +24,6 @@ Tartar de somon cu cremă de brînză si pesto (180gr/30) - 150 MDL
 Тартар из лосося с сырным кремом и песто / Salmon tartare with cream cheese and pesto
 Tartar de vită(150/30) - 120 MDL
 Тартар из говядины / Beef tartare
-Spring rolls cu creveți (180/30gr) - 105 MDL
-Спринг-роллы с креветками / Spring rolls with shrimp
 Bruschete cu ardei și verdeață (150gr.) - 70 MDL
 Брускетта с перцем и зеленью / Bruschetta with peppers and greens
 Bruschete cu somon si castravete (150gr.) - 90 MDL
@@ -158,42 +156,64 @@ Lava-cake de ciocolată (100/30gr) - 70 MDL
 Кофе / Coffee
 
 Espresso - 30 MDL
+Espresso
 Espresso cu lapte - 30 MDL
+Espresso cu lapte
 Espresso Dublu - 40 MDL
+Espresso Dublu
 Americano - 30 MDL
+Americano
 Americano cu lapte - 35 MDL
+Americano cu lapte
 Cappuccino - 35 MDL
-Caffe latte - 45 MDL
-Ice latte - 45 MDL
+Cappuccino
+Caffe latte - 50 MDL
+Caffe latte
+Ice latte - 55 MDL
+Ice latte
 Ciocolată cu lapte - 45 MDL
+Ciocolată cu lapte
 
 Чай / Tea
 
 Ceai Aloe Vera (400 ml) - 70 MDL
+Ceai Aloe Vera
 Ceai de cătină (400 ml) - 70 MDL
+Ceai de cătină
 Ceai Fructul pasiunii (400ml) - 70 MDL
+Ceai Fructul pasiunii
 Ceai de zmeură - 70 MDL
+Ceai de zmeură
 Ceai în asortiment - 30 MDL
+Ceai în asortiment
 Ceai în asortiment infuzie (400 ml) - 40 MDL
+Ceai în asortiment infuzie
 
 Соки и Вода / Juices & Water
 
 Fresh de portocală (300ml) - 50 MDL
 Апельсиновый фреш
 Coca cola (250 ml) - 30 MDL
+Coca cola (250 ml)
 Coca cola zero (250ml) - 30 MDL
+Coca cola zero (250ml)
 Sprite (250ml) - 30 MDL
+Sprite (250ml)
 Fanta (250 ml) - 30 MDL
+Fanta (250 ml)
 Vita (250 ml) - 30 MDL
-plată/gazată (330ml) - 30 MDL
+Vita (250 ml)
+Plată/gazată (500ml) - 35 MDL
 Вода без/с газом
-plată/gazată (750ml) - 40 MDL
+Plată/gazată (650ml) - 45 MDL
+Вода без/с газом (650ml)
+plată/gazată (750ml) - 75 MDL
 Вода без/с газом
 
 Пиво и закуски / Beer & Snacks
 
 Corona (350 ml) - 70 MDL
-Grolsh (350 ml) - 70 MDL
+Corona (350 ml)
 Franziskaner (500 ml) (naturtrub) - 75 MDL
 Нефильтрованное
 Chips - 60 MDL
@@ -203,42 +223,79 @@ Alune - 30 MDL
 
 Безалкогольные коктейли / Non-alcoholic cocktails
 
-Lemongrass - 75 MDL
-Raspberry Lemonade - 75 MDL
+Pink Kiwi - 75 MDL
+Pink Kiwi
+Blue Electic - 75 MDL
+Blue Electric
 Apple& Aloe Vera Twist - 75 MDL
+Apple& Aloe Vera Twist
 Maracuja lemonade - 75 MDL
+Maracuja lemonade
 Mojito lemonade - 75 MDL
+Mojito lemonade
+Green Cactus - 75 MDL
+Green Cactus
+Apricot Twist - 75 MDL
+Apricot Twist
 
 Алкогольные коктейли / Alcoholic cocktails
 
+Blue Lady - 110 MDL
+Blue Lady
+Porn star martini - 100 MDL
+Porn star martini
 Aperol Spritz - 95 MDL
-Watermelon & Lychee Spritz - 95 MDL
+Aperol Spritz
 Grapefruit & Lychee Spritz - 95 MDL
+Grapefruit & Lychee Spritz
 Margarita - 95 MDL
+Margarita
+Clover Club - 95 MDL
+Clover Club
+Ocean Spritz - 95 MDL
+Hugo - 95 MDL
+Hugo
+Ocean Spritz - 95 MDL
+Ocean Spritz
+Pink Margarita - 95 MDL
+Pink Margarita
+Green Paradise - 95 MDL
+Green Paradise
+Aperol Sour - 95 MDL
+Aperol Sour
+Clover Club
 Mojito alcoholic - 95 MDL
+Mojito alcoholic
 Chery Flower - 95 MDL
+Chery Flower
 
 Виски / Whisky
 
 Jameson (40ml) - 60 MDL
+Jameson (40ml)
 Jameson (700ml) - 800 MDL
 Бутылка
 Jack Daniels (40ml) - 60 MDL
+Jack Daniels (40ml)
 Jack Daniels (700ml) - 750 MDL
 Бутылка
 
 Коньяк / Divin
 
 Bardar 5 ani (40ml) - 30 MDL
+Bardar 5 ani (40ml)
 Bardar 5 ani (500ml) - 270 MDL
 Бутылка
 Bardar Silver 7 ani (40ml) - 40 MDL
+Bardar Silver 7 ani (40ml)
 Bardar Silver 7 ani (500ml) - 370 MDL
 Бутылка
 Bardar Gold 7 ani (40ml) - 50 MDL
+Bardar Gold 7 ani (40ml)
 Bardar Gold 7 ani (500ml) - 400 MDL
 Бутылка
 Bardar 10 ani (40ml) - 60 MDL
+Bardar 10 ani (40ml)
 Bardar 10 ani (500ml) - 500 MDL
 Бутылка
 Bardar 12 ani (500ml) - 550 MDL
@@ -247,71 +304,204 @@ Bardar 12 ani (500ml) - 550 MDL
 Игристые / Sparkling
 
 Purcari Cuvee Alb Brut (0.75L) - 450 MDL
+Purcari Cuvee Alb Brut (0.75L)
 Purcari Fetească Albă (0.75L) - 450 MDL
+Purcari Fetească Albă (0.75L)
 Purcari Cuvee Rose Brut (0.75L) - 480 MDL
+Purcari Cuvee Rose Brut (0.75L)
 Purcari Cuvee Alb Extra Brut (0.75L) - 480 MDL
-Wine Crime Rose Dulce (0.75L) - 240 MDL
+Purcari Cuvee Alb Extra Brut (0.75L)
+Wine Crime Rose Dulce (0.75L) - 250 MDL
+Wine Crime Rose Dulce (0.75L)
+Wine Crime Alb dulce (0.75L) - 250 MDL
+Wine Crime Alb dulce (0.75L)
 Domeniile Vorniceni Chardonnay Fet.Regală Brut (0.75L) - 250 MDL
+Domeniile Vorniceni Chardonnay Fet.Regală Brut (0.75L)
 Novak 4 Soiuri Brut (0.75L) - 250 MDL
+Novak 4 Soiuri Brut (0.75L)
 Chateau Vartely Brut (0.75L) - 300 MDL
+Chateau Vartely Brut (0.75L)
 Cricova Alb Brut Clasic (0.75L) - 230 MDL
+Cricova Alb Brut Clasic (0.75L)
 Cricova Crisseco Gold Brut (0.75L) - 240 MDL
+Cricova Crisseco Gold Brut (0.75L)
 Cricova Lacrimă Dulce Gold Edtion Dulce (0.75L) - 240 MDL
+Cricova Lacrimă Dulce Gold Edtion Dulce (0.75L)
 Cricova Cuvee Prestige Brut Alb (0.75L) - 390 MDL
+Cricova Cuvee Prestige Brut Alb (0.75L)
 Prosecco Serena Alb Brut (0.75L) - 350 MDL
+Prosecco Serena Alb Brut (0.75L)
 Prosecco Serena Rose Brut (0.75L) - 350 MDL
+Prosecco Serena Rose Brut (0.75L)
 Prosecco Serena Frizzante (0.75L) - 300 MDL
+Prosecco Serena Frizzante (0.75L)
 Divus Ediție Limitată Alb Brut (0.75L) - 420 MDL
+Divus Ediție Limitată Alb Brut (0.75L)
 
 Белые вина / White Wines
 
 Purcari Pinot Grigio (0.75L) - 250 MDL
+Purcari Pinot Grigio (0.75L)
 Purcari Chardonnay (0.75L) - 250 MDL
+Purcari Chardonnay (0.75L)
 Purcari Viorica (0.75L) - 260 MDL
+Purcari Viorica (0.75L)
 Purcari Vinohora F.Albă Chardonnay (0.75L) - 300 MDL
+Purcari Vinohora F.Albă Chardonnay (0.75L)
 Purcari Nocturne Viorica (0.75L) - 300 MDL
+Purcari Nocturne Viorica (0.75L)
 Purcari Nocturne Sauvignon Blanc (0.75L) - 300 MDL
+Purcari Nocturne Sauvignon Blanc (0.75L) 
 Purcari Nocturne Pinot Grigio (0.75L) - 300 MDL
+Purcari Nocturne Pinot Grigio (0.75L)
 Purcari Traminer (0.75L) - 300 MDL
+Purcari Traminer (0.75L)
 Purcari Ice Wine Muscat Ottonel Traminer (0.37L) - 550 MDL
+Purcari Ice Wine Muscat Ottonel Traminer (0.37L)
 Alb de Purcari (0.75L) - 550 MDL
+Alb de Purcari (0.75L)
 Purcari Academia Viorica Orange (0.75L) - 1000 MDL
+Purcari Academia Viorica Orange (0.75L)
 Crama Mircești Fetească Regală (0.75L) - 240 MDL
+Crama Mircești Fetească Regală (0.75L)
 Crama Mircești Fetească Albă (0.75L) - 240 MDL
+Crama Mircești Fetească Albă (0.75L)
 Crama Mircești Riesling (0.75L) - 270 MDL
+Crama Mircești Riesling (0.75L)
 Crama Mircești Fume Blanc (0.75L) - 300 MDL
+Crama Mircești Fume Blanc (0.75L)
 Cricova Wild Fetească Regală (0.75L) - 250 MDL
+Cricova Wild Fetească Regală (0.75L)
 Crama Mircești Bardul de Mircești dulce (0.37L) - 400 MDL
+Crama Mircești Bardul de Mircești dulce (0.37L)
 Domeniile Vorniceni Trei Mindre (0.75L) - 250 MDL
+Domeniile Vorniceni Trei Mindre (0.75L)
 Domeniile Vorniceni Floricica (0.75L) - 250 MDL
+Domeniile Vorniceni Floricica (0.75L)
 Făutor Aurore Albarino, Sauvignon Blanc (0.75L) - 300 MDL
+Făutor Aurore Albarino, Sauvignon Blanc (0.75L)
 Făutor Fetească Regală (0.75L) - 300 MDL
+Făutor Fetească Regală (0.75L)
 Făutor Pinot Grigio (0.75L) - 300 MDL
+Făutor Pinot Grigio (0.75L)
 Gogu Riton (0.75L) - 250 MDL
+Gogu Riton (0.75L)
 Podgoria Vin Viorica (0.75L) - 250 MDL
+Podgoria Vin Viorica (0.75L)
 Gitana Winery Riesling (0.75L) - 290 MDL
+Gitana Winery Riesling (0.75L)
 Gitana Winery Chardonnay (0.75L) - 290 MDL
+Gitana Winery Chardonnay (0.75L)
 Gitana Petite Sophie (0.75L) - 580 MDL
+Gitana Petite Sophie (0.75L)
 Novac Alb de Onițcani (0.75ml) - 240 MDL
+Novac Alb de Onițcani (0.75ml)
 Chateau Cristi Chardonnay (0.75L) - 320 MDL
+Chateau Cristi Chardonnay (0.75L)
 Castel Mimi Sînzienele sec (0.75L) - 240 MDL
+Castel Mimi Sînzienele sec (0.75L)
 Castel Mimi Cucoanele sec (0.75L) - 240 MDL
+Castel Mimi Cucoanele sec (0.75L)
 Castel Mimi Viorica de Bulboaca demisec (0.75L) - 300 MDL
+Castel Mimi Viorica de Bulboaca demisec (0.75L)
 
 Розовые вина / Rosé Wines
 
 Purcari Rose (0.75L) - 250 MDL
+Purcari Rose (0.75L)
 Purcari Nocturne Rose (0.75L) - 300 MDL
+Purcari Nocturne Rose (0.75L)
 Purcari Vinohora Fet.Neagră/Monte (0.75L) - 300 MDL
+Purcari Vinohora Fet.Neagră/Monte (0.75L)
 Crama Mircești Rose (0.75L) - 240 MDL
-Crama Mircești Chery Flower (0.75L) - 230 MDL
+Crama Mircești Rose (0.75L)
+Crama Mircești Chery Flower (0.75L) - 250 MDL
+Crama Mircești Chery Flower (0.75L)
 Castel Mimi Rose de Bulboaca (0.75L) - 300 MDL
+Castel Mimi Rose de Bulboaca (0.75L)
+Cricova Wild rose (0.75L) - 240 MDL
+Cricova Wild rose (0.75L)
+Gitana rose (0.75L) - 290 MDL
+Gitana rose (0.75L)
+Fautor Vivienne Cuvee (0.75L) - 290 MDL
+Fautor Vivienne Cuvee 
 
 Красные вина / Red Wines
 
-Purcari Negru de Purcari (0.75L) - 650 MDL
-Gitana Lupi (0.75L) - 580 MDL
-Castel Mimi Fetească Neagră (0.75L) - 320 MDL
-Fautor Negre (0.75L) - 350 MDL
-Rosu de Purcari (0.75L) - 550 MDL
 Purcari Malbec (0.75L) - 250 MDL
+Purcari Malbec (0.75L)
+Purcari Cabernet-Sauvignon (0.75L) - 250 MDL
+Purcari Cabernet-Sauvignon (0.75L)
+Purcari Merlot (0.75L) - 250 MDL
+Purcari Merlot (0.75L)
+Purcari Freedom Blend (0.75L) - 300 MDL
+Purcari Freedom Blend (0.75L)
+Purcari Nocturne Cabernet Sauvignon (0.75L) - 300 MDL
+Purcari Nocturne Cabernet Sauvignon (0.75L)
+Purcari Rară Neagră (0.75L) - 300 MDL
+Purcari Rară Neagră (0.75L)
+Rosu de Purcari (0.75L) - 550 MDL
+Rosu de Purcari (0.75L)
+Purcari Negru de Purcari (0.75L) - 650 MDL
+Purcari Negru de Purcari (0.75L)
+Purcari Academia Fet.Neagră (0.75L) - 1000 MDL
+Purcari Academia Fet.Neagră (0.75L)
+Purcari Academia Rară Neagră (0.75L) - 1000 MDL
+Purcari Academia Rară Neagră (0.75L)
+Crama Mircești Rară Neagră (0.75L) - 1000 MDL
+Crama Mircești Rară Neagră (0.75L)
+Crama Mircești Fet.Neagră Saperavi (0.75L) - 300 MDL
+Crama Mircești Fet.Neagră Saperavi (0.75L)
+Divus Winery Saperavi (0.75L) - 300 MDL
+Divus Winery Saperavi (0.75L)
+Domeniile Vorniceni Cei Trei Cabernet Sauv. Merlot Saperavi (0.75L) - 250 MDL
+Domeniile Vorniceni Cei Trei Cabernet Sauv. Merlot Saperavi (0.75L)
+Fautor Negre (0.75L) - 350 MDL
+Fautor Negre (0.75L)
+Făutor Fet.Neagră/Tempranillo (0.75L) - 350 MDL
+Făutor Fet.Neagră/Tempranillo (0.75L)
+Fautor Rară Neagră (0.75L) - 370 MDL
+Fautor Rară Neagră (0.75L)
+Fautor Tempranillo (0.75L) - 380 MDL
+Fautor Tempranillo (0.75L)
+Divus Endemic Blend Rară Neagră/Fet.Neagră (0.75L) - 350 MDL
+Divus Endemic Blend Rară Neagră/Fet.Neagră (0.75L)
+Novak Merlot Ediție Limitată (0.75L) - 270 MDL
+Novak Merlot Ediție Limitată (0.75L)
+Novak Cabernet Sauvignon (0.75L) - 270 MDL
+Novak Cabernet Sauvignon (0.75L)
+Novak Pinot Noir (0.75L) - 370 MDL
+Novak Pinot Noir (0.75L)
+Novak Cabernet Fanc (0.75L) - 370 MDL
+Novak Cabernet Fanc (0.75L)
+Novac Fet.Neagră (0.75L) - 370 MDL
+Novac Fet.Neagră (0.75L)
+Novak Rară Neagră Ediție Limitată (0.75L) - 380 MDL
+Novak Rară Neagră Ediție Limitată (0.75L)
+Minis Terrios Roșu Împărat (0.75L) - 320 MDL
+Minis Terrios Roșu Împărat (0.75L)
+Minis Terrios Negru Împărat (0.75L) - 320 MDL
+Minis Terrios Negru Împărat (0.75L)
+Equinox Merlot (0.75L) - 260 MDL
+Equinox Merlot (0.75L)
+Equinox Trei Crai (0.75L) - 280 MDL
+Equinox Trei Crai (0.75L)
+Equinox 5 Elemente (0.75L) - 450 MDL
+Equinox 5 Elemente (0.75L)
+Gitana Saperavi (0.75L) - 650 MDL
+Gitana Saperavi (0.75L)
+Gitana Lupi (0.75L) - 580 MDL
+Gitana Lupi (0.75L)
+Gogu Winery Metafora (0.75L) - 600 MDL
+Gogu Winery Metafora (0.75L)
+Carpe-Diem Bad Boys (0.75L) - 480 MDL
+Chateau Cristi Cuvee Rouge Royal (0.75L) - 270 MDL
+Chateau Cristi Cuvee Rouge Royal (0.75L)
+Chateau Cristi Pinot Noir (0.75L) - 390 MDL
+Chateau Cristi Pinot Noir (0.75L)
+Castel Mimi Fetească Neagră (0.75L) - 320 MDL
+Castel Mimi Fetească Neagră (0.75L)
+Castel Mimi Rară Neagră (0.75L) - 240 MDL
+Castel Mimi Rară Neagră (0.75L)
+Castel Mimi Roșu de Bulboaca (0.75L) - 300 MDL
+Castel Mimi Roșu de Bulboaca (0.75L)

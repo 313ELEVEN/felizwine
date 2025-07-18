@@ -124,13 +124,18 @@ def get_menu():
             "Бургеры и другое / Burgers & More", "Десерты / Desserts"
                                 ]
         drink_categories = [
-            "Кофе / Coffee", "Чай / Tea", "Соки и Вода / Juices & Water",
-            "Пиво и закуски / Beer & Snacks", "Безалкогольные коктейли / Non-alcoholic cocktails",
-            "Алкогольные коктейли / Alcoholic cocktails", "Виски / Whisky",
-            "Коньяк / Divin", "Игристые / Sparkling", 
+            "Кофе / Coffee",
+            "Чай / Tea",
+            "Соки и Вода / Juices & Water",
+            "Пиво и закуски / Beer & Snacks",
+            "Безалкогольные коктейли / Non-alcoholic cocktails",
+            "Алкогольные коктейли / Alcoholic cocktails",
+            "Виски / Whisky",
+            "Коньяк / Divin",
+            "Игристые / Sparkling",
             "Белые вина / White Wines",
-            "Красные вина / Red Wines",
-            "Розовые вина / Rosé Wines" 
+            "Розовые вина / Rosé Wines",
+            "Красные вина / Red Wines"
         ]
 
         target_categories = food_categories if is_food else drink_categories
