@@ -20,7 +20,7 @@ logging.basicConfig(level=logging.DEBUG)
 
 # Настройки для Telegram-бота
 BOT_TOKEN = '7075151658:AAH9MK6jyguU3BA5J8yK5ZDy5rMYba_9Hgg'
-CHAT_ID = '2116037251'
+CHAT_IDS = ['2116037251', '6519285675']  # Список chat_id для отправки уведомлений
 
 # Порядок категорий для сортировки
 CATEGORY_ORDER = [
@@ -39,9 +39,8 @@ def get_db_connection():
     conn.row_factory = sqlite3.Row
     return conn
 
-# ИСПРАВЛЕНО: Удалена ненужная проверка
 def send_telegram_notification(order_data):
-    """Отправляет форматированное уведомление о новом заказе в Telegram."""
+    """Отправляет форматированное уведомление о новом заказе в Telegram нескольким пользователям."""
     try:
         # Формируем красивое сообщение
         total_price = sum(float(item['price']) * int(item.get('quantity', 1)) for item in order_data.get('cart', []))
@@ -60,17 +59,17 @@ def send_telegram_notification(order_data):
         message += f"\n💰 *Pret total:* *{total_price:.2f} MDL*"
         
         url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
-        params = {"chat_id": CHAT_ID, "text": message, "parse_mode": "Markdown"}
 
-        # Отправляем запрос в Telegram API
-        response = requests.post(url, data=params, timeout=5) # таймаут 5 секунд
-        if response.status_code == 200:
-            app.logger.info(f"Уведомление для заказа #{order_data.get('order_id')} успешно отправлено в Telegram.")
-        else:
-            app.logger.error(f"Ошибка отправки в Telegram: {response.text}")
+        # Отправляем сообщение каждому пользователю в списке CHAT_IDS
+        for chat_id in CHAT_IDS:
+            params = {"chat_id": chat_id, "text": message, "parse_mode": "Markdown"}
+            response = requests.post(url, data=params, timeout=5)
+            if response.status_code == 200:
+                app.logger.info(f"Уведомление для заказа #{order_data.get('order_id')} успешно отправлено в Telegram (chat_id: {chat_id}).")
+            else:
+                app.logger.error(f"Ошибка отправки в Telegram (chat_id: {chat_id}): {response.text}")
     except Exception as e:
         app.logger.error(f"Исключение при отправке уведомления в Telegram: {e}")
-
 
 def admin_required(f):
     @wraps(f)
