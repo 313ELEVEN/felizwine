@@ -282,8 +282,7 @@ function applyTranslations(lang = 'ru') {
   });
 }
 
-// Загружаем язык при загрузке страницы
 document.addEventListener('DOMContentLoaded', function() {
-  const savedLang = localStorage.getItem('language') || 'ru';
+  const savedLang = 'ro'; // Всегда устанавливаем 'ro'
   applyTranslations(savedLang);
 });
