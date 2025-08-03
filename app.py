@@ -20,7 +20,11 @@ logging.basicConfig(level=logging.DEBUG)
 
 # Настройки для Telegram-бота
 BOT_TOKEN = '7075151658:AAH9MK6jyguU3BA5J8yK5ZDy5rMYba_9Hgg'
+<<<<<<< HEAD
 CHAT_IDS = ['310936025', '7255973106', '6113861296']  # Список chat_id для отправки уведомлений
+=======
+CHAT_IDS = ['310936025', '7255973106']  # Список chat_id для отправки уведомлений
+>>>>>>> 9a27d76b2adfe60b2a734a259eb369be2297667a
 
 # Порядок категорий для сортировки
 CATEGORY_ORDER = [
