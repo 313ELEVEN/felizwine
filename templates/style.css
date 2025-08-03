@@ -1,0 +1,26 @@
+/* Базовые стили */
+body {
+    font-size: 16px;
+    margin: 0;
+}
+
+/* Мобильная версия (экран меньше 768px) */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+    .menu {
+        flex-direction: column;
+    }
+}
+
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+}
+
+button, a {
+    min-width: 48px;
+    min-height: 48px;
+    padding: 12px;
+}

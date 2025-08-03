@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль - Feliz Wine Bar</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Montserrat', sans-serif; background-color: #0f172a; color: #e2e8f0; } /* Darker background, lighter text */
+        .status-Новый { background-color: #3b82f6; }
+        .status-Одобрен { background-color: #22c55e; }
+        .status-Отменен { background-color: #ef4444; }
+        .status-Доставлен { background-color: #6b7280; }
+
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #475569;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b;
+        }
+    </style>
+</head>
+<body class="bg-slate-900 min-h-screen flex flex-col">
+    <header class="bg-gray-800 shadow-lg fixed w-full top-0 z-10">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="/" class="text-2xl font-bold text-white hover:text-gray-200 transition-colors">Feliz Wine Bar</a>
+            <nav>
+                <a href="/menu" class="text-gray-300 hover:text-white font-semibold transition-colors mr-6">Меню</a>
+                <button onclick="logout()" class="text-gray-300 hover:text-white font-semibold transition-colors">Выйти</button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow container mx-auto p-6 mt-20 md:mt-24"> <h1 class="text-4xl md:text-5xl font-bold mb-8 text-center text-white">Мой профиль</h1>
+
+        <section class="bg-gray-800 p-6 rounded-xl shadow-2xl mb-8 border border-gray-700">
+            <h2 class="text-2xl md:text-3xl font-semibold mb-4 text-white">Личные данные</h2>
+            <div class="space-y-3 text-lg text-gray-300">
+                <p><strong>Имя:</strong> {{ user_info.name }}</p>
+                <p><strong>Email:</strong> {{ user_info.email }}</p>
+                <p><strong>Телефон:</strong> {{ user_info.phone }}</p>
+            </div>
+            <button class="mt-6 px-5 py-2 bg-indigo-600 text-white font-semibold rounded-lg hover:bg-indigo-700 transition-colors duration-300 shadow-md">
+                Редактировать
+            </button>
+        </section>
+
+        <section class="bg-gray-800 p-6 rounded-xl shadow-2xl">
+            <h2 class="text-2xl md:text-3xl font-semibold mb-6 text-white">История заказов</h2>
+            <div class="space-y-6">
+                {% for order in orders %}
+                <div class="bg-gray-700 p-5 rounded-lg shadow-lg border border-gray-600 hover:bg-gray-600 transition-colors duration-200 cursor-pointer">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-3">
+                        <span class="font-bold text-xl text-white mb-2 md:mb-0">Заказ #{{ order.id }}</span>
+                        <div class="flex flex-col md:flex-row items-start md:items-center">
+                            <span class="text-gray-300 text-sm md:text-base mr-3">от {{ order.created_at.split(' ')[0] }}</span>
+                            <span class="px-3 py-1 text-sm font-bold rounded-full status-{{ order.status }} text-white mt-2 md:mt-0">{{ order.status }}</span>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-300 mb-3"><strong>Адрес:</strong> {{ order.customer_address }}</p>
+                    <ul class="list-disc list-inside text-sm text-gray-300 mt-2 space-y-1">
+                        {% for item in order.order_details %}
+                        <li>{{ item.name }} x {{ item.quantity }}</li>
+                        {% endfor %}
+                    </ul>
+                    <p class="text-right font-bold text-xl mt-4 text-white">Итого: {{ order.total_price }} MDL</p>
+                </div>
+                {% else %}
+                <p class="text-gray-400 text-center text-lg py-8">У вас еще нет заказов.</p>
+                {% endfor %}
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-gray-400 text-center py-4 mt-8">
+        <div class="container mx-auto">
+            <p>&copy; 2025 Feliz Wine Bar. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        async function logout() {
+            try {
+                const response = await fetch('/api/logout', { method: 'POST' });
+                if (response.ok) {
+                    window.location.href = '/';
+                } else {
+                    console.error('Logout failed:', response.statusText);
+                    alert('Не удалось выйти из системы. Попробуйте еще раз.');
+                }
+            } catch (error) {
+                console.error('Logout error:', error);
+                alert('Произошла ошибка при выходе из системы.');
+            }
+        }
+    </script>
+</body>
+</html>
