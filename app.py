@@ -18,6 +18,7 @@ from flask import (
 )
 from flask_cors import CORS
 from functools import wraps
+from werkzeug.middleware.proxy_fix import ProxyFix
 from werkzeug.security import check_password_hash, generate_password_hash
 from werkzeug.utils import secure_filename
 
@@ -25,10 +26,34 @@ from database import init_database
 from models import Advertisement, BotAdmin, Label, MenuItem, Order, PageContent, User, db
 
 
+def env_flag(name: str, default: bool = False) -> bool:
+    raw_value = os.getenv(name)
+    if raw_value is None:
+        return default
+    return str(raw_value).strip().lower() in {"1", "true", "yes", "on"}
+
+
+FLASK_ENV = (os.getenv("FLASK_ENV") or "").strip().lower()
+IS_RENDER = any(os.getenv(name) for name in ("RENDER", "RENDER_SERVICE_ID", "RENDER_EXTERNAL_URL"))
+IS_PRODUCTION = FLASK_ENV == "production" or IS_RENDER
+SECRET_KEY = os.getenv("FLASK_SECRET_KEY") or os.getenv("SECRET_KEY") or "feliz-dev-secret-key"
+
 app = Flask(__name__)
+app.wsgi_app = ProxyFix(app.wsgi_app, x_proto=1, x_host=1)
 CORS(app)
-app.secret_key = os.getenv("FLASK_SECRET_KEY", "feliz-dev-secret-key")
-app.config["MAX_CONTENT_LENGTH"] = 16 * 1024 * 1024
+app.config.update(
+    SECRET_KEY=SECRET_KEY,
+    MAX_CONTENT_LENGTH=16 * 1024 * 1024,
+    PREFERRED_URL_SCHEME="https",
+    SESSION_COOKIE_SECURE=env_flag("SESSION_COOKIE_SECURE", IS_PRODUCTION),
+    SESSION_COOKIE_HTTPONLY=True,
+    SESSION_COOKIE_SAMESITE="Lax",
+    SESSION_REFRESH_EACH_REQUEST=True,
+)
+session_cookie_domain = (os.getenv("SESSION_COOKIE_DOMAIN") or "").strip() or None
+if session_cookie_domain:
+    app.config["SESSION_COOKIE_DOMAIN"] = session_cookie_domain
+app.secret_key = app.config["SECRET_KEY"]
 
 init_database(app)
 
@@ -244,6 +269,25 @@ def current_user() -> User | None:
     if not user_id:
         return None
     return db.session.get(User, user_id)
+
+
+def build_auth_redirect_url(user: User) -> str:
+    return url_for("admin_dashboard") if user.is_admin else url_for("profile")
+
+
+def store_user_session(user: User) -> None:
+    session.clear()
+    session["user_id"] = user.id
+    session["is_admin"] = bool(user.is_admin)
+    session.permanent = True
+    session.modified = True
+
+
+def auth_success_response(user: User):
+    redirect_url = build_auth_redirect_url(user)
+    if request.path.startswith("/api/") or request.is_json or wants_json_response():
+        return jsonify({"success": True, "user": serialize_user(user), "redirect_url": redirect_url})
+    return redirect(redirect_url)
 
 
 def admin_required(view):
@@ -468,6 +512,37 @@ def commit_session() -> None:
         raise
 
 
+def add_vary_header(response, header_name: str):
+    current_value = response.headers.get("Vary", "")
+    vary_values = {item.strip() for item in current_value.split(",") if item.strip()}
+    vary_values.add(header_name)
+    response.headers["Vary"] = ", ".join(sorted(vary_values))
+    return response
+
+
+def disable_cache(response):
+    response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, private, max-age=0"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "0"
+    return response
+
+
+@app.after_request
+def apply_response_headers(response):
+    auth_sensitive_prefixes = ("/admin",)
+    auth_sensitive_paths = {"/login", "/register", "/profile", "/api/login", "/api/register", "/api/logout"}
+    cookie_aware_paths = {"/", "/menu", "/profile"}
+    path = request.path or "/"
+
+    if path in cookie_aware_paths or path in auth_sensitive_paths or path.startswith(auth_sensitive_prefixes):
+        add_vary_header(response, "Cookie")
+
+    if path in auth_sensitive_paths or path in cookie_aware_paths or path.startswith(auth_sensitive_prefixes):
+        disable_cache(response)
+
+    return response
+
+
 def dashboard_state() -> dict[str, Any]:
     return {
         "menu_items": [serialize_menu_item(item) for item in MenuItem.query.order_by(MenuItem.category.asc(), MenuItem.sort_order.asc(), MenuItem.name.asc()).all()],
@@ -616,9 +691,10 @@ def profile():
     return render_template("profile.html", user_info=user, orders=orders)
 
 
+@app.route("/login", methods=["POST"])
 @app.route("/api/login", methods=["POST"])
 def login():
-    payload = request.get_json(silent=True) or {}
+    payload = request.get_json(silent=True) or request.form.to_dict() or {}
     email = (payload.get("email") or "").strip().lower()
     raw_password = payload.get("password") or ""
 
@@ -626,14 +702,14 @@ def login():
     if not user or not verify_password(user.password, raw_password):
         return jsonify({"success": False, "message": "Неверный email или пароль."}), 401
 
-    session["user_id"] = user.id
-    session["is_admin"] = bool(user.is_admin)
-    return jsonify({"success": True, "user": serialize_user(user)})
+    store_user_session(user)
+    return auth_success_response(user)
 
 
+@app.route("/register", methods=["POST"])
 @app.route("/api/register", methods=["POST"])
 def register():
-    payload = request.get_json(silent=True) or {}
+    payload = request.get_json(silent=True) or request.form.to_dict() or {}
     name = (payload.get("name") or "").strip()
     email = (payload.get("email") or "").strip().lower()
     phone = (payload.get("phone") or "").strip()
@@ -647,9 +723,8 @@ def register():
     user = User(name=name, email=email, phone=phone, password=build_password(password), is_admin=False)
     db.session.add(user)
     commit_session()
-    session["user_id"] = user.id
-    session["is_admin"] = False
-    return jsonify({"success": True, "user": serialize_user(user)})
+    store_user_session(user)
+    return auth_success_response(user)
 
 
 @app.route("/admin/bot-admins", methods=["GET", "POST"])

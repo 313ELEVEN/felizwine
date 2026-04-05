@@ -445,7 +445,10 @@ function escapeHtml(value) {
 }
 
 async function requestJSON(url, options = {}) {
-    const response = await fetch(url, options);
+    const response = await fetch(url, {
+        credentials: "same-origin",
+        ...options,
+    });
     const isJson = response.headers.get("content-type")?.includes("application/json");
     const payload = isJson ? await response.json() : null;
     if (!response.ok) {
@@ -967,7 +970,7 @@ async function handleCheckout(event) {
 async function handleLogin(event) {
     event.preventDefault();
     try {
-        await requestJSON("/api/login", {
+        const result = await requestJSON("/api/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -976,7 +979,10 @@ async function handleLogin(event) {
             }),
         });
         showToast(copy("auth_success"));
-        window.setTimeout(() => window.location.reload(), 350);
+        const redirectUrl = result?.redirect_url || (result?.user?.is_admin ? "/admin/dashboard" : "/profile");
+        window.setTimeout(() => {
+            window.location.href = redirectUrl;
+        }, 300);
     } catch (error) {
         showToast(error.message);
     }
@@ -985,7 +991,7 @@ async function handleLogin(event) {
 async function handleRegister(event) {
     event.preventDefault();
     try {
-        await requestJSON("/api/register", {
+        const result = await requestJSON("/api/register", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -996,7 +1002,10 @@ async function handleRegister(event) {
             }),
         });
         showToast(copy("register_success"));
-        window.setTimeout(() => window.location.reload(), 350);
+        const redirectUrl = result?.redirect_url || "/profile";
+        window.setTimeout(() => {
+            window.location.href = redirectUrl;
+        }, 300);
     } catch (error) {
         showToast(error.message);
     }
