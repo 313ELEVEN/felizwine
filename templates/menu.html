@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Wine Bar | Menu</title>
+    <link rel="icon" href="{{ url_for('static', filename='feliz_wine_bar.ico') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/menu-page.css', v='20260405g') }}">
+</head>
+<body>
+    <div id="drawer-backdrop" class="drawer-backdrop"></div>
+
+    <header class="main-header">
+        <div class="container-shell header-inner">
+            <a href="/" class="restaurant-name">Feliz Wine Bar</a>
+
+            <div class="header-center desktop-only">
+                <div class="language-switchers">
+                    <button class="lang-switcher is-active" data-lang="ru" type="button">RU</button>
+                    <button class="lang-switcher" data-lang="ro" type="button">RO</button>
+                    <button class="lang-switcher" data-lang="en" type="button">EN</button>
+                </div>
+            </div>
+
+            <nav class="desktop-actions">
+                {% if user_info %}
+                    {% if user_info.is_admin %}
+                        <a href="/admin/dashboard" class="header-link" data-copy="admin">Админ</a>
+                    {% endif %}
+                    <a href="/profile" class="header-link" data-copy="profile">Профиль</a>
+                    <button type="button" id="logout-button" class="header-link" data-copy="logout">Выйти</button>
+                {% else %}
+                    <button type="button" id="open-auth-button" class="header-link" data-copy="login">Войти</button>
+                {% endif %}
+                <button type="button" id="desktop-cart-button" class="header-cart-button" aria-label="Cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="cart-badge-desktop" class="cart-count">0</span>
+                </button>
+            </nav>
+
+            <div class="mobile-actions">
+                <button type="button" id="mobile-auth-button" class="mobile-icon-button" aria-label="Account">
+                    <i class="fa-regular fa-user"></i>
+                </button>
+                <button type="button" id="mobile-cart-button" class="mobile-icon-button" aria-label="Cart">
+                    <i class="fa-solid fa-cart-shopping"></i>
+                    <span id="cart-badge-mobile" class="cart-count">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="page-shell">
+        {% set landing_title_value = page_content.payload.hero_title %}
+        {% set landing_subtitle_value = page_content.payload.hero_subtitle %}
+        {% if page_content.visible %}
+            <section class="landing-hero">
+                <div class="hero-media-wrap" aria-hidden="true">
+                    <div class="hero-media-fallback"></div>
+                    <picture class="hero-media-frame">
+                        <source media="(min-width: 768px)" srcset="{{ url_for('static', filename='images/felpk.webp') }}">
+                        <img
+                            class="hero-media"
+                            src="{{ url_for('static', filename='images/felmob.webp') }}"
+                            alt=""
+                            loading="eager"
+                            fetchpriority="high"
+                            decoding="async"
+                        >
+                    </picture>
+                </div>
+                <div class="hero-media-overlay"></div>
+                <div class="container-shell landing-hero-inner">
+                    <p class="hero-kicker">{{ page_content.payload.hero_eyebrow or 'Feliz Wine Bar' }}</p>
+                    <h1 class="landing-hero-title" data-copy="landing_title" data-page-copy="hero_title">{{ landing_title_value or 'Gust Rafinat' }}</h1>
+                    <p class="landing-hero-subtitle" data-copy="landing_subtitle" data-page-copy="hero_subtitle">{{ landing_subtitle_value or 'Cele mai bune vinuri și bucătărie de autor' }}</p>
+                    <div class="hero-actions">
+                        <button type="button" id="scroll-to-menu-button" class="primary-button" data-copy="view_menu">Открыть меню</button>
+                        <button type="button" id="hero-open-cart" class="secondary-button" data-copy="open_cart">Корзина</button>
+                    </div>
+                </div>
+            </section>
+        {% endif %}
+
+        <section class="menu-hero">
+            <div class="container-shell menu-hero-inner">
+                <p class="hero-kicker">{{ page_content.payload.hero_eyebrow or 'Feliz Wine Bar' }}</p>
+                <div class="mobile-language-row">
+                    <div class="language-switchers">
+                        <button class="lang-switcher is-active" data-lang="ru" type="button">RU</button>
+                        <button class="lang-switcher" data-lang="ro" type="button">RO</button>
+                        <button class="lang-switcher" data-lang="en" type="button">EN</button>
+                    </div>
+                </div>
+                <h1 class="menu-hero-title" data-copy="our_menu" data-page-copy="menu_title">{{ page_content.payload.menu_title or 'Meniul Nostru' }}</h1>
+                <p class="menu-hero-subtitle" data-copy="menu_intro_subtitle" data-page-copy="menu_subtitle">{{ page_content.payload.menu_subtitle or 'Prezentare premium, structură clară și comandă rapidă de pe orice dispozitiv.' }}</p>
+
+                <div class="menu-toggle">
+                    <button id="food-toggle" class="toggle-button is-active" type="button" data-copy="food">Еда</button>
+                    <button id="drinks-toggle" class="toggle-button" type="button" data-copy="drinks">Напитки</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="ads-section" class="ads-section">
+            <div class="container-shell">
+                <div class="ads-block">
+                    <div class="ads-head">
+                        <div>
+                            <p class="section-kicker" data-copy="ads_kicker" data-page-copy="ads_title">{{ page_content.payload.ads_title or 'Спецпредложения' }}</p>
+                            <h2 data-copy="ads_heading">Рекламный блок</h2>
+                        </div>
+                        <div class="ads-controls" aria-label="Ad navigation">
+                            <button id="ads-prev-button" class="ads-nav-button" type="button" aria-label="Previous banner">
+                                <i class="fa-solid fa-chevron-left" aria-hidden="true"></i>
+                            </button>
+                            <button id="ads-next-button" class="ads-nav-button" type="button" aria-label="Next banner">
+                                <i class="fa-solid fa-chevron-right" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div id="ads-scroller" class="ads-scroller">
+                        <div id="ads-track" class="ads-track"></div>
+                    </div>
+                    <div class="ads-footer">
+                        <div id="ads-dots" class="ads-pagination" aria-label="Ad navigation"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="categories-section">
+            <div class="categories-frame">
+                <div class="container-shell">
+                    <div id="categories-rail" class="categories-rail"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="menu-workspace" class="menu-section">
+            <div class="container-shell">
+                <div id="menu-grid" class="menu-grid"></div>
+            </div>
+        </section>
+    </main>
+
+    <button type="button" id="floating-cart" class="floating-cart" aria-label="Cart">
+        <i class="fa-solid fa-cart-shopping"></i>
+        <span id="cart-badge-floating" class="cart-count">0</span>
+    </button>
+
+    <aside id="cart-drawer" class="cart-drawer" aria-hidden="true">
+        <div class="drawer-header">
+            <div>
+                <p class="section-kicker" data-copy="cart">Корзина</p>
+                <h3 data-copy="cart_heading">Ваш заказ</h3>
+            </div>
+            <button type="button" id="close-cart-drawer" class="close-button" aria-label="Close">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div id="cart-items" class="cart-items"></div>
+        <div class="drawer-footer">
+            <div class="drawer-total">
+                <span data-copy="total">Итого</span>
+                <strong id="cart-total">0 MDL</strong>
+            </div>
+            <button type="button" id="checkout-button" class="primary-button full-width" data-copy="checkout">Оформить заказ</button>
+        </div>
+    </aside>
+
+    <div id="product-modal" class="modal">
+        <div class="modal-card product-modal-card">
+            <button type="button" class="close-button modal-close" data-close-modal="product-modal" aria-label="Close">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="product-modal-media">
+                <img id="product-modal-image" src="" alt="Product image" decoding="async">
+                <span id="product-modal-badge" class="product-badge hidden"></span>
+            </div>
+            <div class="product-modal-content">
+                <p id="product-modal-category" class="section-kicker"></p>
+                <h3 id="product-modal-title"></h3>
+                <p id="product-modal-description"></p>
+                <div class="product-modal-footer">
+                    <strong id="product-modal-price"></strong>
+                    <div class="quantity-picker">
+                        <button type="button" id="quantity-minus" class="quantity-button">-</button>
+                        <span id="quantity-value">1</span>
+                        <button type="button" id="quantity-plus" class="quantity-button">+</button>
+                    </div>
+                </div>
+                <button type="button" id="add-to-cart-button" class="primary-button full-width" data-copy="add_to_cart">Добавить в корзину</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="auth-modal" class="modal">
+        <div class="modal-card auth-card">
+            <button type="button" class="close-button modal-close" data-close-modal="auth-modal" aria-label="Close">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="auth-switch">
+                <button type="button" id="login-tab" class="auth-switch-button is-active" data-copy="login">Войти</button>
+                <button type="button" id="register-tab" class="auth-switch-button" data-copy="register">Регистрация</button>
+            </div>
+
+            <form id="login-form" class="stack-form">
+                <label>
+                    <span data-copy="email">Email</span>
+                    <input id="login-email" type="email" autocomplete="email" required>
+                </label>
+                <label>
+                    <span data-copy="password">Пароль</span>
+                    <input id="login-password" type="password" autocomplete="current-password" required>
+                </label>
+                <button type="submit" class="primary-button full-width" data-copy="login">Войти</button>
+            </form>
+
+            <form id="register-form" class="stack-form hidden">
+                <label>
+                    <span data-copy="name">Имя</span>
+                    <input id="register-name" type="text" autocomplete="name" required>
+                </label>
+                <label>
+                    <span data-copy="email">Email</span>
+                    <input id="register-email" type="email" autocomplete="email" required>
+                </label>
+                <label>
+                    <span data-copy="phone">Телефон</span>
+                    <input id="register-phone" type="tel" autocomplete="tel" required>
+                </label>
+                <label>
+                    <span data-copy="password">Пароль</span>
+                    <input id="register-password" type="password" autocomplete="new-password" required>
+                </label>
+                <button type="submit" class="primary-button full-width" data-copy="register">Регистрация</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="checkout-modal" class="modal">
+        <div class="modal-card checkout-card">
+            <button type="button" class="close-button modal-close" data-close-modal="checkout-modal" aria-label="Close">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <h3 data-copy="checkout_heading">Оформление заказа</h3>
+            <form id="checkout-form" class="stack-form">
+                <label>
+                    <span data-copy="name">Имя</span>
+                    <input id="checkout-name" type="text" autocomplete="name" required>
+                </label>
+                <label>
+                    <span data-copy="phone">Телефон</span>
+                    <input id="checkout-phone" type="tel" autocomplete="tel" required>
+                </label>
+                <label>
+                    <span data-copy="address">Адрес</span>
+                    <textarea id="checkout-address" rows="3" required></textarea>
+                </label>
+                <button type="submit" class="primary-button full-width" data-copy="confirm_order">Подтвердить заказ</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script>
+        window.__FELIZ_MENU_BOOTSTRAP__ = {
+            user: {{ user_info|tojson }},
+            pageContent: {{ page_content|tojson }},
+            geo: {{ geo_info|default({"countryCode": None})|tojson }}
+        };
+    </script>
+    <script src="{{ url_for('static', filename='js/menu-product-copy.js', v='20260405g') }}"></script>
+    <script src="{{ url_for('static', filename='js/menu-page.js', v='20260405g') }}"></script>
+</body>
+</html>

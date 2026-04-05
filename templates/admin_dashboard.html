@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Панель администратора - Feliz Wine Bar</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin-dashboard.css', v='20260405f') }}">
+</head>
+<body>
+    <div class="admin-page">
+        <header class="admin-header">
+            <div>
+                <p class="admin-kicker">Feliz Wine Bar</p>
+                <h1>Контрольная панель</h1>
+            </div>
+            <div class="admin-header-actions">
+                <a class="header-link" href="/menu">
+                    <i class="fa-solid fa-store"></i>
+                    <span>На сайт</span>
+                </a>
+                <button class="header-link" id="logout-admin" type="button">
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Выйти</span>
+                </button>
+            </div>
+        </header>
+
+        <div class="admin-toolbar">
+            <div class="save-indicator" id="save-indicator">Все изменения сохранены</div>
+            <div class="toolbar-actions">
+                <button class="toolbar-button" id="add-menu-item" type="button">
+                    <i class="fa-solid fa-plus"></i>
+                    <span>Новый товар</span>
+                </button>
+                <button class="toolbar-button" id="add-label" type="button">
+                    <i class="fa-solid fa-tag"></i>
+                    <span>Новый бейдж</span>
+                </button>
+                <button class="toolbar-button" id="add-ad" type="button">
+                    <i class="fa-solid fa-image"></i>
+                    <span>Новый баннер</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="admin-layout">
+            <aside class="admin-sidebar">
+                <section class="sidebar-card">
+                    <div class="sidebar-heading">
+                        <p class="card-kicker">Jump</p>
+                        <h2>Разделы</h2>
+                    </div>
+                    <nav class="section-nav">
+                        <button type="button" class="section-link" data-admin-section-link="labels-section">Бейджи</button>
+                        <button type="button" class="section-link" data-admin-section-link="ads-section-panel">Баннеры</button>
+                        <button type="button" class="section-link" data-admin-section-link="menu-section-panel">Меню</button>
+                        <button type="button" class="section-link" data-admin-section-link="bot-admins-section">Бот-админы</button>
+                        <button type="button" class="section-link" data-admin-section-link="orders-section">Заказы</button>
+                    </nav>
+                </section>
+
+                <section class="sidebar-card">
+                    <div class="sidebar-heading">
+                        <p class="card-kicker">Products</p>
+                        <h2>Категории</h2>
+                    </div>
+                    <div id="menu-navigator" class="menu-navigator"></div>
+                </section>
+            </aside>
+
+            <main class="admin-main">
+                <section id="labels-section" class="admin-card section-card" data-search-section>
+                    <div class="card-heading">
+                        <div>
+                            <p class="card-kicker">Labels</p>
+                            <h2>Бейджи товаров</h2>
+                        </div>
+                        <p class="card-description">Компактное управление метками. Кликните для редактирования.</p>
+                    </div>
+                    <div id="labels-list" class="menu-admin-grid"></div>
+                </section>
+
+                <section id="ads-section-panel" class="admin-card section-card" data-search-section>
+                    <div class="card-heading">
+                        <div>
+                            <p class="card-kicker">Advertisements</p>
+                            <h2>Рекламные баннеры</h2>
+                        </div>
+                        <p class="card-description">Блоки для автопрокручивающейся ленты. Кликните на карточку для редактирования.</p>
+                    </div>
+                    <div id="ads-list" class="menu-admin-grid"></div>
+                </section>
+
+                <section id="menu-section-panel" class="admin-card section-card" data-search-section>
+                    <div class="card-heading">
+                        <div>
+                            <p class="card-kicker">Menu Items</p>
+                            <h2>Позиции меню</h2>
+                        </div>
+                        <p class="card-description">Откройте категорию, нажмите на карточку товара и редактируйте её в отдельной панели справа без длинных разворачивающихся списков.</p>
+                    </div>
+                    <div class="menu-admin-controls">
+                        <div id="menu-admin-type-toggle" class="menu-admin-type-toggle">
+                            <button type="button" class="toggle-pill is-active" data-admin-menu-type="1">Еда</button>
+                            <button type="button" class="toggle-pill" data-admin-menu-type="0">Напитки</button>
+                        </div>
+                    </div>
+                    <div class="section-inline-nav">
+                        <span>Переход по категориям</span>
+                        <div id="menu-category-chips" class="quickbar-links quickbar-links-scroll compact-links"></div>
+                    </div>
+                    <div id="menu-items-list" class="menu-admin-grid"></div>
+                </section>
+
+                <section id="bot-admins-section" class="admin-card section-card" data-search-section>
+                    <div class="card-heading">
+                        <div>
+                            <p class="card-kicker">Telegram Bot</p>
+                            <h2>Администраторы бота</h2>
+                        </div>
+                        <p class="card-description">Управление Chat ID для получения заказов. Кликните для редактирования.</p>
+                    </div>
+                    <div class="toolbar-actions" style="margin-bottom: 1.5rem;">
+                        <button class="toolbar-button" id="add-bot-admin" type="button">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>Новый администратор</span>
+                        </button>
+                    </div>
+                    <div id="bot-admins-list" class="menu-admin-grid"></div>
+                </section>
+
+                <section id="orders-section" class="admin-card section-card" data-search-section>
+                    <div class="card-heading">
+                        <div>
+                            <p class="card-kicker">Orders</p>
+                            <h2>Заказы</h2>
+                        </div>
+                        <p class="card-description">Статусы меняются без отдельной страницы, поиск тоже работает по именам и телефонам клиентов.</p>
+                    </div>
+                    <div id="orders-list" class="menu-admin-grid orders-list"></div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <div id="menu-editor-backdrop" class="editor-backdrop"></div>
+    <aside id="menu-editor-drawer" class="menu-editor-drawer" aria-hidden="true">
+        <div class="menu-editor-header">
+            <div>
+                <p class="card-kicker">Product Editor</p>
+                <h2 id="menu-editor-title">Товар</h2>
+                <p id="menu-editor-status" class="card-status">Выберите карточку для редактирования.</p>
+            </div>
+            <button id="close-menu-editor" class="header-link icon-only-button" type="button" aria-label="Close editor">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+        <div id="menu-editor-body" class="menu-editor-body">
+            <div class="empty-card">Выберите товар в сетке, чтобы открыть редактор.</div>
+        </div>
+    </aside>
+
+    <div class="toast" id="admin-toast"></div>
+
+    <script>
+        window.__FELIZ_ADMIN_STATE__ = {{ dashboard_state|tojson }};
+    </script>
+    <script src="{{ url_for('static', filename='js/admin-dashboard.js', v='20260405f') }}"></script>
+</body>
+</html>
