@@ -511,23 +511,7 @@ img {
 
 .ads-scroller::before,
 .ads-scroller::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    z-index: 2;
-    width: clamp(28px, 7vw, 72px);
-    pointer-events: none;
-}
-
-.ads-scroller::before {
-    left: 0;
-    background: linear-gradient(90deg, rgba(22, 22, 22, 0.96) 14%, rgba(22, 22, 22, 0) 100%);
-}
-
-.ads-scroller::after {
-    right: 0;
-    background: linear-gradient(270deg, rgba(22, 22, 22, 0.96) 14%, rgba(22, 22, 22, 0) 100%);
+    display: none;
 }
 
 .ads-track {
@@ -558,13 +542,15 @@ img {
     overflow: hidden;
     isolation: isolate;
     scroll-snap-align: start;
-    background-image:
-        linear-gradient(180deg, rgba(0, 0, 0, 0.16) 0%, rgba(0, 0, 0, 0.56) 52%, rgba(0, 0, 0, 0.82) 100%),
-        var(--ad-image);
+    background-color: #18120c;
+    background-image: var(--ad-image);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.6),
+        0 0 40px rgba(212, 175, 55, 0.12),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.04);
 }
 
 .ad-card-placeholder {
@@ -577,30 +563,39 @@ img {
     width: min(100%, 360px);
 }
 
-.ad-card::after {
+.ad-card::before {
     content: "";
     position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background:
-        radial-gradient(circle at left center, rgba(0, 0, 0, 0.34) 0%, rgba(0, 0, 0, 0) 34%),
-        radial-gradient(circle at right center, rgba(0, 0, 0, 0.34) 0%, rgba(0, 0, 0, 0) 34%),
-        linear-gradient(180deg, rgba(0, 0, 0, 0.04) 0%, rgba(0, 0, 0, 0.12) 24%, rgba(0, 0, 0, 0.5) 72%, rgba(0, 0, 0, 0.68) 100%);
+    inset: -20%;
+    z-index: 0;
+    background: radial-gradient(
+        circle at center,
+        rgba(212, 175, 55, 0.15),
+        rgba(212, 175, 55, 0.06) 40%,
+        transparent 70%
+    );
+    filter: blur(40px);
+    opacity: 0.6;
     pointer-events: none;
+}
+
+.ad-card::after {
+    display: none;
 }
 
 .ad-card > * {
     position: relative;
-    z-index: 1;
+    z-index: 2;
 }
 
 .ad-card-content {
+    position: relative;
+    z-index: 2;
     display: grid;
     align-content: end;
     gap: 0.72rem;
     width: 100%;
-
-    padding: 1rem; /* 👈 ВОТ ЭТО ДОБАВЬ */
+    padding: 1rem;
 }
 
 .ad-card-eyebrow {
@@ -612,12 +607,14 @@ img {
     max-width: 12ch;
     font-size: 1.5rem;
     line-height: 1;
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.9);
 }
 
 .ad-card-description {
     margin: 0;
     line-height: 1.6;
     color: rgba(255, 255, 255, 0.84);
+    text-shadow: 0 2px 20px rgba(0, 0, 0, 0.9);
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
@@ -1319,6 +1316,15 @@ img {
 
     .ad-card {
         min-height: 210px;
+        box-shadow:
+            0 10px 30px rgba(0, 0, 0, 0.5),
+            0 0 20px rgba(212, 175, 55, 0.1),
+            inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+    }
+
+    .ad-card::before {
+        opacity: 0.4;
+        filter: blur(30px);
     }
 
     .categories-frame::before,

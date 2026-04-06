@@ -3,6 +3,7 @@ from __future__ import annotations
 import os
 import uuid
 from collections import defaultdict
+from datetime import timedelta
 from pathlib import Path
 from typing import Any
 
@@ -45,6 +46,7 @@ app.config.update(
     SECRET_KEY=SECRET_KEY,
     MAX_CONTENT_LENGTH=16 * 1024 * 1024,
     PREFERRED_URL_SCHEME="https",
+    PERMANENT_SESSION_LIFETIME=timedelta(days=7),
     SESSION_COOKIE_SECURE=env_flag("SESSION_COOKIE_SECURE", IS_PRODUCTION),
     SESSION_COOKIE_HTTPONLY=True,
     SESSION_COOKIE_SAMESITE="Lax",

@@ -12,6 +12,9 @@ state.activeMenuItemId = null;
 
 const saveTimers = new Map();
 const els = {};
+const REQUEST_TIMEOUT_MS = 20000;
+const AUTH_EXPIRED_MESSAGE = "Сессия администратора истекла. Обновите страницу и войдите снова.";
+const NETWORK_TIMEOUT_MESSAGE = "Сервер слишком долго отвечает. Проверьте соединение и обновите страницу.";
 
 const FOOD_CATEGORY_ORDER = [
     "Завтрак / Breakfast",
@@ -92,13 +95,40 @@ function setCardStatus(card, message, type = "idle") {
 }
 
 async function requestJSON(url, options = {}) {
-    const response = await fetch(url, options);
-    const isJson = response.headers.get("content-type")?.includes("application/json");
-    const payload = isJson ? await response.json() : null;
-    if (!response.ok) {
-        throw new Error(payload?.message || "Запрос завершился с ошибкой.");
+    const { headers, timeout = REQUEST_TIMEOUT_MS, ...fetchOptions } = options;
+    const controller = new AbortController();
+    const timeoutId = window.setTimeout(() => controller.abort(), timeout);
+
+    try {
+        const response = await fetch(url, {
+            credentials: "same-origin",
+            cache: "no-store",
+            headers: {
+                Accept: "application/json",
+                ...headers,
+            },
+            signal: controller.signal,
+            ...fetchOptions,
+        });
+
+        const isJson = response.headers.get("content-type")?.includes("application/json");
+        const payload = isJson ? await response.json() : null;
+
+        if (response.status === 401 || response.status === 403) {
+            throw new Error(payload?.message || AUTH_EXPIRED_MESSAGE);
+        }
+        if (!response.ok) {
+            throw new Error(payload?.message || "Запрос завершился с ошибкой.");
+        }
+        return payload;
+    } catch (error) {
+        if (error?.name === "AbortError") {
+            throw new Error(NETWORK_TIMEOUT_MESSAGE);
+        }
+        throw error;
+    } finally {
+        window.clearTimeout(timeoutId);
     }
-    return payload;
 }
 
 async function uploadFile(file) {
@@ -116,12 +146,14 @@ function scheduleSave(key, callback, delay = 900) {
     saveTimers.set(
         key,
         window.setTimeout(async () => {
+            saveTimers.delete(key);
             try {
                 await callback();
                 setGlobalStatus("Все изменения сохранены");
             } catch (error) {
-                setGlobalStatus(error.message, "error");
-                showToast(error.message);
+                const message = error?.message || "Не удалось сохранить изменения.";
+                setGlobalStatus(message, "error");
+                showToast(message);
             }
         }, delay),
     );
