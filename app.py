@@ -527,23 +527,34 @@ def disable_cache(response):
     return response
 
 
-@app.after_request
+@@app.after_request
 def apply_response_headers(response):
     path = request.path or "/"
 
-    # 🔥 КЭШИРУЕМ ТОЛЬКО /menu
-    if path.startswith("/menu"):
+    is_logged_in = "session" in request.cookies
+
+    # 🔥 КЭШИРУЕМ /menu ТОЛЬКО ЕСЛИ НЕ ЗАЛОГИНЕН
+    if path.startswith("/menu") and not is_logged_in:
         response.headers["Cache-Control"] = "public, max-age=31536000"
         response.headers.pop("Pragma", None)
-        response.headers.pop("Vary", None)
         return response
 
-    # 🔒 ВСЁ ОСТАЛЬНОЕ НЕ КЭШИРУЕМ (админка, логин и т.д.)
+    # 🔒 ЕСЛИ ЕСТЬ СЕССИЯ → НИЧЕГО НЕ КЭШИРУЕМ
+    if is_logged_in:
+        response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, private"
+        response.headers["Pragma"] = "no-cache"
+        response.headers["Expires"] = "0"
+        return response
+
+    # 🔒 АДМИН / AUTH ВСЕГДА БЕЗ КЭША
     auth_sensitive_prefixes = ("/admin",)
-    auth_sensitive_paths = {"/login", "/register", "/profile", "/api/login", "/api/register", "/api/logout"}
+    auth_sensitive_paths = {
+        "/login", "/register", "/profile",
+        "/api/login", "/api/register", "/api/logout"
+    }
 
     if path in auth_sensitive_paths or path.startswith(auth_sensitive_prefixes):
-        response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, private, max-age=0"
+        response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, private"
         response.headers["Pragma"] = "no-cache"
         response.headers["Expires"] = "0"
         return response
