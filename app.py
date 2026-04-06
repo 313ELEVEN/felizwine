@@ -529,16 +529,24 @@ def disable_cache(response):
 
 @app.after_request
 def apply_response_headers(response):
-    auth_sensitive_prefixes = ("/admin",)
-    auth_sensitive_paths = {"/login", "/register", "/profile", "/api/login", "/api/register", "/api/logout"}
-    cookie_aware_paths = {"/", "/menu", "/profile"}
     path = request.path or "/"
 
-    if path in cookie_aware_paths or path in auth_sensitive_paths or path.startswith(auth_sensitive_prefixes):
-        add_vary_header(response, "Cookie")
+    # 🔥 КЭШИРУЕМ ТОЛЬКО /menu
+    if path.startswith("/menu"):
+        response.headers["Cache-Control"] = "public, max-age=31536000"
+        response.headers.pop("Pragma", None)
+        response.headers.pop("Vary", None)
+        return response
 
-    if path in auth_sensitive_paths or path in cookie_aware_paths or path.startswith(auth_sensitive_prefixes):
-        disable_cache(response)
+    # 🔒 ВСЁ ОСТАЛЬНОЕ НЕ КЭШИРУЕМ (админка, логин и т.д.)
+    auth_sensitive_prefixes = ("/admin",)
+    auth_sensitive_paths = {"/login", "/register", "/profile", "/api/login", "/api/register", "/api/logout"}
+
+    if path in auth_sensitive_paths or path.startswith(auth_sensitive_prefixes):
+        response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, private, max-age=0"
+        response.headers["Pragma"] = "no-cache"
+        response.headers["Expires"] = "0"
+        return response
 
     return response
 
