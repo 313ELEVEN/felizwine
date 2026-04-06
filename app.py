@@ -531,19 +531,24 @@ def disable_cache(response):
 def apply_response_headers(response):
     path = request.path or "/"
 
-    is_logged_in = "session" in request.cookies
+    # 🔑 определяем авторизацию ПРАВИЛЬНО
+    is_logged_in = session.get("user_id") is not None
 
-    # 🔥 КЭШИРУЕМ /menu ТОЛЬКО ЕСЛИ НЕ ЗАЛОГИНЕН
-    if path.startswith("/menu") and not is_logged_in:
-        response.headers["Cache-Control"] = "public, max-age=31536000"
-        response.headers.pop("Pragma", None)
-        return response
+    # 🔥 ВСЕГДА добавляем Vary (ОЧЕНЬ ВАЖНО ДЛЯ CLOUDFLARE)
+    response.headers["Vary"] = "Cookie"
 
-    # 🔒 ЕСЛИ ЕСТЬ СЕССИЯ → НИЧЕГО НЕ КЭШИРУЕМ
+    # 🔒 ЕСЛИ ЗАЛОГИНЕН — НИКАКОГО КЭША ВООБЩЕ
     if is_logged_in:
-        response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, private"
+        response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, private, max-age=0"
         response.headers["Pragma"] = "no-cache"
         response.headers["Expires"] = "0"
+        return response
+
+    # ⚡ КЭШ ТОЛЬКО ДЛЯ ГОСТЕЙ И ТОЛЬКО /menu
+    if path.startswith("/menu"):
+        response.headers["Cache-Control"] = "public, max-age=31536000"
+        response.headers.pop("Pragma", None)
+        response.headers.pop("Expires", None)
         return response
 
     # 🔒 АДМИН / AUTH ВСЕГДА БЕЗ КЭША
@@ -554,7 +559,7 @@ def apply_response_headers(response):
     }
 
     if path in auth_sensitive_paths or path.startswith(auth_sensitive_prefixes):
-        response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, private"
+        response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, private, max-age=0"
         response.headers["Pragma"] = "no-cache"
         response.headers["Expires"] = "0"
         return response
