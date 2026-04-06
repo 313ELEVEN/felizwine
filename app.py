@@ -527,7 +527,7 @@ def disable_cache(response):
     return response
 
 
-@@app.after_request
+@app.after_request
 def apply_response_headers(response):
     path = request.path or "/"
 
