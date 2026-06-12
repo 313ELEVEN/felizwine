@@ -1,0 +1,1682 @@
+[
+  {
+    "name": "Măduva de os cu trufe și cremă de brânză",
+    "description": "300 gr",
+    "price": 165.0,
+    "category": "Закуски / Appetizers",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/d24f776e875e8add0a8ffe005c9730fe-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "34078cc7-fed4-4a32-be45-1a906fc61f6f",
+      "price_quantity": "300 gr",
+      "auronda_group": "NEW FOOD✨"
+    },
+    "sort_order": 0
+  },
+  {
+    "name": "Papanași pufoși cu gem",
+    "description": null,
+    "price": 75.0,
+    "category": "Десерты / Desserts",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/03a15e8886dc89b42584242689289c2f-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "71620831-9398-4ea5-8c8a-fa575c65f6ed",
+      "price_quantity": null,
+      "auronda_group": "NEW FOOD✨"
+    },
+    "sort_order": 0
+  },
+  {
+    "name": "Carré de miel",
+    "description": null,
+    "price": 395.0,
+    "category": "Десерты / Desserts",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/515918600d7de0bb916e8f2b6b7c57f8-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "e08343e2-f94a-4921-9ea0-45cc55a1147c",
+      "price_quantity": null,
+      "auronda_group": "NEW FOOD✨"
+    },
+    "sort_order": 1
+  },
+  {
+    "name": "Carré de vițel cu legume julien",
+    "description": "350 gr.",
+    "price": 395.0,
+    "category": "Мясные блюда / Meat Dishes",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/ae545c87f55ca56d46eda94bc29f6396-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "8f2b12f6-2b2c-448d-9085-912f636cbd0e",
+      "price_quantity": "350 gr.",
+      "auronda_group": "NEW FOOD✨"
+    },
+    "sort_order": 0
+  },
+  {
+    "name": "Fusilli cu trufe și guanciale",
+    "description": "350 gr.",
+    "price": 190.0,
+    "category": "Паста / Pasta",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/4626980b7f0cad47694fa69b5405bb5a-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "2e3a4967-6b36-4b29-a18a-44d9b19294b3",
+      "price_quantity": "350 gr.",
+      "auronda_group": "NEW FOOD✨"
+    },
+    "sort_order": 0
+  },
+  {
+    "name": "Creveți crocanți în tabioka",
+    "description": "300 gr",
+    "price": 140.0,
+    "category": "Морепродукты и Рыба / Seafood and Fish",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/828000f51d157c469a355e33060251a4-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "ef5aa872-f1f4-4cbe-a9d7-b34c46a3faaf",
+      "price_quantity": "300 gr",
+      "auronda_group": "NEW FOOD✨"
+    },
+    "sort_order": 0
+  },
+  {
+    "name": "Creveți saganaki",
+    "description": null,
+    "price": 160.0,
+    "category": "Морепродукты и Рыба / Seafood and Fish",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/c85500444731110d492290bab76e0ad7-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "7fd7394b-6f61-48fc-bb89-669a1aa6d203",
+      "price_quantity": null,
+      "auronda_group": "NEW FOOD✨"
+    },
+    "sort_order": 1
+  },
+  {
+    "name": "Burger cu creveți cartofi și sos tartar",
+    "description": "300/80/30",
+    "price": 140.0,
+    "category": "Бургеры и другое / Burgers & More",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/0837a010d6fc237fcaabe8e9e55b1467-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "7ffb32f8-4416-4e40-803c-c27f5c91dd93",
+      "price_quantity": "300/80/30",
+      "auronda_group": "NEW FOOD✨"
+    },
+    "sort_order": 0
+  },
+  {
+    "name": "Clătită cu somon",
+    "description": "Сremă de brînză,castravete,somon,clătită,verdeață",
+    "price": 120.0,
+    "category": "Завтрак / Breakfast",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/a90717217ef4b74d2f6e9c75fe801777-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "1eac1393-730f-46f9-9ca0-699f466a55ee",
+      "price_quantity": "125g",
+      "auronda_group": "Mic Dejun"
+    },
+    "sort_order": 0
+  },
+  {
+    "name": "Ou poşat cu somon şi salată",
+    "description": "Pîine,ouă,somon,castraveți,roșii,verdeață,semințe",
+    "price": 120.0,
+    "category": "Завтрак / Breakfast",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/2667e1049bad22d0add3f71ee8ab7a0a-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "5c185be1-2393-43a3-8916-e059d0b69a5b",
+      "price_quantity": null,
+      "auronda_group": "Mic Dejun"
+    },
+    "sort_order": 1
+  },
+  {
+    "name": "Clătită cu piept de pui",
+    "description": "Clătită,fileu de pui,frișcă,ciuperci,parmezan",
+    "price": 85.0,
+    "category": "Завтрак / Breakfast",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/459059909bc9fee57462e907ffb3ec94-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "8736b5d7-626b-4770-b5b0-73be4effa785",
+      "price_quantity": "200g",
+      "auronda_group": "Mic Dejun"
+    },
+    "sort_order": 2
+  },
+  {
+    "name": "Ouă prajite, ochiuri cu bacon, roşii şi castraveți",
+    "description": "Ouă,piept de porc,roșii,castraveți,verdeață,semințe",
+    "price": 85.0,
+    "category": "Завтрак / Breakfast",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/6484358688f4fceb195edb88211936de-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "3b56632d-ece1-4c77-8d81-0e3dcd20b6e8",
+      "price_quantity": null,
+      "auronda_group": "Mic Dejun"
+    },
+    "sort_order": 3
+  },
+  {
+    "name": "Brânzoaice dulci cu smântână",
+    "description": "Brînză,ouă,făină,smîntînă,pudră de zahăr,dulceață",
+    "price": 75.0,
+    "category": "Завтрак / Breakfast",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/61bd302e3d39e100b8867249f4bcf4c3-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "01042abf-4041-4350-babe-07e9d474ed94",
+      "price_quantity": null,
+      "auronda_group": "Mic Dejun"
+    },
+    "sort_order": 4
+  },
+  {
+    "name": "Șakșuka",
+    "description": "Ouă,legume în sos ,verdeață,pîine",
+    "price": 95.0,
+    "category": "Завтрак / Breakfast",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/309340c4a501720765f2717ef60f2ba2-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "df0e3b26-534b-40ce-8764-5a9143996740",
+      "price_quantity": "300g",
+      "auronda_group": "Mic Dejun"
+    },
+    "sort_order": 5
+  },
+  {
+    "name": "Bruschete cu ficat de pui, pate",
+    "description": "Ficat de pui,gem,pîine coaptă",
+    "price": 160.0,
+    "category": "Закуски / Appetizers",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/c159d8296cb7aa1b03219f9d6a64bfd1-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "49c67e7b-7685-4258-9083-3c44f7070256",
+      "price_quantity": "150/80g",
+      "auronda_group": "Aperitive"
+    },
+    "sort_order": 1
+  },
+  {
+    "name": "Bruschete cu prosciutto si rucola",
+    "description": "Pîine,cremă de brînză,prosciutto,verdeață,semințe",
+    "price": 110.0,
+    "category": "Закуски / Appetizers",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/474e78bda96a826eea1e6d5503ffc1c8-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "4b891980-5f8c-48ef-9eed-ff8123e15d05",
+      "price_quantity": "150g",
+      "auronda_group": "Aperitive"
+    },
+    "sort_order": 2
+  },
+  {
+    "name": "Tartar de somon cu cremă de brinză și pesto",
+    "description": "Somon,cremă de brînză,verdeață,condimente,parmezan",
+    "price": 160.0,
+    "category": "Закуски / Appetizers",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/58d05c6d75728cc660869f36333baffd-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "27f26285-6c36-456d-a58a-c40fd8c47ad3",
+      "price_quantity": "180/30g",
+      "auronda_group": "Aperitive"
+    },
+    "sort_order": 3
+  },
+  {
+    "name": "Tartar de vită",
+    "description": "Carne de vită,sos pesto,condimente,verdeață,pîine coaptă",
+    "price": 160.0,
+    "category": "Закуски / Appetizers",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/ce363e35164b10e5ee034e6548857769-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "e449c475-65f3-4c55-b7b1-eb5f9374d14a",
+      "price_quantity": "150/30g",
+      "auronda_group": "Aperitive"
+    },
+    "sort_order": 4
+  },
+  {
+    "name": "Bruschete cu somon si castravete",
+    "description": "150g",
+    "price": 130.0,
+    "category": "Закуски / Appetizers",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/88c268d4628eeb816c371924863278db-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "ebcc8c37-dc5b-4a7b-bb6f-f45f95e09084",
+      "price_quantity": "150g",
+      "auronda_group": "Aperitive"
+    },
+    "sort_order": 5
+  },
+  {
+    "name": "Bruschete cu ardei şi verdeață",
+    "description": "150g",
+    "price": 110.0,
+    "category": "Закуски / Appetizers",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/0a5bbc95e723f7acc7ee9ff827225f8c-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "23ea0092-42b3-4fc9-839f-57f6f40afb65",
+      "price_quantity": "150g",
+      "auronda_group": "Aperitive"
+    },
+    "sort_order": 6
+  },
+  {
+    "name": "Platou cu caşcaval",
+    "description": "(brie, massdam, dorblue, gouda, miere de albină, dulceaţă din coacăză, gresine)",
+    "price": 260.0,
+    "category": "Закуски / Appetizers",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/8c358bea2a09508ffc08404a424ed7dd-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "0b447492-15da-4c1b-868b-cb4a775f7246",
+      "price_quantity": "450g",
+      "auronda_group": "Aperitive"
+    },
+    "sort_order": 7
+  },
+  {
+    "name": "Platou cu salamuri crud afumate",
+    "description": "(prosciutto, burges de franța, milanesse, subalpino, gresine, măsline, olive)",
+    "price": 260.0,
+    "category": "Закуски / Appetizers",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/95c84103f15529143340b64c997514d3-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "73b4445a-2683-4962-a129-e0a43f1bf8e0",
+      "price_quantity": "210g",
+      "auronda_group": "Aperitive"
+    },
+    "sort_order": 8
+  },
+  {
+    "name": "Platou la vin",
+    "description": "(salam milanesse, caşcaval masdam, gresine, prosciutto, pline coaptă, cremă de vinătă, pate, măsline, olive)",
+    "price": 290.0,
+    "category": "Закуски / Appetizers",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/97542b784664e5698648549e11f194f4-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "14670347-d68f-40e8-9d42-fa0aef4048fc",
+      "price_quantity": "400g",
+      "auronda_group": "Aperitive"
+    },
+    "sort_order": 9
+  },
+  {
+    "name": "Salată de vițel cu vânătă delicioasă caramelizată",
+    "description": "270g",
+    "price": 150.0,
+    "category": "Салаты / Salads",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/64fe405e507ea7a8d87af7c55e6f3e87-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "c8623b42-1d46-47a6-8178-592e6fd75ab7",
+      "price_quantity": "270g",
+      "auronda_group": "Salate"
+    },
+    "sort_order": 0
+  },
+  {
+    "name": "Caesar cu pui",
+    "description": "300g",
+    "price": 145.0,
+    "category": "Салаты / Salads",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/3c2afc2ae478c9fd9ed609ad435b660a-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "f3d9d12f-e08f-498a-ae93-8371816ea789",
+      "price_quantity": "300g",
+      "auronda_group": "Salate"
+    },
+    "sort_order": 1
+  },
+  {
+    "name": "Salată grecească",
+    "description": "300g",
+    "price": 125.0,
+    "category": "Салаты / Salads",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/e55c46786cd23b457e6944420cc9fb4d-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "88c9b9ce-5364-479e-ac31-7c0a25ab81f4",
+      "price_quantity": "300g",
+      "auronda_group": "Salate"
+    },
+    "sort_order": 2
+  },
+  {
+    "name": "Cezar cu creveți",
+    "description": "250g",
+    "price": 155.0,
+    "category": "Салаты / Salads",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/87e5cbf7828825662889e56f74ad72ed-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "7ae87e41-b1e4-40af-8a53-45ed44c6bf78",
+      "price_quantity": "250g",
+      "auronda_group": "Salate"
+    },
+    "sort_order": 3
+  },
+  {
+    "name": "Gourmet cu ficat caramelizat",
+    "description": "250 gr",
+    "price": 145.0,
+    "category": "Салаты / Salads",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/085b964798127c1ae4a6441d1b76b475-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "94a535ff-3f62-48f6-9790-4e34241e5f49",
+      "price_quantity": "250 gr",
+      "auronda_group": "Salate"
+    },
+    "sort_order": 4
+  },
+  {
+    "name": "Salată cu creveți popcorn",
+    "description": "280 gr",
+    "price": 150.0,
+    "category": "Салаты / Salads",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/1ff51c732802ebccb3c78fb53b5bdd68-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "10407784-ae90-4360-95ce-753ebed5d926",
+      "price_quantity": "280 gr",
+      "auronda_group": "Salate"
+    },
+    "sort_order": 5
+  },
+  {
+    "name": "Salată cu curcan și brie crocant",
+    "description": "300 gr",
+    "price": 155.0,
+    "category": "Салаты / Salads",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/ba5e0cea9019f81440843de4e82b2915-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "6d496b0e-da47-4e08-98ad-7bfc699d4877",
+      "price_quantity": "300 gr",
+      "auronda_group": "Salate"
+    },
+    "sort_order": 6
+  },
+  {
+    "name": "Borş roşu ukrainesc",
+    "description": "cu smântînă, slănină, pîine",
+    "price": 95.0,
+    "category": "Супы / Soups",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/4181368f88ec5e99b5de412ee8abccdb-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "45a68e1f-b8d7-414d-bdab-19c999b9c01f",
+      "price_quantity": "400/100g",
+      "auronda_group": "Supe"
+    },
+    "sort_order": 0
+  },
+  {
+    "name": "Supă cremă de cartof cu praz si creveți",
+    "description": "350",
+    "price": 125.0,
+    "category": "Супы / Soups",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/1f40bce15440e0b7d577f2702d35ec5a-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "37e13a21-f797-4b31-abde-5bc2c0b34056",
+      "price_quantity": "350",
+      "auronda_group": "Supe"
+    },
+    "sort_order": 1
+  },
+  {
+    "name": "Zeamă de casă",
+    "description": "400g",
+    "price": 70.0,
+    "category": "Супы / Soups",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/fbb2d08d3bd8290c6498ba85bad90b61-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "91cd221d-cef0-48b8-afa2-a9dd11839ec0",
+      "price_quantity": "400g",
+      "auronda_group": "Supe"
+    },
+    "sort_order": 2
+  },
+  {
+    "name": "Ciorbă rădăuţeană",
+    "description": "400g",
+    "price": 70.0,
+    "category": "Супы / Soups",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/bc8a9e21907af8421b09af509802333f-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "ed9f13d2-eefc-4812-ae1f-1cef5ffb7828",
+      "price_quantity": "400g",
+      "auronda_group": "Supe"
+    },
+    "sort_order": 3
+  },
+  {
+    "name": "Soleancă",
+    "description": null,
+    "price": 70.0,
+    "category": "Супы / Soups",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/6719d88533cc10765eb97ee6554ef18a-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "eb03a2c6-e754-446c-a930-2464e61f8c2b",
+      "price_quantity": null,
+      "auronda_group": "Supe"
+    },
+    "sort_order": 4
+  },
+  {
+    "name": "Creveți tempura cu cartof dipper fries şi sos",
+    "description": "6 buc.",
+    "price": 145.0,
+    "category": "Морепродукты и Рыба / Seafood and Fish",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/c8f1e937b117bbb76b133523f8635f09-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "8d12eada-1b96-4d04-b2ed-2372509f263a",
+      "price_quantity": "150/50g",
+      "auronda_group": "Fructe de mare și pește"
+    },
+    "sort_order": 2
+  },
+  {
+    "name": "Creveți în stil toscan",
+    "description": "250g",
+    "price": 160.0,
+    "category": "Морепродукты и Рыба / Seafood and Fish",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/a249f8c37bd00c93e4a128e771c7f8ec-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "51b8cd20-cd50-41af-9b78-5704b52c2329",
+      "price_quantity": "250g",
+      "auronda_group": "Fructe de mare și pește"
+    },
+    "sort_order": 3
+  },
+  {
+    "name": "Soute cu creveți și midii în sos",
+    "description": "2 persoane",
+    "price": 370.0,
+    "category": "Морепродукты и Рыба / Seafood and Fish",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/a83f9d339d69d6f8b756024596389539-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "8968c652-27f4-48c3-bdaa-7da5971a2494",
+      "price_quantity": "1kg",
+      "auronda_group": "Fructe de mare și pește"
+    },
+    "sort_order": 4
+  },
+  {
+    "name": "Platou de fructe de mare în sos alb Dorblu",
+    "description": "4-5 persoane",
+    "price": 699.0,
+    "category": "Морепродукты и Рыба / Seafood and Fish",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/5f5eed777db8c3e4020c6d0736512f8f-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "1445fd57-f141-48f6-8f32-48da4b377d7b",
+      "price_quantity": "1.5kg",
+      "auronda_group": "Fructe de mare și pește"
+    },
+    "sort_order": 5
+  },
+  {
+    "name": "Platou creveți Tempura cu sos",
+    "description": "2 persoane",
+    "price": 300.0,
+    "category": "Морепродукты и Рыба / Seafood and Fish",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/3bc4742d309f420986206f02813d3c00-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "5376c91f-7b1b-4a34-9a45-619879b237c9",
+      "price_quantity": "500gr",
+      "auronda_group": "Fructe de mare și pește"
+    },
+    "sort_order": 6
+  },
+  {
+    "name": "Platou cu inele de calamari și creveți Tempura",
+    "description": "2 persoane",
+    "price": 300.0,
+    "category": "Морепродукты и Рыба / Seafood and Fish",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/b68a5a7fef8dc62ef805045b3140b5b9-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "73d4ab0b-79d1-447a-bdc9-f329899abdbd",
+      "price_quantity": "500g",
+      "auronda_group": "Fructe de mare și pește"
+    },
+    "sort_order": 7
+  },
+  {
+    "name": "Platou mix Tempura",
+    "description": "(4-5 persoane) creveți, inele calamari, carne de midii, tentacole de calamari, cartofi pai, sos tartar",
+    "price": 699.0,
+    "category": "Морепродукты и Рыба / Seafood and Fish",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/75946e0614da0ff45e23be18fcbee2ca-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "76a478df-a7df-4204-a763-807f325a2791",
+      "price_quantity": "2kg",
+      "auronda_group": "Fructe de mare și pește"
+    },
+    "sort_order": 8
+  },
+  {
+    "name": "Platou Feliz",
+    "description": "(4-6 persoane) (Creveţi, midii, vongole, inele de calamari, tentacole calamar, sos de vin, pîine coaptă cu usturoi)",
+    "price": 1350.0,
+    "category": "Морепродукты и Рыба / Seafood and Fish",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/802006b5828963f6255091b373bdbbcb-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "b178c685-6c15-4df6-9765-5bd662540a57",
+      "price_quantity": "3kg",
+      "auronda_group": "Fructe de mare și pește"
+    },
+    "sort_order": 9
+  },
+  {
+    "name": "Fileu de Dorado cu legume julien",
+    "description": null,
+    "price": 180.0,
+    "category": "Морепродукты и Рыба / Seafood and Fish",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/56e061073405bb8a25a24b59e5bdf7ca-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "25426d6f-ba1e-4da7-a96f-4d24be614d5c",
+      "price_quantity": null,
+      "auronda_group": "Fructe de mare și pește"
+    },
+    "sort_order": 10
+  },
+  {
+    "name": "Steak de somon în sos alb dorblu",
+    "description": "250g",
+    "price": 210.0,
+    "category": "Морепродукты и Рыба / Seafood and Fish",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/9d64247fd05b8eff96ae83351e7e5447-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "352db3bb-2508-41af-bc51-79c8c30ad74c",
+      "price_quantity": "250g",
+      "auronda_group": "Fructe de mare și pește"
+    },
+    "sort_order": 11
+  },
+  {
+    "name": "Funchoza Creveți",
+    "description": null,
+    "price": 155.0,
+    "category": "Паста / Pasta",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/c35627f4199e566a51998780deb00e8f-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "29572a2c-7609-47c2-9b24-6a8b86d5a8ab",
+      "price_quantity": null,
+      "auronda_group": "Paste"
+    },
+    "sort_order": 1
+  },
+  {
+    "name": "Funchoza Pui",
+    "description": null,
+    "price": 135.0,
+    "category": "Паста / Pasta",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/6c9dcb853ec195a0b6b86edf07950fb0-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "cec96f0e-0f5f-4ccb-a1e9-2486b5afea93",
+      "price_quantity": null,
+      "auronda_group": "Paste"
+    },
+    "sort_order": 2
+  },
+  {
+    "name": "Funchoza Vită",
+    "description": null,
+    "price": 155.0,
+    "category": "Паста / Pasta",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/2d7d75dff97276059d63423977d2c1e6-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "3058f29a-4b32-4ca0-8bf3-face2aff8445",
+      "price_quantity": null,
+      "auronda_group": "Paste"
+    },
+    "sort_order": 3
+  },
+  {
+    "name": "Tagliatelle cu creveți în sos alb",
+    "description": "400g",
+    "price": 155.0,
+    "category": "Паста / Pasta",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/e079492503a989e751ab15c3e4f44b8e-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "59089b85-fa8a-4dae-a17c-acac7d5851ce",
+      "price_quantity": "400g",
+      "auronda_group": "Paste"
+    },
+    "sort_order": 4
+  },
+  {
+    "name": "Pasta carbonara",
+    "description": "350g",
+    "price": 135.0,
+    "category": "Паста / Pasta",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/9f17cff54768c5329aa59f87d323a086-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "cb4d0434-0b1b-459b-9baf-c2971bd3a8b6",
+      "price_quantity": "350g",
+      "auronda_group": "Paste"
+    },
+    "sort_order": 5
+  },
+  {
+    "name": "Paste cu pesto și creveți",
+    "description": "280 gr",
+    "price": 155.0,
+    "category": "Паста / Pasta",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/3cde9a33177948ec5e32b61e444c7089-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "f122903f-6922-4318-8ce3-66d885d7d3c1",
+      "price_quantity": "280 gr",
+      "auronda_group": "Paste"
+    },
+    "sort_order": 6
+  },
+  {
+    "name": "Costiţe BBQ cu varză și castravete murat",
+    "description": null,
+    "price": 190.0,
+    "category": "Мясные блюда / Meat Dishes",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/505edd4349f0ab0794e2aa40d6426443-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "3e2316ec-156c-4c35-bb87-8dff44acb73a",
+      "price_quantity": null,
+      "auronda_group": "Preparate din carne"
+    },
+    "sort_order": 1
+  },
+  {
+    "name": "File de Rață Chutney cu mere şi muştar",
+    "description": "310/20g",
+    "price": 195.0,
+    "category": "Мясные блюда / Meat Dishes",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/8f2edca4cb73098eef6750145766822e-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "0a4b2eb7-f2eb-405f-a2d7-385de332a74a",
+      "price_quantity": "310/20g",
+      "auronda_group": "Preparate din carne"
+    },
+    "sort_order": 2
+  },
+  {
+    "name": "Piept de pui în stil toscan",
+    "description": "cu sos alb și ciuperci",
+    "price": 145.0,
+    "category": "Мясные блюда / Meat Dishes",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/9858c7c57cd51369abf9d17bd14e13e9-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "c5753a93-226a-4487-8e6e-e89d32122c58",
+      "price_quantity": "300g",
+      "auronda_group": "Preparate din carne"
+    },
+    "sort_order": 3
+  },
+  {
+    "name": "Ciolan de porc cu varză murată și polenta",
+    "description": "350g",
+    "price": 210.0,
+    "category": "Мясные блюда / Meat Dishes",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/2995e27d408e8f2d56b5f6d806ba0148-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "609970a5-288d-4cdb-b483-8f76ce6f86c5",
+      "price_quantity": "350g",
+      "auronda_group": "Preparate din carne"
+    },
+    "sort_order": 4
+  },
+  {
+    "name": "File mignon cu piure cu trufe",
+    "description": "340g",
+    "price": 240.0,
+    "category": "Мясные блюда / Meat Dishes",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/c3849d60a349ecb0a48dea6ed18e016e-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "7be86ca3-f71c-4d57-b593-116f16820187",
+      "price_quantity": "340g",
+      "auronda_group": "Preparate din carne"
+    },
+    "sort_order": 5
+  },
+  {
+    "name": "Mușchiuleț de porc în crustă cu bacon",
+    "description": "300 gr",
+    "price": 190.0,
+    "category": "Мясные блюда / Meat Dishes",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/f10c4825767e9971be8df7ca03c3ad5b-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "f59e678a-d9e3-4251-acfe-da2f85a035a6",
+      "price_quantity": "300 gr",
+      "auronda_group": "Preparate din carne"
+    },
+    "sort_order": 6
+  },
+  {
+    "name": "Obrăjori de vițel cu piure cu trufe",
+    "description": "330g",
+    "price": 160.0,
+    "category": "Мясные блюда / Meat Dishes",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/7d9a1699e4a8771690ab1ecc7567442a-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "d2eb1166-085c-4e3e-a222-899415f2ef77",
+      "price_quantity": "330g",
+      "auronda_group": "Preparate din carne"
+    },
+    "sort_order": 7
+  },
+  {
+    "name": "Steak de vită cu cartofi și adjică",
+    "description": "350g",
+    "price": 190.0,
+    "category": "Мясные блюда / Meat Dishes",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/89703c053cc9ab05b820b6248894ca0c-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "be5a73e7-b85b-4f1a-8689-7e75bb88ee1a",
+      "price_quantity": "350g",
+      "auronda_group": "Preparate din carne"
+    },
+    "sort_order": 8
+  },
+  {
+    "name": "Burger cu carne de vită marmorată",
+    "description": "cu cartofi pai și sos",
+    "price": 115.0,
+    "category": "Мясные блюда / Meat Dishes",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/95473f86f57a6e408bfe7c48ef587d69-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "3ea7cf3c-0cf8-4d86-949c-445257c42028",
+      "price_quantity": "300/80/30g",
+      "auronda_group": "Preparate din carne"
+    },
+    "sort_order": 9
+  },
+  {
+    "name": "Burger de pui",
+    "description": "cu cartofi pai şi sos",
+    "price": 100.0,
+    "category": "Мясные блюда / Meat Dishes",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/6f3bdf656e106c7a1927d93078ffb8de-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "2bdb007a-b11d-418d-b691-70e76d6ac16f",
+      "price_quantity": "300/80/30g",
+      "auronda_group": "Preparate din carne"
+    },
+    "sort_order": 10
+  },
+  {
+    "name": "Nuggets cu cartofi pai",
+    "description": "350g",
+    "price": 95.0,
+    "category": "Мясные блюда / Meat Dishes",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/776216f25a63321f31270b5d15ad8068-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "22070e86-d4ae-41cd-9cba-51e039950ea4",
+      "price_quantity": "350g",
+      "auronda_group": "Preparate din carne"
+    },
+    "sort_order": 11
+  },
+  {
+    "name": "Cartofi pai",
+    "description": "200g",
+    "price": 50.0,
+    "category": "Мясные блюда / Meat Dishes",
+    "image_url": null,
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "9f9f84fd-f24d-4ba8-818d-94a3061aebbc",
+      "price_quantity": "200g",
+      "auronda_group": "Preparate din carne"
+    },
+    "sort_order": 12
+  },
+  {
+    "name": "Limbă de vită în sos cremos de piper",
+    "description": "300 gr",
+    "price": 230.0,
+    "category": "Мясные блюда / Meat Dishes",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/5de7ccb4554951991b51d19a975fac45-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "fcaa22c8-b586-4ded-8846-d0cce56f7fc8",
+      "price_quantity": "300 gr",
+      "auronda_group": "Preparate din carne"
+    },
+    "sort_order": 13
+  },
+  {
+    "name": "Vânătă de parma cu bacon",
+    "description": "250 gr",
+    "price": 120.0,
+    "category": "Мясные блюда / Meat Dishes",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/06bc07f961a86257da3524ea7e722b12-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "726d14a5-eeae-4b86-9099-be0b9d4480cb",
+      "price_quantity": "250 gr",
+      "auronda_group": "Preparate din carne"
+    },
+    "sort_order": 14
+  },
+  {
+    "name": "Frigărui din mușchiuleț de porc aromat",
+    "description": "280 gr",
+    "price": 165.0,
+    "category": "Мясные блюда / Meat Dishes",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/70294771bf1b156c678ef597fbcc9b20-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "1c5583ae-874b-4b3b-9a62-54f7ed580671",
+      "price_quantity": "280 gr",
+      "auronda_group": "Preparate din carne"
+    },
+    "sort_order": 15
+  },
+  {
+    "name": "Frigărui de pui cu sos chimichurri",
+    "description": "280 gr",
+    "price": 140.0,
+    "category": "Мясные блюда / Meat Dishes",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/d97be25fa8488fb38a6699215157b5eb-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "6a094005-00de-497c-a269-a489ff390db4",
+      "price_quantity": "280 gr",
+      "auronda_group": "Preparate din carne"
+    },
+    "sort_order": 16
+  },
+  {
+    "name": "Curcan pane cu salată Iceberg",
+    "description": "280 gr",
+    "price": 180.0,
+    "category": "Мясные блюда / Meat Dishes",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/6ac135e8c31e880c38deb6188840ca13-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "3a4deb2a-cc52-4542-aee7-f3ddac44d738",
+      "price_quantity": "280 gr",
+      "auronda_group": "Preparate din carne"
+    },
+    "sort_order": 17
+  },
+  {
+    "name": "Clătită cu banană și mascarpone",
+    "description": "180g",
+    "price": 80.0,
+    "category": "Десерты / Desserts",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/9ad5b0927f2d8649200723d64adb60ff-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "2b7b372a-dc3e-461d-8ecc-cf9b00523b68",
+      "price_quantity": "180g",
+      "auronda_group": "Desert"
+    },
+    "sort_order": 2
+  },
+  {
+    "name": "Clătită cu fructe de pădure și mascarpone",
+    "description": "180g",
+    "price": 80.0,
+    "category": "Десерты / Desserts",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/b9cbd6e81104d042874467d902c8ab6a-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "90be2d97-acfb-426e-97bb-c6de5b2a1348",
+      "price_quantity": "180g",
+      "auronda_group": "Desert"
+    },
+    "sort_order": 3
+  },
+  {
+    "name": "Clătită cu vișină și mascarpone",
+    "description": "180g",
+    "price": 80.0,
+    "category": "Десерты / Desserts",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/14f3f186eef61b2215d6b4310accb567-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "5f91489d-c592-48bd-b706-fcd0258477ab",
+      "price_quantity": "180g",
+      "auronda_group": "Desert"
+    },
+    "sort_order": 4
+  },
+  {
+    "name": "Clătită cu banană și nuttela",
+    "description": "150g",
+    "price": 70.0,
+    "category": "Десерты / Desserts",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/fc16dc53c4ed1a1409eba714a27b44b7-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "3bfac362-6e8d-40bf-909a-0ddb1ac11066",
+      "price_quantity": "150g",
+      "auronda_group": "Desert"
+    },
+    "sort_order": 5
+  },
+  {
+    "name": "Lava-cake de ciocolată",
+    "description": "100/30g",
+    "price": 90.0,
+    "category": "Десерты / Desserts",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/e581d0c4dd0b29c290dff7f57d2fd074-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "0274bd59-e02d-4024-ba1e-932a79193876",
+      "price_quantity": "100/30g",
+      "auronda_group": "Desert"
+    },
+    "sort_order": 6
+  },
+  {
+    "name": "Înghețată în asortiment(Betty-Ice)",
+    "description": "3 bile",
+    "price": 60.0,
+    "category": "Десерты / Desserts",
+    "image_url": null,
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "a82878fa-fb3d-42ed-aa99-645170ae68a8",
+      "price_quantity": "3 bile",
+      "auronda_group": "Desert"
+    },
+    "sort_order": 7
+  },
+  {
+    "name": "San Sebastiano Cheesecake",
+    "description": "130\\30",
+    "price": 95.0,
+    "category": "Десерты / Desserts",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/0d3f0f027576dd842a327513bb3ae85f-500x500.webp",
+    "is_food": true,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "a20a6348-8146-4fee-af87-2be0b149dd2b",
+      "price_quantity": "130\\30",
+      "auronda_group": "Desert"
+    },
+    "sort_order": 8
+  },
+  {
+    "name": "Flat White",
+    "description": null,
+    "price": 70.0,
+    "category": "Кофе / Coffee",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/77dd48a179f77ea58071cead6564aab5-500x500.webp",
+    "is_food": false,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "cd0f6ba8-63dd-4f7b-ac01-bd25b59bfbbf",
+      "price_quantity": null,
+      "auronda_group": "Băuturi calde"
+    },
+    "sort_order": 0
+  },
+  {
+    "name": "Espresso",
+    "description": null,
+    "price": 30.0,
+    "category": "Кофе / Coffee",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/727b5ac5bfe552144746f1e48ffa5006-500x500.webp",
+    "is_food": false,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "8b8eee9e-df0d-48dd-8474-0ec5ab12aa3f",
+      "price_quantity": null,
+      "auronda_group": "Băuturi calde"
+    },
+    "sort_order": 1
+  },
+  {
+    "name": "Espresso cu lapte",
+    "description": null,
+    "price": 35.0,
+    "category": "Кофе / Coffee",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/c5662090bcc329a8eb9b1e9e6d68c805-500x500.webp",
+    "is_food": false,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "e97a9d6c-6435-47dd-a297-572fbe7fc03e",
+      "price_quantity": null,
+      "auronda_group": "Băuturi calde"
+    },
+    "sort_order": 2
+  },
+  {
+    "name": "Espresso Dublu",
+    "description": null,
+    "price": 55.0,
+    "category": "Кофе / Coffee",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/b3e443bc1b0f39bf21755484a8f02650-500x500.webp",
+    "is_food": false,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "bf889e95-f07e-4fad-9492-29cf92bdab60",
+      "price_quantity": null,
+      "auronda_group": "Băuturi calde"
+    },
+    "sort_order": 3
+  },
+  {
+    "name": "Americano",
+    "description": null,
+    "price": 30.0,
+    "category": "Кофе / Coffee",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/f5f7036491e269186162fb9f9e747131-500x500.webp",
+    "is_food": false,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "dbe1456a-9b14-4b3e-8b78-b6726ac9eb04",
+      "price_quantity": null,
+      "auronda_group": "Băuturi calde"
+    },
+    "sort_order": 4
+  },
+  {
+    "name": "Americano cu lapte",
+    "description": null,
+    "price": 35.0,
+    "category": "Кофе / Coffee",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/3fe0abfdc4b74bc89a9badb4bedbf937-500x500.webp",
+    "is_food": false,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "0f5f12a3-0505-4fcd-9651-3d6efe719403",
+      "price_quantity": null,
+      "auronda_group": "Băuturi calde"
+    },
+    "sort_order": 5
+  },
+  {
+    "name": "Cappuccino",
+    "description": null,
+    "price": 40.0,
+    "category": "Кофе / Coffee",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/a97477687df60c16228f6c8dc3adcb57-500x500.webp",
+    "is_food": false,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "1fea6685-ebee-4ae4-aef4-7e5e10e709be",
+      "price_quantity": null,
+      "auronda_group": "Băuturi calde"
+    },
+    "sort_order": 6
+  },
+  {
+    "name": "Caffe latte",
+    "description": null,
+    "price": 50.0,
+    "category": "Кофе / Coffee",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/b4522cbea0a3d9d6c2e19450e240db2b-500x500.webp",
+    "is_food": false,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "1e4554aa-5e07-4b8b-9c87-235bc604d03d",
+      "price_quantity": null,
+      "auronda_group": "Băuturi calde"
+    },
+    "sort_order": 7
+  },
+  {
+    "name": "Ice latte",
+    "description": null,
+    "price": 50.0,
+    "category": "Кофе / Coffee",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/6a4a69d29cbeca4534cbdec997301b93-500x500.webp",
+    "is_food": false,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "ae26c73b-14a7-417e-8c59-18e868f202f7",
+      "price_quantity": null,
+      "auronda_group": "Băuturi calde"
+    },
+    "sort_order": 8
+  },
+  {
+    "name": "Ciocolată cu lapte",
+    "description": null,
+    "price": 45.0,
+    "category": "Кофе / Coffee",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/9031d84b3421ea9886e3a07aa897927b-500x500.webp",
+    "is_food": false,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "0f40f6eb-ceb8-4f9a-900f-5987fee7ffeb",
+      "price_quantity": null,
+      "auronda_group": "Băuturi calde"
+    },
+    "sort_order": 9
+  },
+  {
+    "name": "Ceai Aloe Vera",
+    "description": "400ml",
+    "price": 70.0,
+    "category": "Чай / Tea",
+    "image_url": null,
+    "is_food": false,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "06ee50a8-b3d5-4249-8aa4-9511905e1edc",
+      "price_quantity": "400ml",
+      "auronda_group": "Băuturi calde"
+    },
+    "sort_order": 0
+  },
+  {
+    "name": "Flat White",
+    "description": null,
+    "price": 70.0,
+    "category": "Чай / Tea",
+    "image_url": null,
+    "is_food": false,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "778cebf0-4f49-44cc-9eba-71e11b673c4c",
+      "price_quantity": null,
+      "auronda_group": "Băuturi calde"
+    },
+    "sort_order": 1
+  },
+  {
+    "name": "Ceai de cătină",
+    "description": "400ml",
+    "price": 70.0,
+    "category": "Чай / Tea",
+    "image_url": null,
+    "is_food": false,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "37f8fb19-0543-4b3a-9f28-8324d4746dea",
+      "price_quantity": "400ml",
+      "auronda_group": "Băuturi calde"
+    },
+    "sort_order": 2
+  },
+  {
+    "name": "Ceai Fructul pasiunii",
+    "description": "400ml",
+    "price": 70.0,
+    "category": "Чай / Tea",
+    "image_url": null,
+    "is_food": false,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "98dc91f7-bfb1-489a-99c0-eb58a4c8ce73",
+      "price_quantity": "400ml",
+      "auronda_group": "Băuturi calde"
+    },
+    "sort_order": 3
+  },
+  {
+    "name": "Ceai de zmeură",
+    "description": "400ml",
+    "price": 70.0,
+    "category": "Чай / Tea",
+    "image_url": null,
+    "is_food": false,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "9e6e4923-73d2-4ef5-8c57-8d4b97340b61",
+      "price_quantity": "400ml",
+      "auronda_group": "Băuturi calde"
+    },
+    "sort_order": 4
+  },
+  {
+    "name": "Ceai în asortiment",
+    "description": null,
+    "price": 30.0,
+    "category": "Чай / Tea",
+    "image_url": null,
+    "is_food": false,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "37f0a6f6-5677-4ca9-86b0-d7997b28982b",
+      "price_quantity": null,
+      "auronda_group": "Băuturi calde"
+    },
+    "sort_order": 5
+  },
+  {
+    "name": "Ceai în asortiment infuzie",
+    "description": "400ml",
+    "price": 40.0,
+    "category": "Чай / Tea",
+    "image_url": null,
+    "is_food": false,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "5340d2db-fca9-4b2d-bdc5-da21712edccb",
+      "price_quantity": "400ml",
+      "auronda_group": "Băuturi calde"
+    },
+    "sort_order": 6
+  },
+  {
+    "name": "S.Benedetto",
+    "description": "plată/gazată",
+    "price": 40.0,
+    "category": "Соки и Вода / Juices & Water",
+    "image_url": null,
+    "is_food": false,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "2f6585e0-ae97-4608-ad4f-1fd1cde97a14",
+      "price_quantity": "500 ml",
+      "auronda_group": "Băuturi răcoritoare"
+    },
+    "sort_order": 0
+  },
+  {
+    "name": "S.Pellegrino",
+    "description": "Plată/gazată",
+    "price": 75.0,
+    "category": "Соки и Вода / Juices & Water",
+    "image_url": null,
+    "is_food": false,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "d4aa6c99-4a2e-4f83-b672-3749ccd1ca5e",
+      "price_quantity": null,
+      "auronda_group": "Băuturi răcoritoare"
+    },
+    "sort_order": 1
+  },
+  {
+    "name": "Fresh de portocală",
+    "description": "300ml",
+    "price": 75.0,
+    "category": "Соки и Вода / Juices & Water",
+    "image_url": null,
+    "is_food": false,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "af801c0d-4bad-4064-b43e-99ffc4fbf41c",
+      "price_quantity": "300ml",
+      "auronda_group": "Băuturi răcoritoare"
+    },
+    "sort_order": 2
+  },
+  {
+    "name": "Coca cola",
+    "description": "250ml",
+    "price": 35.0,
+    "category": "Соки и Вода / Juices & Water",
+    "image_url": null,
+    "is_food": false,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "b0592712-c166-492e-8951-0d24a45286ee",
+      "price_quantity": "250ml",
+      "auronda_group": "Băuturi răcoritoare"
+    },
+    "sort_order": 3
+  },
+  {
+    "name": "Coca cola zero",
+    "description": "250ml",
+    "price": 35.0,
+    "category": "Соки и Вода / Juices & Water",
+    "image_url": null,
+    "is_food": false,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "6c21be14-3e6c-426c-b343-884565495b71",
+      "price_quantity": "250ml",
+      "auronda_group": "Băuturi răcoritoare"
+    },
+    "sort_order": 4
+  },
+  {
+    "name": "Sprite",
+    "description": "350ml",
+    "price": 35.0,
+    "category": "Соки и Вода / Juices & Water",
+    "image_url": null,
+    "is_food": false,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "9189c6f2-fef4-42a7-b900-5715380de06e",
+      "price_quantity": "350ml",
+      "auronda_group": "Băuturi răcoritoare"
+    },
+    "sort_order": 5
+  },
+  {
+    "name": "Fanta",
+    "description": "250ml",
+    "price": 35.0,
+    "category": "Соки и Вода / Juices & Water",
+    "image_url": null,
+    "is_food": false,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "75580f48-8540-4ed1-bd47-8ef8a84d5fd3",
+      "price_quantity": "250ml",
+      "auronda_group": "Băuturi răcoritoare"
+    },
+    "sort_order": 6
+  },
+  {
+    "name": "Santal Ananas",
+    "description": "250 ml",
+    "price": 35.0,
+    "category": "Соки и Вода / Juices & Water",
+    "image_url": null,
+    "is_food": false,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "14f2d584-a2f7-441a-b4a4-d4f1daf8640b",
+      "price_quantity": "250 ml",
+      "auronda_group": "Sucuri Santal"
+    },
+    "sort_order": 7
+  },
+  {
+    "name": "Santal Rodie",
+    "description": "250 ml",
+    "price": 35.0,
+    "category": "Соки и Вода / Juices & Water",
+    "image_url": null,
+    "is_food": false,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "00b72220-5439-4498-b2c5-bfb797cdaa9c",
+      "price_quantity": "250 ml",
+      "auronda_group": "Sucuri Santal"
+    },
+    "sort_order": 8
+  },
+  {
+    "name": "Santal Pere",
+    "description": "250 ml",
+    "price": 35.0,
+    "category": "Соки и Вода / Juices & Water",
+    "image_url": null,
+    "is_food": false,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "567f7dc9-0dda-4b56-b4d4-6f51f39cd617",
+      "price_quantity": "250 ml",
+      "auronda_group": "Sucuri Santal"
+    },
+    "sort_order": 9
+  },
+  {
+    "name": "Santal Piersic",
+    "description": "250 ml",
+    "price": 35.0,
+    "category": "Соки и Вода / Juices & Water",
+    "image_url": null,
+    "is_food": false,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "181b047a-bfac-48ce-855d-f35ea758baf1",
+      "price_quantity": "250 ml",
+      "auronda_group": "Sucuri Santal"
+    },
+    "sort_order": 10
+  },
+  {
+    "name": "Ice Tea fructe",
+    "description": null,
+    "price": 65.0,
+    "category": "Безалкогольные коктейли / Non-alcoholic cocktails",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/f63af001970adb71149abc7eec3d480f-500x500.webp",
+    "is_food": false,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "b6be5597-9364-43f9-888c-9548fb516727",
+      "price_quantity": null,
+      "auronda_group": "Limonade"
+    },
+    "sort_order": 0
+  },
+  {
+    "name": "Ice tea verde",
+    "description": null,
+    "price": 65.0,
+    "category": "Безалкогольные коктейли / Non-alcoholic cocktails",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/906e93d8808d27ce4eeb49864ce76dd7-500x500.webp",
+    "is_food": false,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "cfeb06dd-40a2-4386-89cf-e75fe4639400",
+      "price_quantity": null,
+      "auronda_group": "Limonade"
+    },
+    "sort_order": 1
+  },
+  {
+    "name": "Mojito",
+    "description": null,
+    "price": 75.0,
+    "category": "Безалкогольные коктейли / Non-alcoholic cocktails",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/eacbfe1fac5d5df96a23454264b48eff-500x500.webp",
+    "is_food": false,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "393c02de-52bb-4c4e-8c4d-6a2f5757fc2a",
+      "price_quantity": null,
+      "auronda_group": "Limonade"
+    },
+    "sort_order": 2
+  },
+  {
+    "name": "Maracuja",
+    "description": null,
+    "price": 75.0,
+    "category": "Безалкогольные коктейли / Non-alcoholic cocktails",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/617374bba416ac5fe028366ce99e94aa-500x500.webp",
+    "is_food": false,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "ba564059-3f26-413d-89d0-226e8b7417c8",
+      "price_quantity": null,
+      "auronda_group": "Limonade"
+    },
+    "sort_order": 3
+  },
+  {
+    "name": "Blue Electric",
+    "description": null,
+    "price": 75.0,
+    "category": "Безалкогольные коктейли / Non-alcoholic cocktails",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/fc4c7f83b37fc0de52eced6a792b4ea9-500x500.webp",
+    "is_food": false,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "0e8fde6f-d510-492f-86e6-a1c441587ab5",
+      "price_quantity": null,
+      "auronda_group": "Limonade"
+    },
+    "sort_order": 4
+  },
+  {
+    "name": "Pink Kiwi",
+    "description": null,
+    "price": 75.0,
+    "category": "Безалкогольные коктейли / Non-alcoholic cocktails",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/d526fe35d5c06265913d866103d78087-500x500.webp",
+    "is_food": false,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "34c7d7ef-8fef-4e30-a5b3-4b3a3773be56",
+      "price_quantity": null,
+      "auronda_group": "Limonade"
+    },
+    "sort_order": 5
+  },
+  {
+    "name": "Green Cactus",
+    "description": null,
+    "price": 75.0,
+    "category": "Безалкогольные коктейли / Non-alcoholic cocktails",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/51371b460f64b2899722712d712b120c-500x500.webp",
+    "is_food": false,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "1a1ed08d-e05a-4dfb-88ba-23cdc427592a",
+      "price_quantity": null,
+      "auronda_group": "Limonade"
+    },
+    "sort_order": 6
+  },
+  {
+    "name": "Apple & Aloe Vera Twist",
+    "description": null,
+    "price": 85.0,
+    "category": "Безалкогольные коктейли / Non-alcoholic cocktails",
+    "image_url": "https://feliz-wine-bar-ungheni.auronda.menu/api/image/027a582b-5be0-413a-8bb2-03909dc62bfd/3956a3462522b281d16dd1de9859fd50-500x500.webp",
+    "is_food": false,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "ded7f640-39ee-4f4d-9517-37905eebcc71",
+      "price_quantity": null,
+      "auronda_group": "Limonade"
+    },
+    "sort_order": 7
+  },
+  {
+    "name": "Fresh de Portocale",
+    "description": null,
+    "price": 75.0,
+    "category": "Соки и Вода / Juices & Water",
+    "image_url": null,
+    "is_food": false,
+    "details": {
+      "source": "auronda",
+      "auronda_uid": "dcc620c4-1ff4-478a-b8e5-5a68caf4b24f",
+      "price_quantity": null,
+      "auronda_group": "Suc Fresh"
+    },
+    "sort_order": 11
+  }
+]

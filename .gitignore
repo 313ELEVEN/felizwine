@@ -1,0 +1,20 @@
+# Виртуальное окружение
+venv/
+
+# Видео и музыка
+# *.mp4
+# *.mov
+# *.mp3
+
+
+# Системные файлы macOS
+.DS_Store
+
+*.sqlite3
+feliz_wine_bar.db # Добавьте эту строку, чтобы не игнорировать этот конкретный файл
+run_local.sh
+local_config.env
+
+# Локальная SQLite с тест-данными
+instance/
+__pycache__/
