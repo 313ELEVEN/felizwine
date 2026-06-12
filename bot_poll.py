@@ -1,17 +1,28 @@
-"""Standalone local bot runner via long polling (getUpdates).
+"""Bot runner via long polling (getUpdates).
 
-Normally you don't need this: `python3 app.py` already runs the bot in a
-background thread when BOT_POLLING=1 (set in local_config.env). Use this script
-only if you want to run the bot WITHOUT the web server.
+Used on the SERVER (started in the background from entrypoint.sh) because
+Cloudflare blocks inbound Telegram webhook requests (403). Polling is outbound,
+so it bypasses Cloudflare. Also usable locally instead of the web server.
 
-Run:  python3 bot_poll.py
+Reuses the exact same handlers as the webhook (run_bot_polling -> process_
+telegram_update in app.py). run_bot_polling deletes any webhook and skips the
+backlog, so it only reacts to messages sent after it starts.
+
 Stop: Ctrl+C
-
-⚠️ Do NOT run polling once a production webhook is live — it deletes the webhook,
-which would stop the deployed bot. Render uses the webhook (set_webhook.py).
 """
 
-from app import run_bot_polling
+from __future__ import annotations
+
+import time
+
+from app import BOT_TOKEN, run_bot_polling
 
 if __name__ == "__main__":
-    run_bot_polling()
+    if not BOT_TOKEN:
+        print("No TELEGRAM_BOT_TOKEN — bot polling disabled.")
+    else:
+        # Restart if run_bot_polling ever returns (e.g. a transient network error
+        # during the initial deleteWebhook/getUpdates handshake).
+        while True:
+            run_bot_polling()
+            time.sleep(5)
