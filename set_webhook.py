@@ -17,7 +17,9 @@ import sys
 import requests
 
 TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
-WEBHOOK_URL = os.environ.get("WEBHOOK_URL", "https://felizwinebar.md/telegram/webhook").strip()
+# Use the DIRECT Render URL, not felizwinebar.md — Cloudflare blocks Telegram's
+# webhook delivery (403) on the custom domain.
+WEBHOOK_URL = os.environ.get("WEBHOOK_URL", "https://felizwine.onrender.com/telegram/webhook").strip()
 SECRET = os.environ.get("TELEGRAM_WEBHOOK_SECRET", "").strip()
 
 

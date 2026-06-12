@@ -4,12 +4,11 @@
 echo "Initializing database..."
 python database.py
 
-# Бот через polling в фоне. Cloudflare блокирует webhook-запросы Telegram (403),
-# поэтому сервер сам тянет апдейты (исходящие, без входящего webhook).
-echo "Starting Telegram bot (polling)..."
-python bot_poll.py &
+# Бот работает через webhook на ПРЯМОЙ Render-URL (felizwine.onrender.com),
+# минуя Cloudflare (он блокирует входящие запросы Telegram). Polling на сервере
+# не нужен — webhook ставится через set_webhook.py / Telegram API.
 
-# Затем запускаем основное приложение
+# Запускаем основное приложение
 echo "Starting Gunicorn..."
 python -m gunicorn app:app \
   --bind 0.0.0.0:${PORT:-10000} \
