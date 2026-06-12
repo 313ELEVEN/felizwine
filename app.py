@@ -527,6 +527,13 @@ def is_super_admin(chat_id: Any) -> bool:
     return str(chat_id) in SUPER_ADMIN_CHAT_IDS
 
 
+def is_bot_admin(chat_id: Any) -> bool:
+    """Only people added as bot admins (or super-admins) may use the bot."""
+    if is_super_admin(chat_id):
+        return True
+    return BotAdmin.query.filter_by(chat_id=str(chat_id), is_active=True).first() is not None
+
+
 def menu_keyboard_for(chat_id: Any) -> dict[str, Any]:
     rows = [
         [{"text": "🛵 Comenzi Livrare"}, {"text": "🍽 In Feliz"}],
@@ -715,6 +722,26 @@ def handle_bot_message(message: dict[str, Any]) -> None:
 
 
 def process_telegram_update(update: dict[str, Any]) -> None:
+    # Gate: bot replies only to people added as admins, not random users.
+    if "callback_query" in update:
+        actor_id = update["callback_query"].get("from", {}).get("id")
+    elif "message" in update:
+        actor_id = update["message"].get("chat", {}).get("id")
+    else:
+        actor_id = None
+    if actor_id is not None and not is_bot_admin(actor_id):
+        if "callback_query" in update:
+            telegram_call(
+                "answerCallbackQuery",
+                {"callback_query_id": update["callback_query"].get("id"), "text": "⛔️ Acces interzis."},
+            )
+        elif "message" in update:
+            telegram_call(
+                "sendMessage",
+                {"chat_id": actor_id, "text": "⛔️ Acces interzis. Bot doar pentru personal."},
+            )
+        return
+
     if "callback_query" in update:
         callback = update["callback_query"]
         data = callback.get("data") or ""
