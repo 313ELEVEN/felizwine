@@ -5,7 +5,7 @@ import io
 import os
 import uuid
 from collections import defaultdict
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
 
@@ -98,6 +98,20 @@ SUPER_ADMIN_CHAT_IDS = {
     for chat_id in os.getenv("SUPER_ADMIN_CHAT_IDS", "2116037251").split(",")
     if chat_id.strip()
 }
+
+try:
+    from zoneinfo import ZoneInfo
+
+    LOCAL_TZ = ZoneInfo(os.getenv("ORDER_TIMEZONE", "Europe/Chisinau"))
+except Exception:
+    LOCAL_TZ = timezone.utc
+
+
+def format_order_time(order: "Order") -> str:
+    if not order.created_at:
+        return ""
+    local_dt = order.created_at.replace(tzinfo=timezone.utc).astimezone(LOCAL_TZ)
+    return local_dt.strftime("%d.%m.%Y %H:%M")
 
 FOOD_CATEGORY_ORDER = [
     "Завтрак / Breakfast",
@@ -253,6 +267,9 @@ def build_order_message(order: Order) -> str:
         lines.append(f"• {item.get('name')} × {quantity} — {price:.0f} MDL")
     lines.append("")
     lines.append(f"💰 *Total:* {to_float(order.total_price):.0f} MDL")
+    order_time = format_order_time(order)
+    if order_time:
+        lines.append(f"🕒 *Data:* {order_time}")
     if order.claimed_by:
         lines.append("")
         lines.append(f"✅ *Preluat de:* {order.claimed_by}")

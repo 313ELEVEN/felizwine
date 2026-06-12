@@ -1223,22 +1223,25 @@ img {
 .toast {
     position: fixed;
     left: 50%;
-    bottom: 1.5rem;
+    top: 50%;
     z-index: 120;
-    padding: 0.95rem 1.2rem;
-    border-radius: 12px;
-    background: rgba(0, 0, 0, 0.9);
-    border: 1px solid rgba(212, 175, 55, 0.2);
+    max-width: min(86vw, 420px);
+    padding: 1.1rem 1.4rem;
+    border-radius: 14px;
+    background: rgba(0, 0, 0, 0.92);
+    border: 1px solid rgba(212, 175, 55, 0.28);
     box-shadow: var(--shadow);
+    text-align: center;
+    font-weight: 600;
     opacity: 0;
-    transform: translate(-50%, 1rem);
+    transform: translate(-50%, calc(-50% + 0.8rem));
     pointer-events: none;
     transition: opacity 0.22s ease, transform 0.22s ease;
 }
 
 .toast.is-visible {
     opacity: 1;
-    transform: translate(-50%, 0);
+    transform: translate(-50%, -50%);
 }
 
 @media (min-width: 900px) {

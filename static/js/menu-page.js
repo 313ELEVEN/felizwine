@@ -71,7 +71,7 @@ const uiCopy = {
         empty_menu: "В этой категории пока нет позиций.",
         empty_ads: "Рекламные карточки пока не добавлены.",
         empty_cart: "Корзина пока пуста.",
-        order_success: "Заказ сохранён. Спасибо.",
+        order_success: "Заказ принят! Мы свяжемся с вами в ближайшее время.",
         auth_success: "Авторизация выполнена.",
         register_success: "Профиль создан.",
         error_common: "Не удалось выполнить запрос.",
@@ -121,7 +121,7 @@ const uiCopy = {
         empty_menu: "No items available in this category.",
         empty_ads: "No advertising cards yet.",
         empty_cart: "Your cart is empty.",
-        order_success: "Order placed successfully.",
+        order_success: "Order received! We'll contact you shortly.",
         auth_success: "Signed in.",
         register_success: "Account created.",
         error_common: "Request failed.",
@@ -171,7 +171,7 @@ const uiCopy = {
         empty_menu: "Nu există produse în această categorie.",
         empty_ads: "Nu există carduri promoționale.",
         empty_cart: "Coșul este gol.",
-        order_success: "Comanda a fost trimisă.",
+        order_success: "Comanda a fost primită! Vă contactăm în curând.",
         auth_success: "Autentificare reușită.",
         register_success: "Contul a fost creat.",
         error_common: "Cererea a eșuat.",
@@ -295,6 +295,7 @@ const state = {
     geoCountry: null,
     cart: [],
     orderType: "delivery",
+    submittingOrder: false,
     menuSections: [],
     menuIndex: new Map(),
     ads: [],
@@ -964,6 +965,7 @@ function setOrderType(type) {
 
 async function handleCheckout(event) {
     event.preventDefault();
+    if (state.submittingOrder) return;
     if (!state.cart.length) {
         showToast(copy("empty_cart"));
         return;
@@ -995,6 +997,10 @@ async function handleCheckout(event) {
         body = { order_type: "delivery", name, phone, address, cart };
     }
 
+    const submitButton = event.target.querySelector('button[type="submit"]');
+    state.submittingOrder = true;
+    if (submitButton) submitButton.disabled = true;
+
     try {
         await requestJSON("/api/place_order", {
             method: "POST",
@@ -1009,6 +1015,9 @@ async function handleCheckout(event) {
         showToast(copy("order_success"));
     } catch (error) {
         showToast(error.message);
+    } finally {
+        state.submittingOrder = false;
+        if (submitButton) submitButton.disabled = false;
     }
 }
 
