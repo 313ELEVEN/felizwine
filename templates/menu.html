@@ -285,6 +285,10 @@
                         <input id="checkout-table" type="text" inputmode="numeric">
                     </label>
                 </div>
+                <label>
+                    <span data-copy="comment">Комментарий</span>
+                    <textarea id="checkout-comment" rows="2" data-copy-placeholder="comment_placeholder"></textarea>
+                </label>
                 <button type="submit" class="primary-button full-width" data-copy="confirm_order">Подтвердить заказ</button>
             </form>
         </div>
@@ -300,7 +304,7 @@
         };
     </script>
     <script src="{{ url_for('static', filename='js/menu-product-copy.js', v='20260405h') }}"></script>
-    <script src="{{ url_for('static', filename='js/menu-page.js', v='20260612c') }}"></script>
+    <script src="{{ url_for('static', filename='js/menu-page.js', v='20260612d') }}"></script>
     <script>
         if ("serviceWorker" in navigator) {
             window.addEventListener("load", () => navigator.serviceWorker.register("/sw.js").catch(() => {}));

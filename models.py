@@ -103,6 +103,7 @@ class Order(TimestampMixin, db.Model):
 
     order_type = db.Column(db.String(20), nullable=False, default="delivery")
     table_number = db.Column(db.String(32), nullable=True)
+    comment = db.Column(db.Text, nullable=True)
     claimed_by = db.Column(db.String(255), nullable=True)
     claimed_at = db.Column(db.DateTime, nullable=True)
     telegram_refs = db.Column(db.JSON, nullable=True, default=list)

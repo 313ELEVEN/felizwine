@@ -96,6 +96,7 @@ def configure_database(app: Flask) -> None:
 ORDER_COLUMN_UPGRADES = {
     "order_type": "VARCHAR(20) NOT NULL DEFAULT 'delivery'",
     "table_number": "VARCHAR(32)",
+    "comment": "TEXT",
     "claimed_by": "VARCHAR(255)",
     "claimed_at": "TIMESTAMP",
     "telegram_refs": "JSON",

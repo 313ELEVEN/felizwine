@@ -267,6 +267,8 @@ def build_order_message(order: Order) -> str:
         lines.append(f"• {item.get('name')} × {quantity} — {price:.0f} MDL")
     lines.append("")
     lines.append(f"💰 *Total:* {to_float(order.total_price):.0f} MDL")
+    if order.comment:
+        lines.append(f"📝 *Comentariu:* {order.comment}")
     order_time = format_order_time(order)
     if order_time:
         lines.append(f"🕒 *Data:* {order_time}")
@@ -889,6 +891,7 @@ def serialize_order(order: Order) -> dict[str, Any]:
         "status": order.status,
         "order_type": order.order_type or "delivery",
         "table_number": order.table_number,
+        "comment": order.comment,
         "claimed_by": order.claimed_by,
         "claimed_at": order.claimed_at.isoformat() if order.claimed_at else None,
         "user_email": order.user.email if order.user else None,
@@ -1390,6 +1393,7 @@ def place_order():
         customer_phone = payload["phone"]
         customer_address = payload["address"]
 
+    comment = str(payload.get("comment") or "").strip() or None
     total_price = sum(to_float(item.get("price")) * to_int(item.get("quantity"), 1) for item in cart)
     order = Order(
         user_id=session.get("user_id"),
@@ -1401,6 +1405,7 @@ def place_order():
         status="Новый",
         order_type=order_type,
         table_number=table_number,
+        comment=comment,
         telegram_refs=[],
     )
     db.session.add(order)
@@ -1562,7 +1567,7 @@ def export_orders_csv():
     writer.writerow([
         "id", "created_at", "order_type", "table_number",
         "customer_name", "customer_phone", "customer_address",
-        "items", "total_price", "status", "claimed_by", "claimed_at",
+        "comment", "items", "total_price", "status", "claimed_by", "claimed_at",
     ])
     for order in query.all():
         items = "; ".join(
@@ -1577,6 +1582,7 @@ def export_orders_csv():
             order.customer_name or "",
             order.customer_phone or "",
             order.customer_address or "",
+            order.comment or "",
             items,
             f"{to_float(order.total_price):.2f}",
             order.status or "",

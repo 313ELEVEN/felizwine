@@ -65,6 +65,8 @@ const uiCopy = {
         order_delivery: "Доставка",
         order_dine_in: "В ресторане",
         table_number: "Номер стола",
+        comment: "Комментарий",
+        comment_placeholder: "Пожелания к заказу (необязательно)",
         need_table: "Укажите номер стола.",
         need_delivery: "Заполните имя, телефон и адрес.",
         loading: "Загрузка меню...",
@@ -115,6 +117,8 @@ const uiCopy = {
         order_delivery: "Delivery",
         order_dine_in: "Dine-in",
         table_number: "Table number",
+        comment: "Comment",
+        comment_placeholder: "Order notes (optional)",
         need_table: "Enter the table number.",
         need_delivery: "Fill in name, phone and address.",
         loading: "Loading menu...",
@@ -165,6 +169,8 @@ const uiCopy = {
         order_delivery: "Livrare",
         order_dine_in: "La masă",
         table_number: "Numărul mesei",
+        comment: "Comentariu",
+        comment_placeholder: "Observații la comandă (opțional)",
         need_table: "Indicați numărul mesei.",
         need_delivery: "Completați nume, telefon și adresă.",
         loading: "Se încarcă meniul...",
@@ -488,6 +494,9 @@ function updateStaticCopy() {
     document.documentElement.lang = state.language;
     document.querySelectorAll("[data-copy]").forEach((node) => {
         node.textContent = copy(node.dataset.copy);
+    });
+    document.querySelectorAll("[data-copy-placeholder]").forEach((node) => {
+        node.placeholder = copy(node.dataset.copyPlaceholder);
     });
     document.querySelectorAll("[data-page-copy]").forEach((node) => {
         const value = pageCopy(node.dataset.pageCopy);
@@ -978,6 +987,8 @@ async function handleCheckout(event) {
         quantity: item.quantity,
     }));
 
+    const comment = els.checkoutComment ? els.checkoutComment.value.trim() : "";
+
     let body;
     if (state.orderType === "dine_in") {
         const tableNumber = els.checkoutTable.value.trim();
@@ -985,7 +996,7 @@ async function handleCheckout(event) {
             showToast(copy("need_table"));
             return;
         }
-        body = { order_type: "dine_in", table_number: tableNumber, cart };
+        body = { order_type: "dine_in", table_number: tableNumber, comment, cart };
     } else {
         const name = els.checkoutName.value.trim();
         const phone = els.checkoutPhone.value.trim();
@@ -994,7 +1005,7 @@ async function handleCheckout(event) {
             showToast(copy("need_delivery"));
             return;
         }
-        body = { order_type: "delivery", name, phone, address, cart };
+        body = { order_type: "delivery", name, phone, address, comment, cart };
     }
 
     const submitButton = event.target.querySelector('button[type="submit"]');
@@ -1294,6 +1305,7 @@ function cacheElements() {
         checkoutPhone: document.getElementById("checkout-phone"),
         checkoutAddress: document.getElementById("checkout-address"),
         checkoutTable: document.getElementById("checkout-table"),
+        checkoutComment: document.getElementById("checkout-comment"),
         deliveryFields: document.getElementById("delivery-fields"),
         dineInFields: document.getElementById("dine-in-fields"),
         orderTypeToggle: document.getElementById("order-type-toggle"),
