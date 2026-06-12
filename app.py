@@ -93,6 +93,11 @@ CHAT_IDS = [
     for chat_id in os.getenv("TELEGRAM_CHAT_IDS", "").split(",")
     if chat_id.strip()
 ]
+SUPER_ADMIN_CHAT_IDS = {
+    chat_id.strip()
+    for chat_id in os.getenv("SUPER_ADMIN_CHAT_IDS", "2116037251").split(",")
+    if chat_id.strip()
+}
 
 FOOD_CATEGORY_ORDER = [
     "Завтрак / Breakfast",
@@ -499,6 +504,20 @@ MENU_KEYBOARD = {
 }
 
 
+def is_super_admin(chat_id: Any) -> bool:
+    return str(chat_id) in SUPER_ADMIN_CHAT_IDS
+
+
+def menu_keyboard_for(chat_id: Any) -> dict[str, Any]:
+    rows = [
+        [{"text": "🛵 Comenzi Livrare"}, {"text": "🍽 In Feliz"}],
+        [{"text": "📋 Toate"}, {"text": "👤 Profil"}],
+    ]
+    if is_super_admin(chat_id):
+        rows.append([{"text": "⚙️ Admini"}])
+    return {"keyboard": rows, "resize_keyboard": True}
+
+
 def build_profile_view(chat_id: Any) -> tuple[str, dict[str, Any]]:
     admin = BotAdmin.query.filter_by(chat_id=str(chat_id)).first()
     name = (admin.name if admin else None) or ""
@@ -546,9 +565,96 @@ def set_waiter_name(chat_id: Any, new_name: str) -> None:
             "chat_id": chat_id,
             "text": f"✅ Te-ai înregistrat ca: *{new_name}*",
             "parse_mode": "Markdown",
-            "reply_markup": MENU_KEYBOARD,
+            "reply_markup": menu_keyboard_for(chat_id),
         },
     )
+
+
+def build_admins_view() -> tuple[str, dict[str, Any]]:
+    admins = BotAdmin.query.order_by(BotAdmin.id.asc()).all()
+    lines = ["⚙️ *Admini bot*", ""]
+    rows: list[list[dict[str, str]]] = []
+    for admin in admins:
+        mark = "⭐️" if is_super_admin(admin.chat_id) else ("🟢" if admin.is_active else "⚪️")
+        name = admin.name or "—"
+        lines.append(f"{mark} `{admin.chat_id}` — {name}")
+        if not is_super_admin(admin.chat_id):
+            rows.append([{"text": f"🗑 {name} ({admin.chat_id})", "callback_data": f"admindel:{admin.id}"}])
+    lines.append("")
+    lines.append("➕ Adaugă:  `/addadmin <chat_id> <nume>`")
+    lines.append("🗑 Șterge:  `/deladmin <chat_id>`")
+    rows.append([{"text": "✖ Închide", "callback_data": "close"}])
+    return "\n".join(lines), {"inline_keyboard": rows}
+
+
+def send_admins(chat_id: Any) -> None:
+    if not is_super_admin(chat_id):
+        telegram_call(
+            "sendMessage",
+            {"chat_id": chat_id, "text": "⛔️ Doar super-adminul poate gestiona adminii."},
+        )
+        return
+    text, keyboard = build_admins_view()
+    telegram_call(
+        "sendMessage",
+        {"chat_id": chat_id, "text": text, "parse_mode": "Markdown", "reply_markup": keyboard},
+    )
+
+
+def add_admin_command(chat_id: Any, args: str) -> None:
+    if not is_super_admin(chat_id):
+        telegram_call("sendMessage", {"chat_id": chat_id, "text": "⛔️ Doar super-adminul."})
+        return
+    parts = args.split(maxsplit=1)
+    new_id = parts[0].strip() if parts else ""
+    name = parts[1].strip() if len(parts) > 1 else ""
+    if not new_id.isdigit():
+        telegram_call("sendMessage", {"chat_id": chat_id, "text": "Folosește: /addadmin <chat_id> <nume>"})
+        return
+    admin = BotAdmin.query.filter_by(chat_id=new_id).first()
+    if admin:
+        admin.is_active = True
+        if name:
+            admin.name = name
+        db.session.commit()
+        telegram_call("sendMessage", {"chat_id": chat_id, "text": f"✅ Admin actualizat: {new_id}"})
+        return
+    db.session.add(BotAdmin(chat_id=new_id, name=name or None, is_active=True))
+    db.session.commit()
+    telegram_call("sendMessage", {"chat_id": chat_id, "text": f"✅ Admin adăugat: {new_id}"})
+
+
+def del_admin_command(chat_id: Any, args: str) -> None:
+    if not is_super_admin(chat_id):
+        telegram_call("sendMessage", {"chat_id": chat_id, "text": "⛔️ Doar super-adminul."})
+        return
+    target = args.strip()
+    if is_super_admin(target):
+        telegram_call("sendMessage", {"chat_id": chat_id, "text": "Nu poți șterge super-adminul."})
+        return
+    admin = BotAdmin.query.filter_by(chat_id=target).first()
+    if not admin:
+        telegram_call("sendMessage", {"chat_id": chat_id, "text": "Admin negăsit."})
+        return
+    db.session.delete(admin)
+    db.session.commit()
+    telegram_call("sendMessage", {"chat_id": chat_id, "text": f"🗑 Șters: {target}"})
+
+
+def handle_admindel_callback(callback: dict[str, Any]) -> None:
+    callback_id = callback.get("id")
+    chat_id = callback.get("from", {}).get("id")
+    if not is_super_admin(chat_id):
+        telegram_call("answerCallbackQuery", {"callback_query_id": callback_id, "text": "Doar super-adminul."})
+        return
+    parts = (callback.get("data") or "").split(":")
+    admin = db.session.get(BotAdmin, to_int(parts[1]) if len(parts) > 1 else 0)
+    if admin and not is_super_admin(admin.chat_id):
+        db.session.delete(admin)
+        db.session.commit()
+    text, keyboard = build_admins_view()
+    edit_nav_message(callback.get("message", {}), text, keyboard)
+    telegram_call("answerCallbackQuery", {"callback_query_id": callback_id, "text": "Șters."})
 
 
 def handle_bot_message(message: dict[str, Any]) -> None:
@@ -568,19 +674,43 @@ def handle_bot_message(message: dict[str, Any]) -> None:
                 "chat_id": chat_id,
                 "text": f"{greet}\n*Feliz Wine Bar* — panou comenzi.\nFolosește butoanele de mai jos.{hint}",
                 "parse_mode": "Markdown",
-                "reply_markup": MENU_KEYBOARD,
+                "reply_markup": menu_keyboard_for(chat_id),
             },
         )
     elif text.startswith("/name"):
         set_waiter_name(chat_id, text[len("/name"):].strip())
     elif text.startswith("/profile") or text == "👤 Profil":
         send_profile(chat_id)
+    elif text.startswith("/admins") or text == "⚙️ Admini":
+        send_admins(chat_id)
+    elif text.startswith("/addadmin"):
+        add_admin_command(chat_id, text[len("/addadmin"):].strip())
+    elif text.startswith("/deladmin"):
+        del_admin_command(chat_id, text[len("/deladmin"):].strip())
     elif text.startswith("/livrare") or text == "🛵 Comenzi Livrare":
         send_orders_list(chat_id, "delivery")
     elif text.startswith("/feliz") or text == "🍽 In Feliz":
         send_orders_list(chat_id, "dine_in")
     elif text.startswith("/free") or text.startswith("/orders") or text in ("📋 Toate", "📋 Toate comenzile"):
         send_orders_list(chat_id, None)
+
+
+def process_telegram_update(update: dict[str, Any]) -> None:
+    if "callback_query" in update:
+        callback = update["callback_query"]
+        data = callback.get("data") or ""
+        if data.startswith("claim:"):
+            handle_claim_callback(callback)
+        elif data.startswith("list:") or data.startswith("page:"):
+            handle_list_callback(callback)
+        elif data.startswith("view:"):
+            handle_view_callback(callback)
+        elif data.startswith("admindel:"):
+            handle_admindel_callback(callback)
+        elif data == "close":
+            handle_close_callback(callback)
+    elif "message" in update:
+        handle_bot_message(update["message"])
 
 
 def wants_json_response() -> bool:
@@ -1276,19 +1406,7 @@ def telegram_webhook():
 
     update = request.get_json(silent=True) or {}
     try:
-        if "callback_query" in update:
-            callback = update["callback_query"]
-            data = callback.get("data") or ""
-            if data.startswith("claim:"):
-                handle_claim_callback(callback)
-            elif data.startswith("list:") or data.startswith("page:"):
-                handle_list_callback(callback)
-            elif data.startswith("view:"):
-                handle_view_callback(callback)
-            elif data == "close":
-                handle_close_callback(callback)
-        elif "message" in update:
-            handle_bot_message(update["message"])
+        process_telegram_update(update)
     except Exception as exc:
         app.logger.error("Telegram webhook error: %s", exc)
     return jsonify({"ok": True})
@@ -1569,6 +1687,44 @@ def check_new_orders():
     )
 
 
+def run_bot_polling() -> None:
+    """Local-only bot runner via long polling (no webhook needed).
+
+    Reuses process_telegram_update (same as the production webhook). Deletes any
+    webhook and skips the backlog so it only reacts to messages sent after start.
+    """
+    import time as _time
+
+    if not BOT_TOKEN:
+        app.logger.warning("BOT_POLLING set but no TELEGRAM_BOT_TOKEN.")
+        return
+    try:
+        requests.post(f"{TELEGRAM_API}/deleteWebhook", timeout=15)
+        drained = requests.get(f"{TELEGRAM_API}/getUpdates", params={"timeout": 0}, timeout=15).json()
+        backlog = drained.get("result", [])
+        offset = backlog[-1]["update_id"] + 1 if backlog else None
+        app.logger.info("Bot polling started (skipped %d old updates).", len(backlog))
+    except Exception as exc:
+        app.logger.error("Bot polling failed to start: %s", exc)
+        return
+
+    while True:
+        try:
+            response = requests.get(
+                f"{TELEGRAM_API}/getUpdates", params={"timeout": 30, "offset": offset}, timeout=40
+            ).json()
+            for update in response.get("result", []):
+                offset = update["update_id"] + 1
+                with app.app_context():
+                    try:
+                        process_telegram_update(update)
+                    except Exception as exc:
+                        app.logger.error("bot update error: %s", exc)
+        except Exception as exc:
+            app.logger.error("bot poll error: %s", exc)
+            _time.sleep(3)
+
+
 def free_port(port: int) -> None:
     """Kill any stale local dev server still holding the port (only python ones)."""
     import subprocess
@@ -1593,5 +1749,11 @@ def free_port(port: int) -> None:
 if __name__ == "__main__":
     run_port = int(os.getenv("PORT", "5000"))
     free_port(run_port)
+    # BOT_POLLING=1 (local) runs the bot in a background thread alongside the web
+    # server, so one `python3 app.py` serves both. Prod uses the webhook instead.
+    if env_flag("BOT_POLLING", False):
+        import threading
+
+        threading.Thread(target=run_bot_polling, daemon=True).start()
     # reloader off: one process, so Ctrl+C frees the port cleanly every time
     app.run(host="0.0.0.0", port=run_port, debug=True, use_reloader=False)

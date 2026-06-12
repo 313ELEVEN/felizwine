@@ -324,12 +324,31 @@ def import_menu_from_file(source_path: Path) -> bool:
     return inserted_rows > 0
 
 
+DEFAULT_BOT_ADMIN_CHAT_IDS = [
+    "310936025",
+    "7255973106",
+    "6113861296",
+    "1522735375",
+    "2116037251",
+    "639142813",
+]
+
+
 def seed_defaults() -> None:
     seed_admin_user()
+    seed_bot_admins()
     seed_labels()
     seed_page_content()
     seed_advertisements()
     assign_demo_labels()
+
+
+def seed_bot_admins() -> None:
+    raw = os.getenv("SEED_BOT_ADMIN_CHAT_IDS")
+    chat_ids = [c.strip() for c in raw.split(",")] if raw else DEFAULT_BOT_ADMIN_CHAT_IDS
+    for chat_id in chat_ids:
+        if chat_id and not BotAdmin.query.filter_by(chat_id=chat_id).first():
+            db.session.add(BotAdmin(chat_id=chat_id, is_active=True))
 
 
 def seed_admin_user() -> None:
