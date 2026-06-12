@@ -687,7 +687,7 @@ img {
 
 .categories-section {
     position: sticky;
-    top: 72px;
+    top: calc(72px + env(safe-area-inset-top));
     z-index: 35;
 }
 
@@ -1304,6 +1304,10 @@ img {
 
     .main-header .header-inner {
         min-height: 68px;
+    }
+
+    .categories-section {
+        top: calc(68px + env(safe-area-inset-top));
     }
 
     .landing-hero {
